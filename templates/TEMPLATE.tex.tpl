@@ -7,6 +7,7 @@
 \usepackage{graphicx}           % 插入图片需要的宏包
 \usepackage{float}              % 强大的浮动环境控制宏包
 \usepackage{framed}             % `shaded'环境需要用到
+\usepackage{enumitem}           % 增强列表功能
 
 \usepackage{shortvrb}           % 简化\verb的写法
 \MakeShortVerb{\|}
@@ -15,8 +16,8 @@
 \usepackage[x11names]{xcolor}   % 下面的RoyalBlue3颜色需要用到的宏包
 % 自定义的几种颜色
 \definecolor{shadecolor}{gray}{0.85}
-\definecolor{darkblue}{RGB}{52,101,164}
-\definecolor{darkgreen}{RGB}{78,154,6}
+% \definecolor{darkblue}{rgb}{52,101,164}
+% \definecolor{darkgreen}{rgb}{78,154,6}
 
 % % 设置背景颜色
 % \definecolor{bisque}{rgb}{.996,.891,.755}
@@ -26,7 +27,7 @@
             pdftitle={For Alist},
             colorlinks=true,
             urlcolor=blue,
-            linkcolor=RoyalBlue3]{hyperref} % 为超链接增加颜色, 还有一些其它的好用功能
+            linkcolor=RoyalBlue3]{hyperref} % 为超链接设置颜色, 修改PDF文件信息
 
 \title{\textbf{For Alist}}
 \date{}
@@ -49,9 +50,11 @@
 
 % XeTeX logo
 \def\XeTeX{\leavevmode
-  \setbox0=\hbox{X\lower.5ex\hbox{\kern-.15em\reflectbox{E}}\kern-.1667em 
-    \TeX}%
-  \dp0=0pt\ht0=0pt\box0}
+\setbox0=\hbox{X\lower.5ex\hbox{\kern-.15em\reflectbox{E}}\kern-.1667em
+\TeX}%
+\dp0=0pt\ht0=0pt\box0}
+
+\newcommand{\LaN}{L{\scriptsize\hspace{-0.47em}\raisebox{0.23em}{A}}\hspace{-0.1em}N}
 
 \begin{document}
 
