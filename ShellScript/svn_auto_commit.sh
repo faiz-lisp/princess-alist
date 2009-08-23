@@ -2,10 +2,26 @@
 
 svn_dir=~/Project
 
+output_status ()
+{
+    i=0
+    for a in `echo $*`; do
+        if [ $i -ne 2 ]; then
+            echo -n "$a "
+        else
+            echo
+            echo -n "$a "
+            i=0
+        fi
+        i=`expr $i + 1`
+    done
+    echo
+}
+
 commit ()
 {
     echo "need to commit"
-    echo $*
+    output_status $*
     echo -n "commit now [Y/N]? "
     read a
     while true; do
