@@ -42,7 +42,29 @@ commit ()
     done
 }
 
+pasync ()
+{
+    basepath=${svn_dir}/princess-alist
+
+    cd $basepath
+    for blist in `ls $basepath`; do
+        if [ -d "${basepath}/${blist}" ]; then
+            if [ $blist == "templates" ]; then
+                cp -rf ${blist}/* ~/.templates/
+            else
+                cp -rf $blist ~/src/
+            fi
+        fi
+    done
+
+    echo "Sync Over"
+}
+
 for alist in `ls -1 $svn_dir | grep -v 'read-only'`; do
+    if [ $alist == "princess-alist" ]; then
+        pasync
+    fi
+
     if [ -d "${svn_dir}/${alist}" ]; then
         echo -n "${alist}: "
         cd ${svn_dir}/${alist} && status_info=`svn status`

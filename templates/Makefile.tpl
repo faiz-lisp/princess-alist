@@ -11,4 +11,4 @@ alist.o: alist.c
 	$(CC) $(CFLAGS) -c alist.c
 
 clean:
-	rm -f alist $(OBJECT)
+	rm -f $(OBJECT) alist
