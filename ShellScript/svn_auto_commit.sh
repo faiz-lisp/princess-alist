@@ -61,6 +61,7 @@ commit ()
 pasync ()
 {
     basepath=${svn_dir}/princess-alist
+    destpath=~/src
 
     cd $basepath
     for blist in `ls $basepath`; do
@@ -68,10 +69,11 @@ pasync ()
             if [ $blist == "templates" ]; then
                 cp -rf ${blist}/* ~/.templates/
             else
-                cp -rf $blist ~/src/
+                cp -rf $blist $destpath
             fi
         fi
     done
+    find $destpath \( -name '.svn' -o -name '*.swp' \) -exec rm -rf {} \; 2> /dev/null
 
     echo "Sync Over"
 }
