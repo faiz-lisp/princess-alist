@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 # Translate Unicode code to Unicode string. <http://code.google.com/p/princess-alist/>
 # Copyright (C) 2009  xiaogaozi <gaochangjian@gmail.com>
 # 
@@ -14,13 +17,19 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 from xml.dom import minidom
 import sys
 import types
 import re 
+
+def usage():
+    """Print Usage"""
+    print "Usage:", sys.argv[0], "[options] filename\n"
+    print "This script is a tool for translating Unicode code to"
+    print "Unicode string. It only be used for specific Twitter"
+    print "feed file from http://tw.opml.org/get?user=[username]&folder=1\n"
+    print "Options:"
+    print "  -h, --help\tThis help text."
 
 def uniChr(node, attr):
     """Translate Unicode code to Unicode string."""
@@ -31,6 +40,14 @@ def uniChr(node, attr):
             node.attributes[attr].value = re.sub('&#' + c + ';', unichr(int(c)), node.attributes[attr].value)
 
 if __name__ == "__main__":
+    if sys.argv.__len__() != 2:
+        usage()
+        sys.exit(1)
+
+    if sys.argv[1] == "-h" or sys.argv[1] == "--help":
+        usage()
+        sys.exit()
+
     xmldoc = minidom.parse(sys.argv[1])
     reflist = xmldoc.getElementsByTagName('outline')
     for node in reflist[0].childNodes:
