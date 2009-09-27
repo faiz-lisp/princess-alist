@@ -58,6 +58,7 @@ commit ()
     done
 }
 
+# Synchronise some my source codes between repository and local computer.
 pasync ()
 {
     basepath=${svn_dir}/princess-alist
@@ -66,11 +67,19 @@ pasync ()
     cd $basepath
     for blist in `ls $basepath`; do
         if [ -d "${basepath}/${blist}" ]; then
-            if [ $blist == "templates" ]; then
-                cp -rf ${blist}/* ~/.templates/
-            else
-                cp -rf $blist $destpath
-            fi
+            case "$blist" in
+                "templates" )
+                    cp -rf ${blist}/* ~/.templates/
+                    ;;
+
+                "sources.list.d" )
+                    sudo cp -rf ${blist}/* /etc/apt/sources.list.d/
+                    ;;
+
+                * )
+                    cp -rf $blist $destpath
+                    ;;
+            esac
         fi
     done
     find $destpath \( -name '.svn' -o -name '*.swp' \) -exec rm -rf {} \; 2> /dev/null

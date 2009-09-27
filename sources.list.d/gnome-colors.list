@@ -1,0 +1,3 @@
+# GNOME-Colors
+deb http://ppa.launchpad.net/gnome-colors-packagers/ppa/ubuntu jaunty main
+deb-src http://ppa.launchpad.net/gnome-colors-packagers/ppa/ubuntu jaunty main

@@ -1,0 +1,3 @@
+# iBus
+deb http://ppa.launchpad.net/ibus-dev/ppa/ubuntu jaunty main
+deb-src http://ppa.launchpad.net/ibus-dev/ppa/ubuntu jaunty main

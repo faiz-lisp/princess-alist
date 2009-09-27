@@ -70,6 +70,7 @@
 \TeX}%
 \dp0=0pt\ht0=0pt\box0}
 
+% For LaN
 \newcommand{\LaN}{L{\scriptsize\hspace{-0.47em}\raisebox{0.23em}{A}}\hspace{-0.1em}N}
 
 \begin{document}
