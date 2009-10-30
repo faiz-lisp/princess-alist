@@ -45,7 +45,7 @@ class MainWindow(wx.Frame):
 
     def __init__(self):
         wx.Frame.__init__(self, None, wx.ID_ANY, "Dr. Timer",
-                          size = wx.Size(800, 600))
+                          size = wx.Size(1024, 768))
         self.panel = wx.Panel(self, wx.ID_ANY)
 
         # Add menu.
@@ -89,9 +89,9 @@ class MainWindow(wx.Frame):
 
         self.sizer = wx.BoxSizer(wx.VERTICAL)
         self.sizer.Add(self.title, 0,
-                       wx.ALIGN_CENTER_HORIZONTAL | wx.TOP | wx.BOTTOM, 15)
+                       wx.ALIGN_CENTER_HORIZONTAL | wx.TOP, 52)
         self.sizer.Add(self.sizer1, 0,
-                       wx.ALIGN_CENTER_HORIZONTAL | wx.BOTTOM, 10)
+                       wx.ALIGN_CENTER_HORIZONTAL | wx.TOP | wx.BOTTOM, 10)
         self.sizer.Add(self.sizer2, 0,
                        wx.ALIGN_CENTER_HORIZONTAL | wx.BOTTOM, 10)
         self.sizer.Add(self.sizer3, 0,
@@ -105,7 +105,7 @@ class MainWindow(wx.Frame):
         self.sizer.Add(self.sizer7, 0,
                        wx.ALIGN_CENTER_HORIZONTAL | wx.BOTTOM, 10)
         self.sizer.Add(self.author, 0,
-                       wx.ALIGN_RIGHT | wx.TOP | wx.RIGHT, 20)
+                       wx.ALIGN_CENTER_HORIZONTAL | wx.LEFT, 750)
 
         self.panel.SetSizer(self.sizer)
 
@@ -131,7 +131,7 @@ class MainWindow(wx.Frame):
     def displayTitle(self):
         """Display title."""
         self.title = wx.StaticText(self.panel, wx.ID_ANY, "成都信息工程学院2009“成信杯”辩论赛")
-        self.title.SetFont(wx.Font(35, wx.FONTFAMILY_DEFAULT,
+        self.title.SetFont(wx.Font(42, wx.FONTFAMILY_DEFAULT,
                                    wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD))
 
     def displayCurrentStage(self):
@@ -156,23 +156,23 @@ class MainWindow(wx.Frame):
         self.negative.SetFont(wx.Font(30, wx.FONTFAMILY_DEFAULT,
                                       wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL))
         self.sizer2 = wx.BoxSizer(wx.HORIZONTAL)
-        self.sizer2.Add(self.positive, 0, wx.LEFT | wx.RIGHT, 200)
-        self.sizer2.Add(self.negative, 0, wx.LEFT | wx.RIGHT, 200)
+        self.sizer2.Add(self.positive, 0, wx.LEFT | wx.RIGHT, 230)
+        self.sizer2.Add(self.negative, 0, wx.LEFT | wx.RIGHT, 230)
 
     def displayTimer(self):
         """Display timer."""
         self.pos_timer = wx.StaticText(self.panel, wx.ID_ANY, "03:00")
-        self.pos_timer.SetFont(wx.Font(80, wx.FONTFAMILY_DEFAULT,
+        self.pos_timer.SetFont(wx.Font(100, wx.FONTFAMILY_DEFAULT,
                                        wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD))
         self.pos_timer.SetForegroundColour("BLUE")
         self.neg_timer = wx.StaticText(self.panel, wx.ID_ANY, "03:00")
-        self.neg_timer.SetFont(wx.Font(80, wx.FONTFAMILY_DEFAULT,
+        self.neg_timer.SetFont(wx.Font(100, wx.FONTFAMILY_DEFAULT,
                                        wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD))
         self.neg_timer.SetForegroundColour("BLUE")
 
         # Just during 'cross-question' stage, this timer will be shown.
         self.alist_timer = wx.StaticText(self.panel, wx.ID_ANY, "00:15")
-        self.alist_timer.SetFont(wx.Font(30, wx.FONTFAMILY_DEFAULT,
+        self.alist_timer.SetFont(wx.Font(35, wx.FONTFAMILY_DEFAULT,
                                          wx.FONTSTYLE_NORMAL,
                                          wx.FONTWEIGHT_BOLD))
         self.alist_timer.SetForegroundColour("FOREST GREEN")
@@ -192,17 +192,17 @@ class MainWindow(wx.Frame):
         self.alist_sizer2.Add(self.alist_button1, 0)
         self.alist_sizer2.Add(self.alist_button2, 0)
         self.alist_sizer1.Add(self.alist_timer, 0,
-                              wx.ALIGN_CENTER_HORIZONTAL | wx.TOP, 30)
+                              wx.ALIGN_CENTER_HORIZONTAL | wx.TOP, 45)
         self.alist_sizer1.Add(self.alist_sizer2, 0)
         wx.EVT_BUTTON(self, ID_ALIST_BUTTON1, self.forAlist)
         wx.EVT_BUTTON(self, ID_ALIST_BUTTON2, self.forAlist)
 
         self.sizer3 = wx.BoxSizer(wx.HORIZONTAL)
-        self.sizer3.Add(self.pos_timer, 0, wx.RIGHT, 90)
+        self.sizer3.Add(self.pos_timer, 0, wx.RIGHT, 80)
         self.sizer3.AddStretchSpacer()
         self.sizer3.Add(self.alist_sizer1, 0)
         self.sizer3.AddStretchSpacer()
-        self.sizer3.Add(self.neg_timer, 0, wx.LEFT, 90)
+        self.sizer3.Add(self.neg_timer, 0, wx.LEFT, 80)
         self.sizer3.Hide(self.alist_sizer1)
         self.sizer3.Layout()
 
@@ -241,30 +241,30 @@ class MainWindow(wx.Frame):
     def displayPlayer(self):
         """Display players."""
         self.p1 = wx.TextCtrl(self.panel, wx.ID_ANY, "参赛者",
-                              size = wx.Size(400, 40), style = wx.TE_CENTER)
+                              size = wx.Size(490, 40), style = wx.TE_CENTER)
         self.p1.SetFont(wx.Font(20, wx.FONTFAMILY_DEFAULT,
                                 wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL))
         self.p2 = wx.TextCtrl(self.panel, wx.ID_ANY, "参赛者",
-                              size = wx.Size(400, 40), style = wx.TE_CENTER)
+                              size = wx.Size(490, 40), style = wx.TE_CENTER)
         self.p2.SetFont(wx.Font(20, wx.FONTFAMILY_DEFAULT,
                                 wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL))
         self.sizer4 = wx.BoxSizer(wx.HORIZONTAL)
-        self.sizer4.Add(self.p1, 0, wx.RIGHT, 40)
-        self.sizer4.Add(self.p2, 0, wx.LEFT, 40)
+        self.sizer4.Add(self.p1, 0, wx.RIGHT, 20)
+        self.sizer4.Add(self.p2, 0, wx.LEFT, 20)
 
     def displayIssue(self):
         """Display issue."""
         self.i1 = wx.TextCtrl(self.panel, wx.ID_ANY, "正方观点",
-                              size = wx.Size(400, 100), style = wx.TE_MULTILINE)
+                              size = wx.Size(490, 80), style = wx.TE_MULTILINE)
         self.i1.SetFont(wx.Font(20, wx.FONTFAMILY_DEFAULT,
                                 wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL))
         self.i2 = wx.TextCtrl(self.panel, wx.ID_ANY, "反方观点",
-                              size = wx.Size(400, 100), style = wx.TE_MULTILINE)
+                              size = wx.Size(490, 80), style = wx.TE_MULTILINE)
         self.i2.SetFont(wx.Font(20, wx.FONTFAMILY_DEFAULT,
                                 wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL))
         self.sizer5 = wx.BoxSizer(wx.HORIZONTAL)
-        self.sizer5.Add(self.i1, 0, wx.RIGHT, 40)
-        self.sizer5.Add(self.i2, 0, wx.LEFT, 40)
+        self.sizer5.Add(self.i1, 0, wx.RIGHT, 20)
+        self.sizer5.Add(self.i2, 0, wx.LEFT, 20)
 
     def displayTimeButton(self):
         """Display time button."""
@@ -287,9 +287,9 @@ class MainWindow(wx.Frame):
                                           wx.FONTWEIGHT_NORMAL))
 
         self.sizer6 = wx.BoxSizer(wx.HORIZONTAL)
-        self.sizer6.Add(self.time_button1, 0, wx.RIGHT, 160)
-        self.sizer6.Add(self.time_button2, 0, wx.LEFT, 160)
-        self.sizer6.Add(self.time_button3, 0, wx.LEFT | wx.RIGHT, 235)
+        self.sizer6.Add(self.time_button1, 0, wx.RIGHT, 195)
+        self.sizer6.Add(self.time_button2, 0, wx.LEFT, 195)
+        self.sizer6.Add(self.time_button3, 0, wx.LEFT | wx.RIGHT, 275)
         self.sizer6.Hide(self.time_button3)
 
         # Call this to force layout of the children anew.
@@ -324,6 +324,9 @@ class MainWindow(wx.Frame):
             if self.neg_timer.GetLabel() != "00:00":
                 self.time_button2.Enable()
         elif l == "开始计时(&D)":
+            # print self.t1.isAlive()
+            # return
+
             self.time_button2.SetLabel("暂停计时(&F)")
             self.time_button1.Disable()
 
@@ -429,7 +432,17 @@ class MainWindow(wx.Frame):
         """Change stage and initialize time."""
         # Stop all of running threads.
         for t in self.thread_map:
-            self.thread_map[t].flag = 2
+            thread = self.thread_map[t]
+            thread.flag = 2
+
+            # # If this thread is waiting, wake up it.
+            # if thread.event.isSet() == False:
+            #     thread.event.set()
+
+            # # Main process waits for thread end.
+            # while thread.isAlive():
+            #     print "join", t
+            #     thread.join(0.2)
         # Clear threads' record.
         self.thread_map.clear()
 
@@ -552,16 +565,17 @@ class MainWindow(wx.Frame):
 
 class TimeThread(threading.Thread):
     """You will like this fucking thread class :)"""
-    # flag: 0 - thread be awakened
-    #       1 - thread wait
-    #       2 - thread end
-    flag = 0
-
     def __init__(self, w, m, s, t, b, l, t_name):
         """Initialization.
         Look at 'createTimeThread()' function to
         know the meaning of parameters."""
         threading.Thread.__init__(self)
+
+        # flag: 0 - thread be awakened
+        #       1 - thread wait
+        #       2 - thread end
+        self.flag = 0
+
         self.w = w
         self.initial_minute = m
         self.initial_second = s
@@ -645,18 +659,14 @@ class TimeThread(threading.Thread):
                 self.timer.SetLabel(t)
 
                 # Play warning sound.
-                if self.w.cur_stage.GetLabel().encode('gbk') == "盘问":
-                    if i == 0 and j == 10:
+                if self.w.cur_stage.GetLabel().encode('gbk') != "盘问":
+                    if i == 0 and j == 30:
                         t = SoundThread(os.path.join("sound", "ring.wav"))
                         t.daemon = True
                         t.start()
-                elif i == 0 and j == 30:
-                    t = SoundThread(os.path.join("sound", "ring.wav"))
-                    t.daemon = True
-                    t.start()
 
                 # Don't sleep when at the last loop.
-                if j != 0:
+                if i != 0 or j != 0:
                     time.sleep(1)
 
             # flag: 2 - thread end
@@ -664,14 +674,19 @@ class TimeThread(threading.Thread):
                 break;
 
             # Make initial second begin with 59.
-            if self.initial_second != 59 and j != 0:
+            if self.initial_second != 59:
                 self.initial_second = 59
 
             # Play end sound.
             if i == 0 and j == 0:
-                t = SoundThread(os.path.join("sound", "end.wav"))
-                t.daemon = True
-                t.start()
+                if self.thread_name == "a1" or self.thread_name == "a2":
+                    t = SoundThread(os.path.join("sound", "ring.wav"))
+                    t.daemon = True
+                    t.start()
+                else:
+                    t = SoundThread(os.path.join("sound", "end.wav"))
+                    t.daemon = True
+                    t.start()
 
 class SoundThread(threading.Thread):
     """Play sound."""
