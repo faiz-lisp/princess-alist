@@ -8,7 +8,7 @@ namespace AlistWinForm
     {
         private MyForm f;
         private MyButton b;
-        private PictureBox p;
+        // private PictureBox p;
         private bool ismousedown;  // judge if mouse key is down
         private int mouse_to_left; // distance between mouse and form's left
         private int mouse_to_top;  // distance between mouse and form's top
@@ -20,14 +20,14 @@ namespace AlistWinForm
 
         private void InitializeComponent()
         {
-            /*
-             * PictureBox p.
-             */
-            this.p = new PictureBox();
-            this.p.Dock = DockStyle.Fill;
-            this.p.Location = new Point(0, 0);
-            this.p.Size = new Size(800, 600);
-            // this.Paint += new PaintEventHandler(this.p_Paint);
+            // /*
+            //  * PictureBox p.
+            //  */
+            // this.p = new PictureBox();
+            // this.p.Dock = DockStyle.Fill;
+            // this.p.Location = new Point(0, 0);
+            // this.p.Size = new Size(800, 600);
+            // // this.Paint += new PaintEventHandler(this.p_Paint);
 
             /*
              * Form Alist.
