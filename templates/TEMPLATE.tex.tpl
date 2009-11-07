@@ -46,8 +46,8 @@
             linkcolor=RoyalBlue3]{hyperref} % 为超链接设置颜色, 修改PDF文件信息
 
 \title{\textbf{For Alist}}
-\date{}
 \author{Dreamseeker}
+% \date{}
 
 \usepackage[pagestyles]{titlesec} % 定制页眉页脚
 % % 设置页眉页脚
