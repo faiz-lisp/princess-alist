@@ -16,7 +16,7 @@
 
 #!/bin/bash
 
-svn_dir=~/Project
+svn_dir=~/Projects
 
 output_status ()
 {
@@ -38,7 +38,7 @@ commit ()
 {
     echo "need to commit"
     output_status $*
-    echo -n "commit now [Y/N]? "
+    echo -n "commit now [Y/n]? "
     read a
     while true; do
         case "$a" in
@@ -52,54 +52,29 @@ commit ()
                 ;;
 
             * )
-                read -p "wrong input, again [Y/N]? " a
+                read -p "wrong input, again [Y/n]? " a
                 ;;
         esac
     done
 }
 
-# Synchronise some my source codes between repository and local computer.
-pasync ()
-{
-    basepath=${svn_dir}/princess-alist
-    destpath=~/src
+if [ ! -d "$svn_dir" ]; then
+    echo "Error: ${svn_dir} is not a directory or doesn't exist."
+    exit 1
+fi
 
-    cd $basepath
-    for blist in `ls $basepath`; do
-        if [ -d "${basepath}/${blist}" ]; then
-            case "$blist" in
-                "templates" )
-                    cp -rf ${blist}/* ~/.templates/
-                    ;;
-
-                "sources.list.d" )
-                    sudo cp -rf ${blist}/* /etc/apt/sources.list.d/
-                    ;;
-
-                * )
-                    cp -rf $blist $destpath
-                    ;;
-            esac
-        fi
-    done
-    find $destpath \( -name '.svn' -o -name '*.swp' \) -exec rm -rf {} \; 2> /dev/null
-
-    echo "Sync Over"
-}
-
-for alist in `ls -1 $svn_dir | grep -v 'read-only'`; do
-    if [ $alist == "princess-alist" ]; then
-        pasync
-    fi
-
+for alist in `ls -1 $svn_dir | grep -v 'read-only$'`; do
     if [ -d "${svn_dir}/${alist}" ]; then
         echo -n "${alist}: "
         cd ${svn_dir}/${alist} && status_info=`svn status`
+
+        # Check if need to commit.
         if [ -n "$status_info" ]; then
             commit $status_info
         else
             echo
         fi
+
         echo
     fi
 done
