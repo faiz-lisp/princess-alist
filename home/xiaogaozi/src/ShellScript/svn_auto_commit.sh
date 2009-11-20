@@ -72,7 +72,7 @@ for alist in `ls -1 $svn_dir | grep -v 'read-only$'`; do
         if [ -n "$status_info" ]; then
             commit $status_info
         else
-            echo
+            echo "nothing to do"
         fi
 
         echo
