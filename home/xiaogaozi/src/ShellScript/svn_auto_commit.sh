@@ -16,7 +16,7 @@
 
 #!/bin/bash
 
-svn_dir=~/Projects
+svn_dir=~/Repositories/SVN
 
 output_status ()
 {
