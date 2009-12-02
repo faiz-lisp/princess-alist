@@ -17,6 +17,7 @@
 #!/bin/bash
 
 svn_dir=~/Repositories/SVN
+exclude_dir="(read-only$|depot-tools)"
 
 output_status ()
 {
@@ -63,7 +64,7 @@ if [ ! -d "$svn_dir" ]; then
     exit 1
 fi
 
-for alist in `ls -1 $svn_dir | grep -v 'read-only$'`; do
+for alist in `ls -1 $svn_dir | egrep -v "$exclude_dir"`; do
     if [ -d "${svn_dir}/${alist}" ]; then
         echo -n "${alist}: "
         cd ${svn_dir}/${alist} && status_info=`svn status`

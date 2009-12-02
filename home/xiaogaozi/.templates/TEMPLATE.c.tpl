@@ -22,7 +22,7 @@
 
 #define END 10000
 
-int main()
+int main(int argc, char* argv[])
 {
     long _begin_time = clock();
     int _a;
