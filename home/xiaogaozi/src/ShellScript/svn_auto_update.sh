@@ -16,17 +16,17 @@
 
 #!/bin/bash
 
-svn_dir=~/Project
+svn_dir=~/Repositories/SVN/
 
 for alist in `ls $svn_dir`; do
     if [ -d "${svn_dir}/${alist}" ]; then
-        echo "${alist}:"
-        cd ${svn_dir}/${alist} && svn update
-        echo
+        cd ${svn_dir}/${alist} && info=`svn update`
+        notify-send -i "/usr/share/icons/Human/scalable/status/dialog-info.svg" "$alist" "$info"
     fi
 done
 
-echo "ctex-kit-read-only:"
-cd ~/texmf/tex/latex/ctex-kit-read-only && svn update
+cd ~/texmf/tex/latex/ctex-kit-read-only && info=`svn update`
+svn rm --force xecjk
+notify-send -i "/usr/share/icons/Human/scalable/status/dialog-info.svg" "ctex-kit-read-only" "$info"
 
 exit 0
