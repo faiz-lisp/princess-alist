@@ -1,0 +1,73 @@
+/* common */
+
+.center
+{
+    text-align: center;
+}
+
+/* index.html */
+
+#title
+{
+    margin-top: 40px;
+}
+
+#title a:link, #title a:visited
+{
+    color: #000000;
+    font-size: 40px;
+    text-decoration: none;
+}
+
+#nav
+{
+    background-color: #E5ECF9;
+    width: 500px;
+    height: 50px;
+    margin: 50px auto 0;
+    display: block;
+}
+
+#nav ul
+{
+    list-style-type: none;
+    position: absolute;
+    margin: 0;
+    padding-left: 95px;
+}
+
+#nav ul li
+{
+    float: left;
+}
+
+#nav ul li a:link, #nav ul li a:visited
+{
+    color: #1639BB;
+    font-size: 20px;
+    text-decoration: none;
+    display: block;
+    padding: 13px 20px 0;
+    height: 37px;
+}
+
+#nav ul li a:hover
+{
+    background-color: #1639BB;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+#love
+{
+    margin: 50px 0;
+}
+
+/* anniversary.html */
+
+#love_line
+{
+    width: 1000px;
+    height: 400px;
+    margin: 0 auto 50px;
+}
