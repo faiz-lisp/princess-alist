@@ -25,8 +25,8 @@
 \usepackage{framed}             % `shaded'环境需要用到
 \usepackage{enumitem}           % 增强列表功能
 
-\usepackage{shortvrb}           % 简化\verb的写法
-\MakeShortVerb{\|}
+% \usepackage{shortvrb}           % 简化\verb的写法
+% \MakeShortVerb{\|}
 
 \usepackage{color}              % 可以定义各种颜色
 \usepackage[x11names]{xcolor}   % 下面的RoyalBlue3颜色需要用到的宏包
