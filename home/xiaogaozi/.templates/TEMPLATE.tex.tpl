@@ -24,6 +24,7 @@
 \usepackage{float}              % 强大的浮动环境控制宏包
 \usepackage{framed}             % `shaded'环境需要用到
 \usepackage{enumitem}           % 增强列表功能
+\usepackage{alltt}              % 在alltt环境中为等宽字体, 但可以使用LaTeX命令
 
 % \usepackage{shortvrb}           % 简化\verb的写法
 % \MakeShortVerb{\|}
