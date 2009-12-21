@@ -1,0 +1,2 @@
+screen -t Irssi 1 irssi
+screen -t GAppProxy 2 /home/xiaogaozi/Repositories/SVN/gappproxy-r101-read-only/localproxy/proxy.py &

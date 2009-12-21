@@ -1,0 +1,4 @@
+set guioptions+=nB
+
+map <F10> :set guioptions+=mT<CR>
+map <C-F10> :set guioptions-=mT<CR>
