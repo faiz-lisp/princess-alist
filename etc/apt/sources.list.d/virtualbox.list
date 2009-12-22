@@ -1,2 +1,2 @@
 # VirtualBox
-deb http://download.virtualbox.org/virtualbox/debian jaunty non-free
+deb http://download.virtualbox.org/virtualbox/debian karmic non-free
