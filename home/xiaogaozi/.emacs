@@ -30,10 +30,10 @@
 ;; Convert TAB to SPACE.
 (setq-default indent-tabs-mode nil)
 
-;; Font settings.
-(set-default-font "Monaco-12")
-(set-fontset-font (frame-parameter nil 'font)
-  'unicode '("DejaVu Sans YuanTi Mono" . "unicode-bmp"))
+;; ;; Font settings.
+;; (set-default-font "Monaco-12")
+;; (set-fontset-font (frame-parameter nil 'font)
+;;   'unicode '("DejaVu Sans YuanTi Mono" . "unicode-bmp"))
 
 ;; Make `M-w' can copy a line.
 (defun xiaogaozi-kill-ring-save (&optional n)
