@@ -37,7 +37,7 @@ output_status ()
 
 commit ()
 {
-    echo "need to commit"
+    echo "needs commit"
     output_status $*
     echo -n "commit now [Y/n]? "
     read a
