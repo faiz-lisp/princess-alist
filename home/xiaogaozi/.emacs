@@ -225,7 +225,7 @@
                                (statement-block-intro . 4)
                                (block-open        . 0)
                                (knr-argdecl-intro . -)
-                               (brace-list-intro . 4))))
+                               (brace-list-intro  . 4))))
   "My C++ Programming Style")
 (c-add-style "PERSONAL" my-c++-style)
 (defun my-c++-mode-hook ()
