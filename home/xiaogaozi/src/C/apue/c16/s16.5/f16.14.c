@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
     int sockfd, err;
 
     if (argc != 2)
-        err_quit("usage: ruptime hostname");
+        err_quit("usage: alist hostname");
     // hint.ai_flags = 0;
     // hint.ai_family = 0;
     // hint.ai_socktype = SOCK_STREAM;

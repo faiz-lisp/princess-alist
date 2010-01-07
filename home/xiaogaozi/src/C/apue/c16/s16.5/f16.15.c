@@ -25,7 +25,7 @@ void serve(int sockfd)
         clfd = accept(sockfd, NULL, NULL);
         if (clfd < 0)
         {
-            syslog(LOG_ERR, "ruptimed1: accept error: %s", strerror(errno));
+            syslog(LOG_ERR, "alistturingmachine: accept error: %s", strerror(errno));
             exit(1);
         }
         
@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
     // char* host;
 
     if (argc != 1)
-        err_quit("usage: ruptimed1");
+        err_quit("usage: alistturingmachine");
 // #ifdef _SC_HOST_NAME_MAX
 //     n = sysconf(_SC_HOST_NAME_MAX);
 //     if (n < 0)
