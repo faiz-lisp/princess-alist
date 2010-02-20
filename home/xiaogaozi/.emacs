@@ -251,8 +251,12 @@
 ;; GDB
 (global-set-key (kbd "<f7>") 'gdb)
 
-;; Compile.
+;; Compile
 (global-set-key (kbd "<f8>") 'compile)
+
+;; YASnippet
+(global-set-key (kbd "M-s i") 'yas/insert-snippet)
+(global-set-key (kbd "M-s v") 'yas/visit-snippet-file)
 
 ;; ;; ECB
 ;; (global-set-key (kbd "<f11>") 'ecb-activate)
