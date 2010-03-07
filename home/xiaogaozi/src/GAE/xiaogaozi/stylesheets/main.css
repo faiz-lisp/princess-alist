@@ -5,8 +5,6 @@
     text-align: center;
 }
 
-/* index.html */
-
 #wrapper
 {
     margin: auto;
@@ -19,7 +17,7 @@
 #title
 {
     margin-top: 40px;
-    font-family: verdana,helvetica,arial,sans-serif;
+    font-family: "Lucida Grande",Tahoma,"Trebuchet MS",Verdana,Lucida,Geneva,Helvetica,sans-serif;
 }
 
 #title a:link, #title a:visited
@@ -44,7 +42,7 @@
     list-style-type: none;
     position: absolute;
     margin: 0;
-    padding-left: 110px;
+    padding-left: 70px;
 }
 
 #nav ul li
@@ -69,17 +67,32 @@
     text-decoration: none;
 }
 
-#love
+#inner
 {
     margin: 50px 0;
-    font-size: medium;
 }
 
-/* anniversary.html */
-
-#love_line
+#inner2
 {
-    width: 1000px;
-    height: 400px;
-    margin: 0 auto 50px;
+    margin: 50px 200px 50px 250px;
+}
+
+#inner2 h3
+{
+    padding-top: 8px;
+}
+
+#inner2 ul li
+{
+    margin: 8px 0;
+}
+
+#inner3
+{
+    margin: 50px 200px 50px 230px;
+}
+
+#inner3 p
+{
+    line-height: 145%;
 }

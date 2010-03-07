@@ -7,6 +7,20 @@ handlers:
 - url: /api/.*
   script: code.py
 
+- url: /images
+  static_dir: images
+
+- url: /stylesheets
+  static_dir: stylesheets
+
+- url: /project
+  static_files: project.html
+  upload: project.html
+
+- url: /about
+  static_files: about.html
+  upload: about.html
+
 - url: /.*
   static_files: index.html
   upload: index.html

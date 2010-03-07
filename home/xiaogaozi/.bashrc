@@ -131,6 +131,7 @@ fi
 export GPGKEY=8A94AB78
 
 # NAT
+sudo iptables -t nat -F
 sudo iptables --table nat --append POSTROUTING --out-interface eth0 --jump MASQUERADE
 
 # ----------------------------------------------------------------------
