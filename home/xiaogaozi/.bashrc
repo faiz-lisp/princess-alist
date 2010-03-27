@@ -122,10 +122,10 @@ export LESS_TERMCAP_us=$'\E[01;33m'
 
 export LESS='-R'
 
-# Auto open H3C connection.
-if ! pgrep linux1x > /dev/null; then
-    sudo linux1x -d
-fi
+# # Auto open H3C connection.
+# if ! pgrep linux1x > /dev/null; then
+#     sudo linux1x -d
+# fi
 
 # GPG
 export GPGKEY=8A94AB78
