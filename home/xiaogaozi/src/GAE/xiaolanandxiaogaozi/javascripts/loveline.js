@@ -51,12 +51,20 @@ function followOurLove()
         L2009_7_10: [ 9999, '欢乐谷', '玩得无比畅快~' ],
         L2009_10_2: [ 11000, '西岭雪山', '爬山爬到脚抽筋, XD' ],
         L2009_11_14: [ 15000, 'Cheer的演唱会', '终于带你看了一场老师的演唱会.' ],
-        L2009_12_1: [ 20000, '2 Years', '亲爱的, 有你陪着真好.' ]
+        L2009_12_1: [ 20000, '2 Years', '亲爱的, 有你陪着真好.' ],
+        L2009_12_31: [ 18000, '跨年K, :)' ],
+        L2010_2_24: [ 15000, '滑雪真爽啊~' ]
     };
 
-    for (year = 2007; year != 2010; ++year)
+    for (year = 2007; year != 2011; ++year)
         for (month = 0; month != 12; ++month)
         {
+            /*
+             * Ending of date.
+             */
+            if (year == 2010 && month > 2)
+                break;
+
             var max_day_of_month = getMaxDayOfMonth(year, month);
             for (day = 1; day != max_day_of_month + 1; ++day)
             {
