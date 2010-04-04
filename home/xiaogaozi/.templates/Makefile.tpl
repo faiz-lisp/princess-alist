@@ -5,10 +5,10 @@ CFLAGS = -Wall -g
 OBJECT = alist.o
 
 alist: $(OBJECT)
-	$(CC) $(CFLAGS) -o alist $(OBJECT)
+	$(CC) $(CFLAGS) -o $@ $^
 
 alist.o: alist.c
-	$(CC) $(CFLAGS) -c alist.c
+	$(CC) $(CFLAGS) -c $^
 
 clean:
 	rm -f $(OBJECT) alist
