@@ -2,7 +2,7 @@
 # -*- coding: gbk -*-
 
 # A debate timer. <http://code.google.com/p/princess-alist/>
-# Copyright (C) 2009  xiaogaozi <gaochangjian@gmail.com>
+# Copyright (C) 2010  xiaogaozi <gaochangjian@gmail.com>
 # 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -119,7 +119,7 @@ class MainWindow(wx.Frame):
     def OnAbout(self, e):
         """About dialog."""
         d = wx.MessageDialog(self,
-                             "xiaogaozi <gaochangjian@gmail.com> & LaN Present, Copyright 2009\n\nPowerd by Python & wxPython",
+                             "xiaogaozi <gaochangjian@gmail.com> & LaN Present, Copyright 2010\n\nPowerd by Python & wxPython",
                              "About", wx.OK)
         d.ShowModal()
         d.Destroy()
@@ -130,7 +130,7 @@ class MainWindow(wx.Frame):
 
     def displayTitle(self):
         """Display title."""
-        self.title = wx.StaticText(self.panel, wx.ID_ANY, "成都信息工程学院2009“成信杯”辩论赛")
+        self.title = wx.StaticText(self.panel, wx.ID_ANY, "2010成都信息工程学院社团辩论赛")
         self.title.SetFont(wx.Font(42, wx.FONTFAMILY_DEFAULT,
                                    wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD))
 
@@ -171,7 +171,7 @@ class MainWindow(wx.Frame):
         self.neg_timer.SetForegroundColour("BLUE")
 
         # Just during 'cross-question' stage, this timer will be shown.
-        self.alist_timer = wx.StaticText(self.panel, wx.ID_ANY, "00:15")
+        self.alist_timer = wx.StaticText(self.panel, wx.ID_ANY, "00:10")
         self.alist_timer.SetFont(wx.Font(35, wx.FONTFAMILY_DEFAULT,
                                          wx.FONTSTYLE_NORMAL,
                                          wx.FONTWEIGHT_BOLD))
@@ -213,7 +213,7 @@ class MainWindow(wx.Frame):
 
         if l == "提问(&C)":
             self.alist_button1.SetLabel("停止(&C)")
-            self.a1 = self.createTimeThread(0, 14, self.alist_timer,
+            self.a1 = self.createTimeThread(0, 9, self.alist_timer,
                                             self.alist_button1, l, "a1")
         elif l == "回答(&V)":
             self.alist_button2.SetLabel("停止(&V)")
@@ -233,7 +233,7 @@ class MainWindow(wx.Frame):
             # Erase this thread's record.
             self.deleteThreadRecord("a2")
             # Set some value.
-            self.alist_timer.SetLabel("00:15")
+            self.alist_timer.SetLabel("00:10")
             self.alist_button2.SetLabel("回答(&V)")
             self.alist_button2.Disable()
             self.alist_button1.Enable()
@@ -394,7 +394,7 @@ class MainWindow(wx.Frame):
         self.s_button1 = wx.Button(self.panel, ID_STAGE_BUTTON1,
                                    "立论(&Q)", size = wx.Size(130, 40))
         self.s_button2 = wx.Button(self.panel, ID_STAGE_BUTTON2,
-                                   "辩驳(&W)", size = wx.Size(130, 40))
+                                   "论证辩驳(&W)", size = wx.Size(130, 40))
         self.s_button3 = wx.Button(self.panel, ID_STAGE_BUTTON3,
                                    "盘问(&E)", size = wx.Size(130, 40))
         self.s_button4 = wx.Button(self.panel, ID_STAGE_BUTTON4,
@@ -459,10 +459,10 @@ class MainWindow(wx.Frame):
             self.initial_minute = 2
             self.initial_second = 59
         elif id == ID_STAGE_BUTTON2:
-            self.cur_stage.SetLabel("辩驳")
-            self.pos_timer.SetLabel("02:30")
-            self.neg_timer.SetLabel("02:30")
-            self.initial_minute = 2
+            self.cur_stage.SetLabel("论证辩驳")
+            self.pos_timer.SetLabel("01:30")
+            self.neg_timer.SetLabel("01:30")
+            self.initial_minute = 1
             self.initial_second = 29
         elif id == ID_STAGE_BUTTON3:
             self.cur_stage.SetLabel("盘问")
@@ -474,7 +474,7 @@ class MainWindow(wx.Frame):
             # Show this little timer.
             self.sizer3.Show(self.alist_sizer1)
             self.sizer3.Layout()
-            self.alist_timer.SetLabel("00:15")
+            self.alist_timer.SetLabel("00:10")
             self.alist_button1.SetLabel("提问(&C)")
             self.alist_button2.SetLabel("回答(&V)")
             self.alist_button1.Enable()
@@ -492,9 +492,9 @@ class MainWindow(wx.Frame):
             return
         elif id == ID_STAGE_BUTTON4:
             self.cur_stage.SetLabel("自由辩论")
-            self.pos_timer.SetLabel("05:00")
-            self.neg_timer.SetLabel("05:00")
-            self.initial_minute = 4
+            self.pos_timer.SetLabel("06:00")
+            self.neg_timer.SetLabel("06:00")
+            self.initial_minute = 5
             self.initial_second = 59
 
             self.sizer3.Hide(self.alist_sizer1)
@@ -531,7 +531,7 @@ class MainWindow(wx.Frame):
     def displayAuthor(self):
         """Display author."""
         self.author = wx.StaticText(self.panel, wx.ID_ANY, "by 软件工程学院")
-        self.author.SetFont(wx.Font(15, wx.FONTFAMILY_DEFAULT,
+        self.author.SetFont(wx.Font(20, wx.FONTFAMILY_DEFAULT,
                                     wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL))
 
     def deleteThreadRecord(self, thread_name):
@@ -638,7 +638,7 @@ class TimeThread(threading.Thread):
             self.w.alist_button1.Enable(True)
             self.button.SetLabel(self.button_label)
             self.button.Disable()
-            self.timer.SetLabel("00:15")
+            self.timer.SetLabel("00:10")
         # Others.
         else:
             self.button.SetLabel(self.button_label)
