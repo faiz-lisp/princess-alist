@@ -166,24 +166,24 @@
 (yas/load-directory "~/.emacs.d/site-lisp/yasnippet-0.6.1c/snippets")
 (setq yas/prompt-functions '(yas/dropdown-prompt))
 
-;; Auto-Complete
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/auto-complete/")
-(require 'auto-complete)
-(require 'auto-complete-config)
-(setq-default ac-sources '(ac-source-words-in-same-mode-buffers ac-source-yasnippet))
-(add-hook 'emacs-lisp-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-symbols)))
-(add-hook 'auto-complete-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-filename)))
-(add-hook 'c++-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-c++-keywords)))
-(add-hook 'css-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-css-keywords)))
-(add-hook 'python-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-ropemacs)))
-(global-auto-complete-mode t)
-(set-face-background 'ac-candidate-face "lightgray")
-(set-face-underline 'ac-candidate-face "darkgray")
-(set-face-background 'ac-selection-face "steelblue")
-(setq ac-dwim t)
-;; Use C-n/C-p to select candidates
-(define-key ac-complete-mode-map "\C-n" 'ac-next)
-(define-key ac-complete-mode-map "\C-p" 'ac-previous)
+;; ;; Auto-Complete
+;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/auto-complete/")
+;; (require 'auto-complete)
+;; (require 'auto-complete-config)
+;; (setq-default ac-sources '(ac-source-words-in-same-mode-buffers ac-source-yasnippet))
+;; (add-hook 'emacs-lisp-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-symbols)))
+;; (add-hook 'auto-complete-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-filename)))
+;; (add-hook 'c++-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-c++-keywords)))
+;; (add-hook 'css-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-css-keywords)))
+;; (add-hook 'python-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-ropemacs)))
+;; (global-auto-complete-mode t)
+;; (set-face-background 'ac-candidate-face "lightgray")
+;; (set-face-underline 'ac-candidate-face "darkgray")
+;; (set-face-background 'ac-selection-face "steelblue")
+;; (setq ac-dwim t)
+;; ;; Use C-n/C-p to select candidates
+;; (define-key ac-complete-mode-map "\C-n" 'ac-next)
+;; (define-key ac-complete-mode-map "\C-p" 'ac-previous)
 
 ;; ----------------------------------------------------------------------
 ;; INDENTATION
@@ -191,13 +191,14 @@
 
 ;; C
 (defun my-c-mode-hook ()
-  (setq comment-start "// ")
-  (setq comment-end "")
+    (setq comment-start "// ")
+    (setq comment-end "")
     (c-set-offset 'substatement-open 0)
     (c-set-offset 'case-label 4)
     (c-set-offset 'statement-case-open 4)
     (c-set-offset 'defun-block-intro 4)
-  (c-set-offset 'brace-list-intro 4))
+    (c-set-offset 'brace-list-intro 4)
+    (c-set-offset 'topmost-intro 2))
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 
 ;; C++
@@ -253,6 +254,17 @@
 
 ;; Compile
 (global-set-key (kbd "<f8>") 'compile)
+
+;; Auto indent when Enter.
+(global-set-key "\r" 'newline-and-indent)
+
+(setq skeleton-pair-alist nil)
+(setq skeleton-pair t)
+(global-set-key (kbd "(") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "[") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "<") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "'") 'skeleton-pair-insert-maybe)
 
 ;; YASnippet
 (global-set-key (kbd "M-s i") 'yas/insert-snippet)

@@ -1,0 +1,38 @@
+/* common */
+
+.center
+{
+    text-align: center;
+}
+
+#wrapper
+{
+    margin: auto;
+    width: 950px;
+    text-align: left;
+    font-family: 'Gill Sans','Gill Sans MT','Goudy Bookletter 1911','Linux Libertine O','Liberation Serif',Candara,serif;
+    font-size: large;
+}
+
+#title
+{
+    margin-top: 40px;
+    font-family: "Lucida Grande",Tahoma,"Trebuchet MS",Verdana,Lucida,Geneva,Helvetica,sans-serif;
+}
+
+#title a:link, #title a:visited
+{
+    color: #000000;
+    font-size: 40px;
+    text-decoration: none;
+}
+
+#inner
+{
+    margin: 50px 0;
+}
+
+#footer
+{
+    margin-top: 100px;
+}

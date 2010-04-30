@@ -76,7 +76,7 @@ endif
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-set cinoptions=>4,g1,h1,(0
+set cinoptions=>4,g0,h4,(0
 
 " Options for using diff mode.
 set diffopt=vertical
@@ -97,6 +97,7 @@ set guifont=Monaco\ 11
 autocmd BufNewFile *.c 0r ~/.templates/TEMPLATE.c.tpl
 autocmd BufNewFile *.sh 0r ~/.templates/TEMPLATE.sh.tpl
 autocmd BufNewFile *.py 0r ~/.templates/TEMPLATE.py.tpl
+autocmd BufNewFile *.cpp 0r ~/.templates/TEMPLATE.cpp.tpl
 autocmd BufNewFile *.html 0r ~/.templates/TEMPLATE.html.tpl
 autocmd BufNewFile Makefile 0r ~/.templates/Makefile.tpl
 

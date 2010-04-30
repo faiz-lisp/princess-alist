@@ -16,9 +16,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _(>>>FILE_UPCASE<<<)_H
-#define _(>>>FILE_UPCASE<<<)_H
+#include <iostream>
 
-(>>>POINT<<<)
+using namespace std;
 
-#endif /* _(>>>FILE_UPCASE<<<)_H */
+int main(int argc, char* argv[])
+{
+
+    return 0;
+}

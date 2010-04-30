@@ -1,0 +1,5 @@
+This is a problem statement
+523hi.
+Implement a class H5 which contains some method.
+ no9 . wor7ds he8re. hj..
+Implement a class HowEasy, which contains a method pointVal.  The method takesa String as a parameter that is the problem statement and returns an int that is the point value of the problem (250, 500, or 1000). The problem statement should be processed from left to right. Definitions: Token - a set of characters bound on either side by spaces, the beginning of the input String parameter or the end of the input String parameter. Word - a Token that contains only letters (a-z or A-Z) and may end with a single period. A Word must have at least one letter. Word Length - the number of letters in a Word. (NOTE: a period is NOT a letter)

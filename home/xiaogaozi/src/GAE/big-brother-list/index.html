@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Big Brother's List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+    <script type="text/javascript">
+        function foo()
+        {
+            e = document.getElementById("ip");
+            if (e.value == "IP Address")
+                e.value = "";
+        }
+
+        function bar()
+        {
+            e = document.getElementById("ip");
+            if (e.value == "")
+                e.value = "IP Address";
+        }
+    </script>
+</head>
+<body>
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-15753707-1']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+      })();
+    
+    </script>
+
+    <div id="wrapper">
+        <div id="title" class="center">
+            <a href="/">Big Brother's List</a>
+        </div>
+
+        <div id="inner" class="center">
+            <form action="/query" method="get">
+                <input type="text" name="ip" id="ip" value="IP Address" size="30" maxlength="15" onfocus="foo();" onblur="bar();" />
+                <br />
+                <input type="submit" value="Query" style="margin-top: 5px;" />
+            </form>
+        </div>
+        
+        <div id="footer" class="center">
+            &copy;2010 - <a href="http://www.myclover.org/" target="_blank">三叶草工作组</a>
+        </div>
+    </div>
+</body>
+</html>
