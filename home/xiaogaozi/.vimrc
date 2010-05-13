@@ -95,6 +95,7 @@ set guifont=Monaco\ 11
 
 " Template for Vim.
 autocmd BufNewFile *.c 0r ~/.templates/TEMPLATE.c.tpl
+autocmd BufNewFile *.h 0r ~/.templates/TEMPLATE.h.tpl
 autocmd BufNewFile *.sh 0r ~/.templates/TEMPLATE.sh.tpl
 autocmd BufNewFile *.py 0r ~/.templates/TEMPLATE.py.tpl
 autocmd BufNewFile *.cpp 0r ~/.templates/TEMPLATE.cpp.tpl

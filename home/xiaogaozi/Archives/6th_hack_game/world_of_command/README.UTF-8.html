@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.5: http://docutils.sourceforge.net/" />
+<title>World of Command</title>
+<meta name="authors" content="小高子" />
+<meta name="date" content="2010-04-11" />
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 5196 2007-06-03 20:25:28Z wiemann $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left {
+  clear: left }
+
+img.align-right {
+  clear: right }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font-family: serif ;
+  font-size: 100% }
+
+pre.literal-block, pre.doctest-block {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="world-of-command">
+<h1 class="title">World of Command</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Authors:</th>
+<td>小高子</td></tr>
+<tr><th class="docinfo-name">Contact:</th>
+<td><a class="first last reference external" href="mailto:gaochangjian&#64;gmail.com">gaochangjian&#64;gmail.com</a></td></tr>
+<tr><th class="docinfo-name">Date:</th>
+<td>2010-04-11</td></tr>
+<tr><th class="docinfo-name">Version:</th>
+<td>1</td></tr>
+</tbody>
+</table>
+<div class="section" id="unixkcd">
+<h1>对于 <tt class="docutils literal"><span class="pre">unixkcd</span></tt> 的改进及新增功能</h1>
+<ol class="arabic simple">
+<li>修改命令提示符为&quot;<tt class="docutils literal"><span class="pre">guest&#64;syclover:~$</span></tt>&quot;.</li>
+<li><tt class="docutils literal"><span class="pre">Filesystem</span></tt> 添加下列文件及目录: &quot;<tt class="docutils literal"><span class="pre">.</span></tt>&quot;, &quot;<tt class="docutils literal"><span class="pre">..</span></tt>&quot;, &quot;<tt class="docutils literal"><span class="pre">.hint</span></tt>&quot;, 删除&quot;<tt class="docutils literal"><span class="pre">blog</span></tt>&quot;等文件夹, 重命名&quot;<tt class="docutils literal"><span class="pre">welcome.txt</span></tt>&quot;及&quot;<tt class="docutils literal"><span class="pre">license.txt</span></tt>&quot;为&quot;<tt class="docutils literal"><span class="pre">WELCOME</span></tt>&quot;、&quot;<tt class="docutils literal"><span class="pre">LICENSE</span></tt>&quot;.</li>
+<li>添加 <tt class="docutils literal"><span class="pre">Filesystem</span></tt> 结构的 <tt class="docutils literal"><span class="pre">/tmp</span></tt> 目录, 默认包含两个文件: &quot;<tt class="docutils literal"><span class="pre">alist.cpp</span></tt>&quot;, &quot;<tt class="docutils literal"><span class="pre">Makefile</span></tt>&quot;</li>
+<li>改进 <tt class="docutils literal"><span class="pre">ls</span></tt> 命令, 增加&quot;<tt class="docutils literal"><span class="pre">-a</span></tt>&quot;与&quot;<tt class="docutils literal"><span class="pre">-A</span></tt>&quot;选项的判断, 当目录名为&quot;<tt class="docutils literal"><span class="pre">/tmp</span></tt>&quot;或&quot;<tt class="docutils literal"><span class="pre">/tmp/</span></tt>&quot;时显示特定内容.</li>
+<li>修改 <tt class="docutils literal"><span class="pre">cd</span></tt> 命令, 当目录名为&quot;<tt class="docutils literal"><span class="pre">/tmp</span></tt>&quot;或&quot;<tt class="docutils literal"><span class="pre">/tmp/</span></tt>&quot;时不提示错误.</li>
+<li>修改 <tt class="docutils literal"><span class="pre">cat</span></tt> 命令, 当文件名为&quot;<tt class="docutils literal"><span class="pre">/tmp/Makefile</span></tt>&quot;时显示Makefile的内容.</li>
+<li>修改 <tt class="docutils literal"><span class="pre">rm</span></tt> 命令, 现在还可以删除 <tt class="docutils literal"><span class="pre">/tmp</span></tt> 目录中的文件.</li>
+<li>增加 <tt class="docutils literal"><span class="pre">make</span></tt> 命令, 可以对于各种规则给出提示.</li>
+<li>修改 <tt class="docutils literal"><span class="pre">apt-get</span></tt> 命令, 增加&quot;<tt class="docutils literal"><span class="pre">install</span></tt>&quot;选项, 现在只能安装 <tt class="docutils literal"><span class="pre">g++</span></tt>.</li>
+<li>增加 <tt class="docutils literal"><span class="pre">g++</span></tt> 命令, 不做任何输出.</li>
+<li>增加 <tt class="docutils literal"><span class="pre">/tmp/alist</span></tt> 命令.</li>
+<li>修改默认IRC服务器为 <a class="reference external" href="http://freenode.net/">Freenode</a>, 设置默认频道为 <tt class="docutils literal"><span class="pre">#ubuntu-cn</span></tt>.</li>
+<li>改进 <tt class="docutils literal"><span class="pre">wget</span></tt> 命令, 自动判断网址是否以&quot;<tt class="docutils literal"><span class="pre">http://</span></tt>&quot;或&quot;<tt class="docutils literal"><span class="pre">https://</span></tt>&quot;开头, 若不是, 则自动在最前面添加&quot;<tt class="docutils literal"><span class="pre">http://</span></tt>&quot;.</li>
+</ol>
+</div>
+<div class="section" id="id1">
+<h1>答案</h1>
+<p>Key: awesome</p>
+</div>
+</div>
+</body>
+</html>
