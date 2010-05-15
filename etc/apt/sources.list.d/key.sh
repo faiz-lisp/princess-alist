@@ -16,30 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-prefix=/etc/apt/sources.list.d
-
-if [ ! -f ${prefix}/docky*.list ]; then
-    echo "Add Software Source of Docky:"
-    sudo add-apt-repository ppa:docky-core/ppa
-    echo
-fi
-
-if [ ! -f ${prefix}/elementaryart*.list ]; then
-    echo "Add Software Source of elementary Desktop:"
-    sudo add-apt-repository ppa:elementaryart/elementarydesktop
-    echo
-fi
-
-if [ ! -f ${prefix}/shutter*.list ]; then
-    echo "Add Software Source of Shutter:"
-    sudo add-apt-repository ppa:shutter/ppa
-    echo
-fi
-
-if [ ! -f ${prefix}/songbird*.list ]; then
-    echo "Add Software Source of Songbird:"
-    sudo add-apt-repository ppa:songbird-daily/ppa
-    echo
-fi
+echo -n "Add key of Google Linux Software Repositories: "
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 
 exit 0
