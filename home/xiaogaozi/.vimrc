@@ -91,7 +91,7 @@ set guioptions-=T
 set expandtab
 
 " Set font.
-set guifont=Monaco\ 11
+" set guifont=Monaco\ 11
 
 " Template for Vim.
 autocmd BufNewFile *.c 0r ~/.templates/TEMPLATE.c.tpl
