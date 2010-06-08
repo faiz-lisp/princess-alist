@@ -1,35 +1,88 @@
-import os
-
+import wsgiref.handlers, urlparse, base64
 from google.appengine.ext import webapp
-from google.appengine.ext.webapp import template
-from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.api import urlfetch
+from google.appengine.api import urlfetch_errors
+
+gtapVersion = '0.3'
+
+_hoppish = {
+        'connection':1,
+        'keep-alive':1,
+        'proxy-authenticate':1,
+        'proxy-authorization':1,
+        'te':1,
+        'trailers':1,
+        'transfer-encoding':1,
+        'upgrade':1,
+        'proxy-connection':1
+        }
+
+def is_hop_by_hop(header):
+    #check if the given header is hop_by_hop
+    return _hoppish.has_key(header.lower())
 
 class MainPage(webapp.RequestHandler):
-    def get(self):
-        path = os.path.join(os.path.dirname(__file__), 'index.html')
-        self.response.out.write(template.render(path, {}))
+    def myOutput(self, contentType, content):
+        self.response.set_status(200)
+        self.response.headers.add_header('Content-Type', contentType)
+        self.response.out.write(content)
+
+    def doProxy(self, method):
+        origUrl = self.request.url
+        origBody = self.request.body
+        (scm, netloc, path, params, query, _) = urlparse.urlparse(origUrl)
+        if path == '/':
+            headers = {}
+            data = urlfetch.fetch('http://twitter.com/xiaogaozi', payload=origBody, method=method, headers=headers)
+            self.response.set_status(data.status_code)
+            self.response.out.write(data.content)
+        else:
+            if 'Authorization' not in self.request.headers :
+                headers = {}
+            else:
+                auth_header = self.request.headers['Authorization']
+                auth_parts = auth_header.split(' ')
+                user_pass_parts = base64.b64decode(auth_parts[1]).split(':')
+                user_arg = user_pass_parts[0]
+                pass_arg = user_pass_parts[1]
+                base64string = base64.encodestring('%s:%s' % (user_arg, pass_arg))[:-1]
+                headers = {'Authorization': "Basic %s" % base64string}
+
+            path_parts = path.split('/')
+            if path_parts[1] == 'search':
+                netloc = 'search.twitter.com'
+                newpath = path[7:]
+            elif path_parts[1] == 'trends':
+                netloc = 'search.twitter.com'
+                newpath = path
+            elif path_parts[1] == 'api':
+                netloc = 'api.twitter.com'
+                newpath = path[4:]
+            else:
+                netloc = 'twitter.com'
+                newpath = path
+
+            if newpath == '/' or newpath == '':
+                self.myOutput('text/html', 'This is the proxy of \"'+ netloc + '\" by <a href="nduoa">@nduoa</a>!')
+            else:
+                newUrl = urlparse.urlunparse((scm, netloc, newpath, params, query, ''))
+
+                data = urlfetch.fetch(newUrl, payload=origBody, method=method, headers=headers)
+                self.response.set_status(data.status_code)
+                for resName, resValue in data.headers.items():
+                    if is_hop_by_hop(resName) is False and resName!='status':
+                        self.response.headers.add_header(resName, resValue)
+                self.response.out.write(data.content)
 
     def post(self):
-        pass
+        self.doProxy('post')
 
-class QueryIP(webapp.RequestHandler):
     def get(self):
-        ip = self.request.get('ip')
-        url = "http://link.myclover.org/Hack/Script/big_brother/ip/" + ip + ".html"
-        result = urlfetch.fetch(url)
-        if result.status_code == 200:
-            self.response.out.write(result.content)
-
-    def post(post):
-        pass
-
-application = webapp.WSGIApplication([('/', MainPage),
-                                      ('/query', QueryIP)],
-                                     debug=False)
+        self.doProxy('get')
 
 def main():
-    run_wsgi_app(application)
+    application = webapp.WSGIApplication( [(r'/.*', MainPage)], debug=False)
+    wsgiref.handlers.CGIHandler().run(application)
 
 if __name__ == "__main__":
     main()

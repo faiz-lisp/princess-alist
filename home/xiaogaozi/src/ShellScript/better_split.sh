@@ -16,6 +16,16 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+usage ()
+{
+    echo "Usage: better_split.sh <filename> [prefix]"
+}
+
+if [ "$#" -lt "1" ]; then
+    usage
+    exit 1
+fi
+
 ss=0  # start time, in seconds
 endpos=600  # length of per file, in seconds
 num=0  # number of files
@@ -38,7 +48,7 @@ while [ $ss -lt $length ]; do
     f_name=${prefix}${n}.${extension}
     mencoder "$file" -ovc copy -oac copy -ss $ss -endpos $endpos -o $f_name
     echo
-    echo $f_name
+    echo ">>>> "$f_name
     echo
     let "ss += endpos"
 done
