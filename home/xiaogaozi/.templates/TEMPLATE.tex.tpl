@@ -67,9 +67,9 @@
 
 % XeTeX logo
 \def\XeTeX{\leavevmode
-\setbox0=\hbox{X\lower.5ex\hbox{\kern-.15em\reflectbox{E}}\kern-.1667em
-\TeX}%
-\dp0=0pt\ht0=0pt\box0}
+  \setbox0=\hbox{X\lower.5ex\hbox{\kern-.15em\reflectbox{E}}\kern-.1667em
+    \TeX}%
+  \dp0=0pt\ht0=0pt\box0}
 
 % For LaN
 \newcommand{\LaN}{L{\scriptsize\hspace{-0.47em}\raisebox{0.23em}{A}}\hspace{-0.1em}N}

@@ -6,16 +6,16 @@ from google.appengine.api import urlfetch_errors
 gtapVersion = '0.3'
 
 _hoppish = {
-        'connection':1,
-        'keep-alive':1,
-        'proxy-authenticate':1,
-        'proxy-authorization':1,
-        'te':1,
-        'trailers':1,
-        'transfer-encoding':1,
-        'upgrade':1,
-        'proxy-connection':1
-        }
+    'connection':1,
+    'keep-alive':1,
+    'proxy-authenticate':1,
+    'proxy-authorization':1,
+    'te':1,
+    'trailers':1,
+    'transfer-encoding':1,
+    'upgrade':1,
+    'proxy-connection':1
+}
 
 def is_hop_by_hop(header):
     #check if the given header is hop_by_hop
@@ -46,7 +46,7 @@ class MainPage(webapp.RequestHandler):
                 user_arg = user_pass_parts[0]
                 pass_arg = user_pass_parts[1]
                 base64string = base64.encodestring('%s:%s' % (user_arg, pass_arg))[:-1]
-                headers = {'Authorization': "Basic %s" % base64string}
+                headers = { 'Authorization': "Basic %s" % base64string }
 
             path_parts = path.split('/')
             if path_parts[1] == 'search':
@@ -70,7 +70,7 @@ class MainPage(webapp.RequestHandler):
                 data = urlfetch.fetch(newUrl, payload=origBody, method=method, headers=headers)
                 self.response.set_status(data.status_code)
                 for resName, resValue in data.headers.items():
-                    if is_hop_by_hop(resName) is False and resName!='status':
+                    if is_hop_by_hop(resName) is False and resName != 'status':
                         self.response.headers.add_header(resName, resValue)
                 self.response.out.write(data.content)
 
@@ -81,7 +81,7 @@ class MainPage(webapp.RequestHandler):
         self.doProxy('get')
 
 def main():
-    application = webapp.WSGIApplication( [(r'/.*', MainPage)], debug=False)
+    application = webapp.WSGIApplication([(r'/.*', MainPage)], debug=False)
     wsgiref.handlers.CGIHandler().run(application)
 
 if __name__ == "__main__":
