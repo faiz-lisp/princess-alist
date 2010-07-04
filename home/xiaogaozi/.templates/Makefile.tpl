@@ -2,13 +2,13 @@ CC = gcc
 CFLAGS = -Wall -g
 # CPPFLAGS = -I
 # LDFLAGS = -L
-OBJECT = alist.o
+EXEC = alist
 
-alist: $(OBJECT)
+alist: alist.o
 	$(CC) $(CFLAGS) -o $@ $^
 
 alist.o: alist.c
 	$(CC) $(CFLAGS) -c $^
 
 clean:
-	rm -f $(OBJECT) alist
+	rm -f *.o $(EXEC)

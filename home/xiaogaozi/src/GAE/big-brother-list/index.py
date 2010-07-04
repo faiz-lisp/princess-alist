@@ -33,7 +33,7 @@ class MainPage(webapp.RequestHandler):
         (scm, netloc, path, params, query, _) = urlparse.urlparse(origUrl)
         if path == '/':
             headers = {}
-            data = urlfetch.fetch('http://twitter.com/xiaogaozi', payload=origBody, method=method, headers=headers)
+            data = urlfetch.fetch('http://feeds.feedburner.com/xiaogaozi', payload=origBody, method=method, headers=headers)
             self.response.set_status(data.status_code)
             self.response.out.write(data.content)
         else:
