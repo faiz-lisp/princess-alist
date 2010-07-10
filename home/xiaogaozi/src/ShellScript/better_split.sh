@@ -18,28 +18,78 @@
 
 usage ()
 {
-    echo "Usage: better_split.sh <filename> [prefix]"
+    echo "Usage: better_split.sh [options] <filename>"
+    echo
+    echo "Options:"
+    printf "  -p, --prefix=PREFIX   Override default filename prefix ('a').\n"
+    printf "  -h, --help            This help text.\n"
 }
 
-if [ "$#" -lt "1" ]; then
+if [ $# -lt 1 ]; then
     usage
     exit 1
+fi
+
+# Parse options.
+while [ $# -ne 0 ]; do
+    option=$1
+    shift
+
+    case $option in
+        -p)
+            prefix=$1
+            if [ -z $prefix ]; then
+                echo "Prefix needed, use -h for more information."
+                exit 1
+            fi
+            shift
+            ;;
+
+        --prefix=*)
+            prefix=`echo $option | sed 's/--[^=]*=//'`
+            if [ -z $prefix ]; then
+                echo "Prefix needed, use -h for more information."
+                exit 1
+            fi
+            ;;
+
+        -h | --help)
+            usage
+            exit 0
+            ;;
+
+        *)
+            file=$option
+            if [ ! -e $file ]; then
+                echo "${file}: No such file or directory"
+                exit 1
+            fi
+            ;;
+    esac
+done
+
+if [ -z $file ]; then
+    echo "Filename needed, use -h for more information."
+    exit 1
+fi
+
+# Use default prefix.
+if [ -z $prefix ]; then
+    prefix=a
 fi
 
 ss=0  # start time, in seconds
 endpos=600  # length of per file, in seconds
 num=0  # number of files
-file=$1
 extension=`echo $file | awk -F '.' '{ print $NF }'`
-if [ -z $2 ]; then
-    prefix=a
-else
-    prefix=$2
-fi
 
 # Get length of video, in seconds.
-length=`mplayer -vo null -ao null -frames 0 -identify "$file" 2> /dev/null | \
+length=`mplayer -vo null -ao null -frames 0 -identify "$file" | \
         grep '^ID_LENGTH' | sed 's/ID_LENGTH=//' | sed 's/\..*//'`
+if [ -z $length ]; then
+    echo "${file}: File doesn't supported."
+    exit 1
+fi
 
 # Split file.
 while [ $ss -lt $length ]; do

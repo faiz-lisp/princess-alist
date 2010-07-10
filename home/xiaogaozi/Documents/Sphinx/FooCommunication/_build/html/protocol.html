@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>通信协议 &mdash; FooCommunication v0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="FooCommunication v0.0.1 documentation" href="index.html" />
+    <link rel="prev" title="Welcome to FooCommunication’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to FooCommunication’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">FooCommunication v0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>通信协议<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Authors:</th><td class="field-body">高昌健</td>
+</tr>
+<tr class="field"><th class="field-name">Contact:</th><td class="field-body"><a class="reference external" href="mailto:gaochangjian&#37;&#52;&#48;gmail&#46;com">gaochangjian<span>&#64;</span>gmail<span>&#46;</span>com</a></td>
+</tr>
+<tr class="field"><th class="field-name">Date:</th><td class="field-body">2010-06-22</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id2">
+<h2>协议头部设计<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>0              7             15                           31
++--------------+--------------+----------------------------+
+|              |              |                            |
+|     type     |     urge     |      sequence number       |
+|              |              |                            |
++--------------+--------------+----------------------------+
+|                                                          |
+|                       data length                        |
+|                                                          |
++----------------------------------------------------------+
+|                                                          |
+|                      data (if any)                       |
+|                                                          |
++----------------------------------------------------------+</pre>
+</div>
+<ol class="arabic simple">
+<li>type：标示数据类型，文字为1，图片为2，GPS为3，确认信息为4。</li>
+<li>urge：标示是否为紧急信息（即命令信息），1为真，0为假。</li>
+<li>sequence number：序号，用来绑定表单与图片。</li>
+<li>data length：数据部分的总长度，不包含头部。</li>
+</ol>
+<p>C语言实现参考：</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="k">struct</span> <span class="n">gdphdr</span>
+<span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">type</span><span class="p">,</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">urge</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">seq</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">len</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">通信协议</a><ul>
+<li><a class="reference external" href="#id2">协议头部设计</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="index.html"
+                                  title="previous chapter">Welcome to FooCommunication&#8217;s documentation!</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/protocol.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to FooCommunication’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">FooCommunication v0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2010, xiaogaozi.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.2.
+    </div>
+  </body>
+</html>

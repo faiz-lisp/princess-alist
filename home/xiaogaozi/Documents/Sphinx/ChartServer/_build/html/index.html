@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ChartServer 模块说明 &mdash; ChartServer v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="ChartServer v1.0 documentation" href="" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="">ChartServer v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="chartserver">
+<h1><a class="toc-backref" href="#id10">ChartServer 模块说明</a><a class="headerlink" href="#chartserver" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Authors:</th><td class="field-body">高昌健</td>
+</tr>
+<tr class="field"><th class="field-name">Contact:</th><td class="field-body"><a class="reference external" href="mailto:gaochangjian&#37;&#52;&#48;gmail&#46;com">gaochangjian<span>&#64;</span>gmail<span>&#46;</span>com</a></td>
+</tr>
+<tr class="field"><th class="field-name">Date:</th><td class="field-body">2010-05-31</td>
+</tr>
+<tr class="field"><th class="field-name">Version:</th><td class="field-body">1.0</td>
+</tr>
+</tbody>
+</table>
+<div class="contents topic" id="id1">
+<p class="topic-title first">目录</p>
+<ul class="simple">
+<li><a class="reference internal" href="#chartserver" id="id10">ChartServer 模块说明</a><ul>
+<li><a class="reference internal" href="#id2" id="id11">目录结构及文件说明</a></li>
+<li><a class="reference internal" href="#id3" id="id12">编译前的准备工作</a></li>
+<li><a class="reference internal" href="#id4" id="id13">编译步骤</a></li>
+<li><a class="reference internal" href="#id5" id="id14">运行程序</a></li>
+<li><a class="reference internal" href="#id6" id="id15">示例</a><ul>
+<li><a class="reference internal" href="#id7" id="id16">生成饼图</a></li>
+<li><a class="reference internal" href="#id8" id="id17">生成柱状图</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9" id="id18">服务器返回值说明</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id11">目录结构及文件说明</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>ChartServer
+|-- Makefile
+|-- chart.png                     # 最终生成的图片文件
+|-- chartserver
+|   |-- BarChart.java             # 用于生成柱状图
+|   |-- ChartGenException.java    # 生成图片时可能产生的异常类
+|   |-- ChartServer.java          # 服务器主程序
+|   `-- PieChart.java             # 用于生成饼图
+`-- docs                          # 说明文档
+    |-- _images
+    |   |-- bar_chart.png
+    |   `-- pie_chart.png
+    |-- _sources
+    |   `-- index.txt
+    |-- _static
+    |   |-- bar_chart.png
+    |   |-- basic.css
+    |   |-- default.css
+    |   |-- doctools.js
+    |   |-- file.png
+    |   |-- jquery.js
+    |   |-- minus.png
+    |   |-- pie_chart.png
+    |   |-- plus.png
+    |   |-- pygments.css
+    |   `-- searchtools.js
+    |-- genindex.html
+    |-- index.html                # 说明文档主页
+    |-- objects.inv
+    |-- search.html
+    `-- searchindex.js</pre>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id12">编译前的准备工作</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>本模块使用Java语言进行编写，且依赖 <a class="reference external" href="http://www.jfree.org/jfrechart">JFreeChart</a> 包，因此需要JDK及JFreeChart的相关文件。Ubuntu 9.10系统（10.04官方源不提供JDK）可以使用以下命令安装：</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install sun-java6-jdk libjfreechart-java
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id13">编译步骤</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>请先确保当前目录为 <strong>ChartServer</strong> 目录：</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">pwd</span>
+/home/xiaogaozi/ChartServer
+</pre></div>
+</div>
+<p>接着输入以下命令进行编译：</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>javac -classpath <span class="s2">&quot;/usr/share/java/*:.&quot;</span> chartserver/ChartServer.java
+</pre></div>
+</div>
+<p>"<tt class="docutils literal"><span class="pre">/usr/share/java/</span></tt>"为JFreeChart的安装目录，请根据实际情况修改。</p>
+<p>上面的编译命令也已经在 <tt class="docutils literal"><span class="pre">Makefile</span></tt> 文件中定义。</p>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id14">运行程序</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>同样是在 <strong>ChartServer</strong> 目录中，输入以下命令：</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>java -classpath <span class="s2">&quot;/usr/share/java/*:.&quot;</span> chartserver.ChartServer
+</pre></div>
+</div>
+<p>服务器默认的监听端口为8181，发送特定的字符串就可以生成图片。</p>
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id15">示例</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id16">生成饼图</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<p>发送以下字符串：</p>
+<div class="highlight-python"><pre>1:浏览器市场占有率:Firefox,Internet Explorer:80,20:600,400</pre>
+</div>
+<p>以上各部分由":"分隔，每一部分的含义为：</p>
+<ul class="simple">
+<li><strong>1</strong> ：生成图片的类型，"1"为饼图，"2"为柱状图。</li>
+<li><strong>浏览器市场占有率</strong> ：图片的标题</li>
+<li><strong>Firefox,Internet Explorer</strong> ：图片中的标签名，逗号分隔。</li>
+<li><strong>80,20</strong> ：与标签名相对应的值，逗号分隔。</li>
+<li><strong>600,400</strong> ：图片的宽度与高度，逗号分隔。</li>
+</ul>
+<p>最终生成的图片效果：</p>
+<img alt="_images/pie_chart.png" src="_images/pie_chart.png" />
+</blockquote>
+</div>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id17">生成柱状图</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<p>发送以下字符串：</p>
+<div class="highlight-python"><pre>2:浏览器市场占有率,浏览器,市场占有率:Firefox,Internet Explorer:80,20:600,400</pre>
+</div>
+<p>以上各部分由":"分隔，每一部分的含义为：</p>
+<ul class="simple">
+<li><strong>2</strong> ：生成图片的类型，"1"为饼图，"2"为柱状图。</li>
+<li><strong>浏览器市场占有率,浏览器,市场占有率</strong> ：图片的标题，横坐标标签及纵坐标标签。</li>
+<li><strong>Firefox,Internet Explorer</strong> ：图片中的标签名，逗号分隔。</li>
+<li><strong>80,20</strong> ：与标签名相对应的值，逗号分隔。</li>
+<li><strong>600,400</strong> ：图片的宽度与高度，逗号分隔。</li>
+</ul>
+<p>最终生成的图片效果：</p>
+<img alt="_images/bar_chart.png" src="_images/bar_chart.png" />
+</blockquote>
+</div>
+</div>
+<div class="section" id="id9">
+<h2><a class="toc-backref" href="#id18">服务器返回值说明</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>OK</strong></dt>
+<dd>图片生成成功</dd>
+<dt><strong>messages too few</strong></dt>
+<dd>客户端发送给服务器端的字符串一共被":"分割为5个部分，如果不等于5，则返回此错误提示。</dd>
+<dt><strong>titles too short</strong></dt>
+<dd>当生成柱状图时，字符串的第2个字段一共有3部分：图片标题，横坐标标签以及纵坐标标签，如果不等于3，则返回此错误提示。</dd>
+<dt><strong>labels and values aren&#8217;t equal in length</strong></dt>
+<dd>标签名（第3个字段）的个数与值（第4个字段）的个数必须相等，否则返回此错误提示。</dd>
+</dl>
+<p>此外还可能返回 <tt class="docutils literal"><span class="pre">IOException</span></tt> 类型的异常。</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">ChartServer 模块说明</a><ul>
+<li><a class="reference external" href="#id2">目录结构及文件说明</a></li>
+<li><a class="reference external" href="#id3">编译前的准备工作</a></li>
+<li><a class="reference external" href="#id4">编译步骤</a></li>
+<li><a class="reference external" href="#id5">运行程序</a></li>
+<li><a class="reference external" href="#id6">示例</a><ul>
+<li><a class="reference external" href="#id7">生成饼图</a></li>
+<li><a class="reference external" href="#id8">生成柱状图</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#id9">服务器返回值说明</a></li>
+</ul>
+</li>
+</ul>
+
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/index.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="">ChartServer v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2010, xiaogaozi.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.2.
+    </div>
+  </body>
+</html>
