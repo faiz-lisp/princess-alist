@@ -15,6 +15,14 @@
 ###   windows-cryptoapi    (Windows)
 # password-stores = gnome-keyring,kwallet
 ###
+### Set KWallet wallet used by Subversion. If empty or unset,
+### then the default network wallet will be used.
+# kwallet-wallet =
+###
+### Include PID (Process ID) in Subversion application name when
+### using KWallet. It defaults to 'no'.
+# kwallet-svn-application-name-with-pid = yes
+###
 ### The rest of this section in this file has been deprecated.
 ### Both 'store-passwords' and 'store-auth-creds' can now be
 ### specified in the 'servers' file in your config directory.

@@ -50,6 +50,8 @@
 ;; SITE-LISP
 ;; ----------------------------------------------------------------------
 
+(add-to-list 'load-path "~/.emacs.d/site-lisp")
+
 ;; ;; color theme
 ;; (load-file "/usr/share/emacs-snapshot/site-lisp/color-theme.el")
 ;; (require 'color-theme)
