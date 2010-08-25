@@ -93,6 +93,9 @@ set expandtab
 " Set font.
 set guifont=Consolas:h11
 
+" Turn on persistent undo.
+set udf
+
 " Template for Vim.
 autocmd BufNewFile *.c 0r $HOME/.templates/TEMPLATE.c.tpl
 autocmd BufNewFile *.h 0r $HOME/.templates/TEMPLATE.h.tpl
