@@ -42,4 +42,24 @@ if [ ! -f ${prefix}/songbird*.list ]; then
     echo
 fi
 
+if [ ! -f ${prefix}/globalmenu*.list ]; then
+    echo "Add Software Source of Global Menu:"
+    sudo add-apt-repository ppa:globalmenu-team/ppa
+    echo
+fi
+
+if [ ! -f ${prefix}/tiheum*.list ]; then
+    echo "Add Software Source of Equinox GTK Engine and Faenza Icon Theme:"
+    sudo add-apt-repository ppa:tiheum/equinox
+    echo
+fi
+
+sudo apt-get update
+
+# Global Menu
+sudo apt-get install gnome-globalmenu
+
+# Equinox GTK Engine and Faenza Icon Theme
+sudo apt-get install gtk2-engines-equinox equinox-theme equinox-ubuntu-theme faenza-icon-theme
+
 exit 0

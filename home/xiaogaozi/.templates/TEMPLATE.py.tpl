@@ -18,6 +18,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 def main():
+    """Main progress."""
     pass
 
 if __name__ == "__main__":

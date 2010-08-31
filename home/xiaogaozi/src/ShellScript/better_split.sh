@@ -60,7 +60,7 @@ while [ $# -ne 0 ]; do
 
         *)
             file=$option
-            if [ ! -e $file ]; then
+            if [ ! -e "$file" ]; then
                 echo "${file}: No such file or directory"
                 exit 1
             fi
@@ -68,7 +68,7 @@ while [ $# -ne 0 ]; do
     esac
 done
 
-if [ -z $file ]; then
+if [ -z "$file" ]; then
     echo "Filename needed, use -h for more information."
     exit 1
 fi
