@@ -89,6 +89,7 @@
 ;;                                 (header-make t))))
 
 ;; AUCTeX
+(require 'tex-site)
 (defun auctex ()
   (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t; %`xelatex%(mode)%' %t" TeX-run-TeX nil t)) ;; 这里我编译了两次
     (setq TeX-command-default "XeLaTeX") ;; 设定默认编译命令为XeLaTeX
