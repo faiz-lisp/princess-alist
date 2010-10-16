@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 # Copyright under  the latest Apache License 2.0
 
+import os
 import wsgiref.handlers, urlparse, base64, logging
 from cgi import parse_qsl
 from google.appengine.ext import webapp
-from google.appengine.api import urlfetch, urlfetch_errors
+from google.appengine.ext.webapp import template
+from google.appengine.api import urlfetch, urlfetch_errors, users
 from wsgiref.util import is_hop_by_hop
 from uuid import uuid4
 import oauth
@@ -106,9 +108,19 @@ class MainPage(webapp.RequestHandler):
         new_url,new_path = self.conver_url(orig_url)
 
         if new_path == '/' or new_path == '':
-            global gtap_message
-            gtap_message = gtap_message.replace('#gtap_version#', gtap_version)
-            return success_output(self, gtap_message )
+            user = users.get_current_user()
+            if user == None:
+                self.redirect(users.create_login_url('/'))
+            else:
+                if not users.is_current_user_admin():
+                    self.error(403)
+                    path = os.path.join(os.path.dirname(__file__), '403.html')
+                    self.response.out.write(template.render(path, {}))
+                    return
+                else:
+                    global gtap_message
+                    gtap_message = gtap_message.replace('#gtap_version#', gtap_version)
+                    return success_output(self, gtap_message )
         
         username, password = self.parse_auth_header(self.request.headers)
         user_access_token = None
