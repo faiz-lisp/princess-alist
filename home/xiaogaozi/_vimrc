@@ -128,7 +128,7 @@ inoremap <C-B> <Esc>A;
 " Don't show the preview window.
 set completeopt=menu
 
-set tags+=~/.vim/systags,/tmp/tags
+set tags+=~/.vim/systags,$TEMP/tags
 
 " Map <Tab> to either actually insert a <Tab> if
 " the current line is currently only whitespace, or start a omni
@@ -140,7 +140,7 @@ function! CleverTab()
         let current_path = bufname("%")  " get name of current buffer
         let current_path = system("dirname " . current_path)
         execute "cd " . current_path
-        execute "silent !ctags -R -f /tmp/tags ."
+        execute "silent !ctags -R -f " . $TEMP . "/tags ."
         return "\<C-X>\<C-O>"
     endif
 endfunction
