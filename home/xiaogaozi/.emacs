@@ -14,8 +14,8 @@
 ;; Show parentheses math.
 (show-paren-mode t)
 
-;; Hide toolbar.
-(tool-bar-mode nil)
+;; ;; Hide toolbar.
+;; (tool-bar-mode nil)
 
 ;; Mouse, please leave me alone!
 (mouse-avoidance-mode 'animate)
