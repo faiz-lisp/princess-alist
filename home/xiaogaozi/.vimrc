@@ -93,6 +93,9 @@ set expandtab
 " Set font.
 " set guifont=Monaco\ 11
 
+" Turn on persistent undo.
+set undofile
+
 " Template for Vim.
 autocmd BufNewFile *.c 0r ~/.templates/TEMPLATE.c.tpl
 autocmd BufNewFile *.h 0r ~/.templates/TEMPLATE.h.tpl
