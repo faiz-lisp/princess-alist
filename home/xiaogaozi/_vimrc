@@ -104,6 +104,7 @@ autocmd BufNewFile *.py 0r $HOME/.templates/TEMPLATE.py.tpl
 autocmd BufNewFile *.cpp 0r $HOME/.templates/TEMPLATE.cpp.tpl
 autocmd BufNewFile *.html 0r $HOME/.templates/TEMPLATE.html.tpl
 autocmd BufNewFile Makefile 0r $HOME/.templates/Makefile.tpl
+autocmd BufNewFile CMakeLists.txt.tpl 0r $HOME/.templates/CMakeLists.txt.tpl
 
 " ----------------------------------------------------------------------
 " KEYBINDINGS
