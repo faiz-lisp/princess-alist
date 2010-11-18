@@ -35,5 +35,5 @@ int main(int argc, char* argv[])
     long _end_time = clock();
     printf("\ntime: %ld MS\n", (_end_time - _begin_time) / END);
 
-    exit(EXIT_SUCCESS);
+    return EXIT_SUCCESS;
 }
