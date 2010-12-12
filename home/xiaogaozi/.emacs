@@ -31,9 +31,11 @@
 (setq-default indent-tabs-mode nil)
 
 ;; ;; Font settings.
-;; (set-default-font "Monaco-12")
-;; (set-fontset-font (frame-parameter nil 'font)
-;;   'unicode '("DejaVu Sans YuanTi Mono" . "unicode-bmp"))
+;; (set-face-attribute 'default nil :font "Monaco 12")
+;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
+;;   (set-fontset-font (frame-parameter nil 'font)
+;;                     charset
+;;                     (font-spec :family "Hiragino Sans GB" :size 12)))
 
 ;; Make `M-w' can copy a line.
 (defun xiaogaozi-kill-ring-save (&optional n)
