@@ -57,6 +57,11 @@ if [ -f /opt/local/etc/bash_completion ]; then
     . /opt/local/etc/bash_completion
 fi
 
+# Enable Git completion.
+if [ -f /opt/local/share/doc/git-core/contrib/completion/git-completion.bash ]; then
+    . /opt/local/share/doc/git-core/contrib/completion/git-completion.bash
+fi
+
 # colorful man page
 export PAGER="/usr/bin/less -s"
 export BROWSER="$PAGER"
@@ -69,33 +74,6 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;33m'
 
 export LESS='-R'
-
-# GPG
-# export GPGKEY=8A94AB78
-
-# ----------------------------------------------------------------------
-# Auto authenticate SSH key.
-# ----------------------------------------------------------------------
-
-# SSH_ENV="$HOME/.ssh/environment"
-# 
-# function start_agent
-# {
-#     echo "Initializing new SSH agent..."
-#     /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-#     echo succeeded
-#     chmod 600 "${SSH_ENV}"
-#     . "${SSH_ENV}" > /dev/null
-#     /usr/bin/ssh-add
-# }
-# 
-# # Source SSH settings, if applicable
-# if [ -f "${SSH_ENV}" ]; then
-#     . "${SSH_ENV}" > /dev/null
-#     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || start_agent
-# else
-#     start_agent
-# fi
 
 # MacPorts Installer addition on 2010-10-08_at_20:53:32: adding an appropriate PATH variable for use with MacPorts.
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
