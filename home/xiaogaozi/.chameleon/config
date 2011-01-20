@@ -8,7 +8,7 @@
 
 ## Specify root directories contain SVN working copy.
 ## The pathname supports environment variables (e.g. %APPDATA% in Windows,
-## $HOME in Linux), and '~' symbol in Linux.
+## $HOME in UNIX/Linux), and '~' symbol in UNIX/Linux.
 # root_dirs = %HOME%\My Documents\Visual Studio 2005\Projects\,
 #             %HOME%\Repositories\SVN\
 root_dirs = ~/Repositories/SVN
@@ -17,5 +17,5 @@ root_dirs = ~/Repositories/SVN
 ## want to be checked the SVN status, open this option, and specify
 ## some values.
 ## The pathname supports environment variables (e.g. %APPDATA% in Windows,
-## $HOME in Linux), '~' symbol in Linux, and wildcard character (e.g. *foo*).
+## $HOME in UNIX/Linux), '~' symbol in UNIX/Linux, and wildcard character (e.g. *foo*).
 exclude_dirs = *read-only*

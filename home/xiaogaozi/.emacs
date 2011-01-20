@@ -54,6 +54,10 @@
 
 (add-to-list 'load-path "~/.emacs.d/site-lisp")
 
+;; AsciiDoc Major Mode
+(require 'doc-mode)
+(add-to-list 'auto-mode-alist (cons "\\.txt\\'" 'doc-mode))
+
 ;; ;; color theme
 ;; (load-file "/usr/share/emacs-snapshot/site-lisp/color-theme.el")
 ;; (require 'color-theme)
@@ -91,7 +95,7 @@
 ;;                                 (header-make t))))
 
 ;; AUCTeX
-(require 'tex-site)
+;; (require 'tex-site)
 (defun auctex ()
   (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t; %`xelatex%(mode)%' %t" TeX-run-TeX nil t)) ;; 这里我编译了两次
     (setq TeX-command-default "XeLaTeX") ;; 设定默认编译命令为XeLaTeX
