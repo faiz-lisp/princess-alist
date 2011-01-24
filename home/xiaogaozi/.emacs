@@ -2,8 +2,8 @@
 ;; GENERAL SETTINGS
 ;; ----------------------------------------------------------------------
 
-;; ;; Set the debug option to enable a backtrace when a problem occurs.
-;; (setq debug-on-error t)
+;; Set the debug option to enable a backtrace when a problem occurs.
+(setq debug-on-error t)
 
 ;; Share clipboard.
 (setq x-select-enable-clipboard t)
@@ -30,12 +30,12 @@
 ;; Convert TAB to SPACE.
 (setq-default indent-tabs-mode nil)
 
-;; ;; Font settings.
-;; (set-face-attribute 'default nil :font "Monaco 12")
-;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
-;;   (set-fontset-font (frame-parameter nil 'font)
-;;                     charset
-;;                     (font-spec :family "Hiragino Sans GB" :size 12)))
+;; Font settings.
+(set-face-attribute 'default nil :font "Monaco 12")
+(dolist (charset '(kana han symbol cjk-misc bopomofo))
+  (set-fontset-font (frame-parameter nil 'font)
+                    charset
+                    (font-spec :family "Hiragino Sans GB" :size 12)))
 
 ;; Make `M-w' can copy a line.
 (defun xiaogaozi-kill-ring-save (&optional n)
@@ -47,152 +47,6 @@
         (kill-ring-save (line-beginning-position) (line-end-position n))
       (kill-ring-save (line-beginning-position n) (line-end-position)))))
 (global-set-key (kbd "M-w") 'xiaogaozi-kill-ring-save)
-
-;; ----------------------------------------------------------------------
-;; SITE-LISP
-;; ----------------------------------------------------------------------
-
-(add-to-list 'load-path "~/.emacs.d/site-lisp")
-
-;; AsciiDoc Major Mode
-(require 'doc-mode)
-(add-to-list 'auto-mode-alist (cons "\\.txt\\'" 'doc-mode))
-
-;; ;; color theme
-;; (load-file "/usr/share/emacs-snapshot/site-lisp/color-theme.el")
-;; (require 'color-theme)
-;; (color-theme-hober)
-
-;; template
-(require 'template)
-(template-initialize)
-
-;; ;; auto-header
-;; (require 'auto-header)
-;; (setq header-full-name "Dreamseeker"
-;;       header-email-address "gaochangjian<at>gmail<dot>com"
-;;       header-copyright-notice "Copyleft (c) INF, Dreamseeker"
-;;       header-update-on-save '(filename modified counter copyright)
-;;       header-field-list '(filename
-;;                           blank
-;;                           description
-;;                           blank
-;;                           author
-;;                           created
-;;                           blank
-;;                           modified_by
-;;                           modified
-;;                           blank
-;;                           status
-;;                           update
-;;                           blank
-;;                           copyright))
-;; ;; auto update the number of count
-;; (global-set-key (kbd "s-h") (lambda ()
-;;                               (interactive)
-;;                               (if (header-exists-p)
-;;                                   (header-update-count)
-;;                                 (header-make t))))
-
-;; AUCTeX
-;; (require 'tex-site)
-(defun auctex ()
-  (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t; %`xelatex%(mode)%' %t" TeX-run-TeX nil t)) ;; 这里我编译了两次
-    (setq TeX-command-default "XeLaTeX") ;; 设定默认编译命令为XeLaTeX
-    (setq TeX-save-query nil)            ;; 保存之前不询问
-    (setq TeX-show-compilation t))       ;; 在新窗口显示编译过程
-(add-hook 'LaTeX-mode-hook 'auctex)
-
-;; ;; EMMS
-;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/emms/")
-;; (require 'emms-setup)
-;; (emms-standard)
-;; (emms-default-players)
-;; (setq emms-repeat-playlist t
-;;       emms-source-file-default-directory "/home/xiaolan/music/"
-;;       emms-lyrics-coding-system nil     ;; Let Emacs to identify the encode of lyrics.
-;;       emms-lyrics-dir "/home/xiaolan/music/lyrics")
-;; ;; Show info at mode-line.
-;; (require 'emms-mode-line)
-;; (emms-mode-line 1)
-;; ;; Show time of music.
-;; (require 'emms-playing-time)
-;; (emms-playing-time 1)
-;; ;; Show lyrics.
-;; (require 'emms-lyrics)
-;; (emms-lyrics 1)
-;; ;; Auto identify encode.
-;; (require 'emms-i18n)
-;; ;; Auto save and import playlist.
-;; (require 'emms-history)
-;; (emms-history-load)
-
-;; ;; JDEE
-;; (setq defer-loading-jde t)
-;; (if defer-loading-jde
-;;     (progn
-;;       (autoload 'jde-mode "jde" "JDE mode." t)
-;;       (setq auto-mode-alist
-;;                      (append
-;;                       '(("\\.java\\'" . jde-mode))
-;;                       auto-mode-alist)))
-;;   (require 'jde))
-
-;; rect-mark.el
-;; Support for marking a rectangle of text with highlighting.
-(define-key ctl-x-map "r\C-@" 'rm-set-mark)
-(define-key ctl-x-map [?r ?\C-\ ] 'rm-set-mark)
-(define-key ctl-x-map "r\C-x" 'rm-exchange-point-and-mark)
-(define-key ctl-x-map "r\C-w" 'rm-kill-region)
-(define-key ctl-x-map "r\M-w" 'rm-kill-ring-save)
-(define-key global-map [S-down-mouse-1] 'rm-mouse-drag-region)
-(autoload 'rm-set-mark "rect-mark"
-  "Set mark for rectangle." t)
-(autoload 'rm-exchange-point-and-mark "rect-mark"
-  "Exchange point and mark for rectangle." t)
-(autoload 'rm-kill-region "rect-mark"
-  "Kill a rectangular region and save it in the kill ring." t)
-(autoload 'rm-kill-ring-save "rect-mark"
-  "Copy a rectangular region to the kill ring." t)
-(autoload 'rm-mouse-drag-region "rect-mark"
-  "Drag out a rectangular region with the mouse." t)
-
-;; ;; Pymacs
-;; (autoload 'pymacs-apply "pymacs")
-;; (autoload 'pymacs-call "pymacs")
-;; (autoload 'pymacs-eval "pymacs" nil t)
-;; (autoload 'pymacs-exec "pymacs" nil t)
-;; (autoload 'pymacs-load "pymacs" nil t)
-;; 
-;; ;; Ropemacs
-;; (pymacs-load "ropemacs" "rope-")
-
-;; YASnippet
-(add-to-list 'load-path
-              "~/.emacs.d/site-lisp/yasnippet-0.6.1c")
-(require 'yasnippet)
-(yas/initialize)
-(yas/load-directory "~/.emacs.d/site-lisp/yasnippet-0.6.1c/snippets")
-(setq yas/prompt-functions '(yas/dropdown-prompt))
-
-;; ;; Auto-Complete
-;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/auto-complete/")
-;; (require 'auto-complete)
-;; (require 'auto-complete-config)
-;; (setq-default ac-sources '(ac-source-words-in-same-mode-buffers ac-source-yasnippet))
-;; (add-hook 'emacs-lisp-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-symbols)))
-;; (add-hook 'auto-complete-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-filename)))
-;; (add-hook 'c++-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-c++-keywords)))
-;; (add-hook 'css-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-css-keywords)))
-;; (add-hook 'python-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-ropemacs)))
-;; (global-auto-complete-mode t)
-;; (set-face-background 'ac-candidate-face "lightgray")
-;; (set-face-underline 'ac-candidate-face "darkgray")
-;; (set-face-background 'ac-selection-face "steelblue")
-;; (setq ac-dwim t)
-;; ;; Use C-n/C-p to select candidates
-;; (define-key ac-complete-mode-map "\C-n" 'ac-next)
-;; (define-key ac-complete-mode-map "\C-p" 'ac-previous)
 
 ;; ----------------------------------------------------------------------
 ;; INDENTATION
@@ -321,3 +175,163 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
+
+;; ----------------------------------------------------------------------
+;; SITE-LISP
+;; ----------------------------------------------------------------------
+
+(add-to-list 'load-path "~/.emacs.d/site-lisp")
+
+;; AsciiDoc Major Mode
+(autoload 'doc-mode "doc-mode")
+(add-to-list 'auto-mode-alist (cons "\\.txt\\'" 'doc-mode))
+
+;; ;; color-theme
+;; (add-to-list 'load-path "/opt/local/share/emacs/site-lisp/color-theme-6.6.0")
+;; (load-file "~/.emacs.d/site-lisp/color-theme-blackboard.el")
+;; (require 'color-theme)
+;; (eval-after-load "color-theme"
+;;   '(progn
+;;      (color-theme-initialize)
+;;      (color-theme-blackboard)))
+
+;; template
+(require 'template)
+(template-initialize)
+
+;; ;; auto-header
+;; (require 'auto-header)
+;; (setq header-full-name "Dreamseeker"
+;;       header-email-address "gaochangjian<at>gmail<dot>com"
+;;       header-copyright-notice "Copyleft (c) INF, Dreamseeker"
+;;       header-update-on-save '(filename modified counter copyright)
+;;       header-field-list '(filename
+;;                           blank
+;;                           description
+;;                           blank
+;;                           author
+;;                           created
+;;                           blank
+;;                           modified_by
+;;                           modified
+;;                           blank
+;;                           status
+;;                           update
+;;                           blank
+;;                           copyright))
+;; ;; auto update the number of count
+;; (global-set-key (kbd "s-h") (lambda ()
+;;                               (interactive)
+;;                               (if (header-exists-p)
+;;                                   (header-update-count)
+;;                                 (header-make t))))
+
+;; AUCTeX
+(require 'tex-site)
+(defun auctex ()
+  (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t; %`xelatex%(mode)%' %t" TeX-run-TeX nil t)) ;; 这里我编译了两次
+    (setq TeX-command-default "XeLaTeX") ;; 设定默认编译命令为XeLaTeX
+    (setq TeX-save-query nil)            ;; 保存之前不询问
+    (setq TeX-show-compilation t))       ;; 在新窗口显示编译过程
+(add-hook 'LaTeX-mode-hook 'auctex)
+
+;; ;; EMMS
+;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/emms/")
+;; (require 'emms-setup)
+;; (emms-standard)
+;; (emms-default-players)
+;; (setq emms-repeat-playlist t
+;;       emms-source-file-default-directory "/home/xiaolan/music/"
+;;       emms-lyrics-coding-system nil     ;; Let Emacs to identify the encode of lyrics.
+;;       emms-lyrics-dir "/home/xiaolan/music/lyrics")
+;; ;; Show info at mode-line.
+;; (require 'emms-mode-line)
+;; (emms-mode-line 1)
+;; ;; Show time of music.
+;; (require 'emms-playing-time)
+;; (emms-playing-time 1)
+;; ;; Show lyrics.
+;; (require 'emms-lyrics)
+;; (emms-lyrics 1)
+;; ;; Auto identify encode.
+;; (require 'emms-i18n)
+;; ;; Auto save and import playlist.
+;; (require 'emms-history)
+;; (emms-history-load)
+
+;; ;; JDEE
+;; (setq defer-loading-jde t)
+;; (if defer-loading-jde
+;;     (progn
+;;       (autoload 'jde-mode "jde" "JDE mode." t)
+;;       (setq auto-mode-alist
+;;                      (append
+;;                       '(("\\.java\\'" . jde-mode))
+;;                       auto-mode-alist)))
+;;   (require 'jde))
+
+;; rect-mark.el
+;; Support for marking a rectangle of text with highlighting.
+(define-key ctl-x-map "r\C-@" 'rm-set-mark)
+(define-key ctl-x-map [?r ?\C-\ ] 'rm-set-mark)
+(define-key ctl-x-map "r\C-x" 'rm-exchange-point-and-mark)
+(define-key ctl-x-map "r\C-w" 'rm-kill-region)
+(define-key ctl-x-map "r\M-w" 'rm-kill-ring-save)
+(define-key global-map [S-down-mouse-1] 'rm-mouse-drag-region)
+(autoload 'rm-set-mark "rect-mark"
+  "Set mark for rectangle." t)
+(autoload 'rm-exchange-point-and-mark "rect-mark"
+  "Exchange point and mark for rectangle." t)
+(autoload 'rm-kill-region "rect-mark"
+  "Kill a rectangular region and save it in the kill ring." t)
+(autoload 'rm-kill-ring-save "rect-mark"
+  "Copy a rectangular region to the kill ring." t)
+(autoload 'rm-mouse-drag-region "rect-mark"
+  "Drag out a rectangular region with the mouse." t)
+
+;; ;; Pymacs
+;; (autoload 'pymacs-apply "pymacs")
+;; (autoload 'pymacs-call "pymacs")
+;; (autoload 'pymacs-eval "pymacs" nil t)
+;; (autoload 'pymacs-exec "pymacs" nil t)
+;; (autoload 'pymacs-load "pymacs" nil t)
+;; 
+;; ;; Ropemacs
+;; (pymacs-load "ropemacs" "rope-")
+
+;; YASnippet
+(add-to-list 'load-path
+              "~/.emacs.d/site-lisp/yasnippet-0.6.1c")
+(require 'yasnippet)
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/site-lisp/yasnippet-0.6.1c/snippets")
+(setq yas/prompt-functions '(yas/dropdown-prompt))
+
+;; ;; Auto-Complete
+;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/auto-complete/")
+;; (require 'auto-complete)
+;; (require 'auto-complete-config)
+;; (setq-default ac-sources '(ac-source-words-in-same-mode-buffers ac-source-yasnippet))
+;; (add-hook 'emacs-lisp-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-symbols)))
+;; (add-hook 'auto-complete-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-filename)))
+;; (add-hook 'c++-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-c++-keywords)))
+;; (add-hook 'css-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-css-keywords)))
+;; (add-hook 'python-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-ropemacs)))
+;; (global-auto-complete-mode t)
+;; (set-face-background 'ac-candidate-face "lightgray")
+;; (set-face-underline 'ac-candidate-face "darkgray")
+;; (set-face-background 'ac-selection-face "steelblue")
+;; (setq ac-dwim t)
+;; ;; Use C-n/C-p to select candidates
+;; (define-key ac-complete-mode-map "\C-n" 'ac-next)
+;; (define-key ac-complete-mode-map "\C-p" 'ac-previous)
+
+;;; This was installed by package-install.el.
+;;; This provides support for the package system and
+;;; interfacing with ELPA, the package archive.
+;;; Move this code earlier if you want to reference
+;;; packages in your .emacs.
+(when
+    (load
+     (expand-file-name "~/.emacs.d/elpa/package.el"))
+  (package-initialize))
