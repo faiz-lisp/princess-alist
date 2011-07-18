@@ -96,6 +96,9 @@ set expandtab
 " Turn on persistent undo.
 set undofile
 
+" Extended "%" matching
+source $VIMRUNTIME/macros/matchit.vim
+
 " Template for Vim.
 autocmd BufNewFile *.c 0r ~/.templates/TEMPLATE.c.tpl
 autocmd BufNewFile *.h 0r ~/.templates/TEMPLATE.h.tpl
@@ -126,26 +129,26 @@ inoremap <C-B> <Esc>A;
 " OMNI COMPLETION
 " ----------------------------------------------------------------------
 
-" Don't show the preview window.
-set completeopt=menu
-
-set tags+=~/.vim/systags,/tmp/tags
-
-" Map <Tab> to either actually insert a <Tab> if
-" the current line is currently only whitespace, or start a omni
-" completion operation.
-function! CleverTab()
-    if strpart(getline('.'), 0, col('.')-1) =~ '^\s*$'
-        return "\<Tab>"
-    else
-        let current_path = bufname("%")  " get name of current buffer
-        let current_path = system("dirname " . current_path)
-        execute "cd " . current_path
-        execute "silent !ctags -R -f /tmp/tags ."
-        return "\<C-X>\<C-O>"
-    endif
-endfunction
-inoremap <Tab> <C-R>=CleverTab()<CR>
+" " Don't show the preview window.
+" set completeopt=menu
+" 
+" set tags+=~/.vim/systags,/tmp/tags
+" 
+" " Map <Tab> to either actually insert a <Tab> if
+" " the current line is currently only whitespace, or start a omni
+" " completion operation.
+" function! CleverTab()
+"     if strpart(getline('.'), 0, col('.')-1) =~ '^\s*$'
+"         return "\<Tab>"
+"     else
+"         let current_path = bufname("%")  " get name of current buffer
+"         let current_path = system("dirname " . current_path)
+"         execute "cd " . current_path
+"         execute "silent !ctags -R -f /tmp/tags ."
+"         return "\<C-X>\<C-O>"
+"     endif
+" endfunction
+" inoremap <Tab> <C-R>=CleverTab()<CR>
 
 " ----------------------------------------------------------------------
 " PLUGINS SETTINGS
@@ -154,3 +157,6 @@ inoremap <Tab> <C-R>=CleverTab()<CR>
 " MiniBufferExplorer
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
+
+" SuperTab
+let g:SuperTabDefaultCompletionType = "context"

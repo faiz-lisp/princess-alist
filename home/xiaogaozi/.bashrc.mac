@@ -76,8 +76,10 @@ export LESS_TERMCAP_us=$'\E[01;33m'
 export LESS='-R'
 
 # MacPorts Installer addition on 2010-10-08_at_20:53:32: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/bin:/Users/xiaogaozi/Repositories/SVN/depot_tools:$PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
 defaults write ~/.MacOSX/environment PATH "$PATH"
 
 export EDITOR=/opt/local/bin/vim
+
+export GOBIN=/opt/local/bin

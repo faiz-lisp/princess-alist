@@ -1,34 +1,41 @@
 ;; ----------------------------------------------------------------------
-;; GENERAL SETTINGS
+;; CUSTOMIZATION SETTINGS
 ;; ----------------------------------------------------------------------
 
-;; Set the debug option to enable a backtrace when a problem occurs.
-(setq debug-on-error t)
-
-;; Share clipboard.
-(setq x-select-enable-clipboard t)
-
-;; Display column.
-(setq column-number-mode t)
-
-;; Show parentheses math.
-(show-paren-mode t)
-
-;; ;; Hide toolbar.
-;; (tool-bar-mode nil)
-
-;; Mouse, please leave me alone!
-(mouse-avoidance-mode 'animate)
-
-;; ;; Column limit for auto-fill-mode.
-;; (add-hook 'erc-mode-hook 'turn-on-auto-fill)
-;; (setq-default fill-column 60)
-
-;; Basic indentation.
-(setq default-tab-width 4)
-
-;; Convert TAB to SPACE.
-(setq-default indent-tabs-mode nil)
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(TeX-output-view-style (quote (("^dvi$nnnnnnn" ("^landscape$" "^pstricks$\\|^pst-\\|^psfrag$") "%(o?)dvips -t landscape %d -o && gv %f") ("^dvi$" "^pstricks$\\|^pst-\\|^psfrag$" "%(o?)dvips %d -o && gv %f") ("^dvi$" ("^a4\\(?:dutch\\|paper\\|wide\\)\\|sem-a4$" "^landscape$") "%(o?)xdvi %dS -paper a4r -s 0 %d") ("^dvi$" "^a4\\(?:dutch\\|paper\\|wide\\)\\|sem-a4$" "%(o?)xdvi %dS -paper a4 %d") ("^dvi$" ("^a5\\(?:comb\\|paper\\)$" "^landscape$") "%(o?)xdvi %dS -paper a5r -s 0 %d") ("^dvi$" "^a5\\(?:comb\\|paper\\)$" "%(o?)xdvi %dS -paper a5 %d") ("^dvi$" "^b5paper$" "%(o?)xdvi %dS -paper b5 %d") ("^dvi$" "^letterpaper$" "%(o?)xdvi %dS -paper us %d") ("^dvi$" "^legalpaper$" "%(o?)xdvi %dS -paper legal %d") ("^dvi$" "^executivepaper$" "%(o?)xdvi %dS -paper 7.25x10.5in %d") ("^dvi$" "." "%(o?)xdvi %dS %d") ("^pdf$" "." "acroread %o %(outpage)") ("^html?$" "." "netscape %o"))))
+ '(column-number-mode t)
+ '(debug-on-error nil)
+ '(gdb-many-windows t)
+ '(gdb-use-separate-io-buffer t)
+ '(indent-tabs-mode nil)
+ '(mouse-avoidance-mode (quote animate) nil (avoid))
+ '(show-paren-mode t)
+ '(tab-width 4)
+ '(tool-bar-mode nil))
+ ;; '(ecb-auto-activate t)
+ ;; '(ecb-fix-window-size t)
+ ;; '(ecb-layout-window-sizes (quote (("left8" (0.16774193548387098 . 0.2894736842105263) (0.16774193548387098 . 0.23684210526315788) (0.16774193548387098 . 0.2894736842105263) (0.16774193548387098 . 0.15789473684210525)))))
+ ;; '(ecb-options-version "2.32")
+ ;; '(ecb-tip-of-the-day nil)
+ ;; '(ecb-windows-width 0.33)
+ ;; '(erc-autojoin-channels-alist (quote (("freenode.net" "#ubuntu-cn" "#cuit-uif"))))
+ ;; '(erc-nick "Dreamseeker")
+ ;; '(erc-part-reason-various-alist (quote (("night" "Bonne Nuit :P"))))
+ ;; '(erc-port 6667)
+ ;; '(erc-server "irc.freenode.net")
+ ;; '(erc-user-full-name "Dreamseeker")
+ ;; '(jde-jdk-registry (quote (("1.6.0_06" . "/usr/lib/jvm/java-6-sun")))))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
 
 ;; Font settings.
 (set-face-attribute 'default nil :font "Monaco 12")
@@ -36,17 +43,6 @@
   (set-fontset-font (frame-parameter nil 'font)
                     charset
                     (font-spec :family "Hiragino Sans GB" :size 12)))
-
-;; Make `M-w' can copy a line.
-(defun xiaogaozi-kill-ring-save (&optional n)
-  "If region is active, copy region. Otherwise, copy line."
-  (interactive "p")
-  (if mark-active
-      (kill-ring-save (region-beginning) (region-end))
-    (if (> n 0)
-        (kill-ring-save (line-beginning-position) (line-end-position n))
-      (kill-ring-save (line-beginning-position n) (line-end-position)))))
-(global-set-key (kbd "M-w") 'xiaogaozi-kill-ring-save)
 
 ;; ----------------------------------------------------------------------
 ;; INDENTATION
@@ -106,20 +102,19 @@
 (add-hook 'java-mode-hook 'my-java-mode-hook)
 
 ;; ----------------------------------------------------------------------
-;; KEYBINDINGS
+;; KEY BINDINGS
 ;; ----------------------------------------------------------------------
 
 ;; Replace `C-@' to `C-^'.
 (global-set-key (kbd "C-^") 'set-mark-command)
-
-;; GDB
-(global-set-key (kbd "<f7>") 'gdb)
 
 ;; Compile
 (global-set-key (kbd "<f8>") 'compile)
 
 ;; Auto indent when Enter.
 (global-set-key "\r" 'newline-and-indent)
+
+(windmove-default-keybindings)
 
 (setq skeleton-pair-alist nil)
 (setq skeleton-pair t)
@@ -128,6 +123,17 @@
 (global-set-key (kbd "<") 'skeleton-pair-insert-maybe)
 (global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
 (global-set-key (kbd "'") 'skeleton-pair-insert-maybe)
+
+;; Make `M-w' can copy a line.
+(defun xiaogaozi-kill-ring-save (&optional n)
+  "If region is active, copy region. Otherwise, copy line."
+  (interactive "p")
+  (if mark-active
+      (kill-ring-save (region-beginning) (region-end))
+    (if (> n 0)
+        (kill-ring-save (line-beginning-position) (line-end-position n))
+      (kill-ring-save (line-beginning-position n) (line-end-position)))))
+(global-set-key (kbd "M-w") 'xiaogaozi-kill-ring-save)
 
 ;; YASnippet
 (global-set-key (kbd "M-s i") 'yas/insert-snippet)
@@ -147,36 +153,6 @@
 ;; (global-set-key (kbd "<f5>") 'emms-playlist-mode-go)
 
 ;; ----------------------------------------------------------------------
-;; CUSTOMIZE
-;; ----------------------------------------------------------------------
-
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(TeX-output-view-style (quote (("^dvi$nnnnnnn" ("^landscape$" "^pstricks$\\|^pst-\\|^psfrag$") "%(o?)dvips -t landscape %d -o && gv %f") ("^dvi$" "^pstricks$\\|^pst-\\|^psfrag$" "%(o?)dvips %d -o && gv %f") ("^dvi$" ("^a4\\(?:dutch\\|paper\\|wide\\)\\|sem-a4$" "^landscape$") "%(o?)xdvi %dS -paper a4r -s 0 %d") ("^dvi$" "^a4\\(?:dutch\\|paper\\|wide\\)\\|sem-a4$" "%(o?)xdvi %dS -paper a4 %d") ("^dvi$" ("^a5\\(?:comb\\|paper\\)$" "^landscape$") "%(o?)xdvi %dS -paper a5r -s 0 %d") ("^dvi$" "^a5\\(?:comb\\|paper\\)$" "%(o?)xdvi %dS -paper a5 %d") ("^dvi$" "^b5paper$" "%(o?)xdvi %dS -paper b5 %d") ("^dvi$" "^letterpaper$" "%(o?)xdvi %dS -paper us %d") ("^dvi$" "^legalpaper$" "%(o?)xdvi %dS -paper legal %d") ("^dvi$" "^executivepaper$" "%(o?)xdvi %dS -paper 7.25x10.5in %d") ("^dvi$" "." "%(o?)xdvi %dS %d") ("^pdf$" "." "acroread %o %(outpage)") ("^html?$" "." "netscape %o")))))
- ;; '(ecb-auto-activate t)
- ;; '(ecb-fix-window-size t)
- ;; '(ecb-layout-window-sizes (quote (("left8" (0.16774193548387098 . 0.2894736842105263) (0.16774193548387098 . 0.23684210526315788) (0.16774193548387098 . 0.2894736842105263) (0.16774193548387098 . 0.15789473684210525)))))
- ;; '(ecb-options-version "2.32")
- ;; '(ecb-tip-of-the-day nil)
- ;; '(ecb-windows-width 0.33)
- ;; '(erc-autojoin-channels-alist (quote (("freenode.net" "#ubuntu-cn" "#cuit-uif"))))
- ;; '(erc-nick "Dreamseeker")
- ;; '(erc-part-reason-various-alist (quote (("night" "Bonne Nuit :P"))))
- ;; '(erc-port 6667)
- ;; '(erc-server "irc.freenode.net")
- ;; '(erc-user-full-name "Dreamseeker")
- ;; '(jde-jdk-registry (quote (("1.6.0_06" . "/usr/lib/jvm/java-6-sun")))))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
-
-;; ----------------------------------------------------------------------
 ;; SITE-LISP
 ;; ----------------------------------------------------------------------
 
@@ -185,6 +161,9 @@
 ;; AsciiDoc Major Mode
 (autoload 'doc-mode "doc-mode")
 (add-to-list 'auto-mode-alist (cons "\\.txt\\'" 'doc-mode))
+
+;; Go Major Mode
+(require 'go-mode-load)
 
 ;; ;; color-theme
 ;; (add-to-list 'load-path "/opt/local/share/emacs/site-lisp/color-theme-6.6.0")
@@ -307,24 +286,42 @@
 (yas/load-directory "~/.emacs.d/site-lisp/yasnippet-0.6.1c/snippets")
 (setq yas/prompt-functions '(yas/dropdown-prompt))
 
-;; ;; Auto-Complete
-;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/auto-complete/")
-;; (require 'auto-complete)
-;; (require 'auto-complete-config)
-;; (setq-default ac-sources '(ac-source-words-in-same-mode-buffers ac-source-yasnippet))
-;; (add-hook 'emacs-lisp-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-symbols)))
-;; (add-hook 'auto-complete-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-filename)))
-;; (add-hook 'c++-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-c++-keywords)))
-;; (add-hook 'css-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-css-keywords)))
-;; (add-hook 'python-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-ropemacs)))
-;; (global-auto-complete-mode t)
-;; (set-face-background 'ac-candidate-face "lightgray")
-;; (set-face-underline 'ac-candidate-face "darkgray")
-;; (set-face-background 'ac-selection-face "steelblue")
-;; (setq ac-dwim t)
-;; ;; Use C-n/C-p to select candidates
-;; (define-key ac-complete-mode-map "\C-n" 'ac-next)
-;; (define-key ac-complete-mode-map "\C-p" 'ac-previous)
+;; Auto Complete Mode
+(add-to-list 'load-path "~/.emacs.d/site-lisp/auto-complete/")
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/site-lisp/auto-complete/ac-dict")
+(ac-config-default)
+
+(defadvice gud-display-line (before turn-on-hl-line-mode activate)
+  "Turn on highlight line mode."
+  (set-buffer (gud-find-file true-file))
+  (hl-line-mode 1))
+
+(defun turn-off-hl-line-mode ()
+  "Turn off highlight line mode."
+  (dolist (buf (buffer-list))
+    (set-buffer buf)
+    (hl-line-mode -1)))
+
+(defadvice gud-kill-buffer-hook (before turn-off-hl-when-kill-buffer activate)
+  (turn-off-hl-line-mode))
+
+;; (defadvice kill-process (before turn-off-hl-when-kill-process activate)
+;;   "Turn off highlight line mode."
+;;   (if (string-match "^gud-" (process-name process))
+;;       (turn-off-hl-line-mode)))
+
+;; (defadvice gdb-setup-windows (after gdb-setup-more-windows activate)
+;;   "Customization window layout."
+;;   (setq gdb-pending-triggers (delq 'gdb-invalidate-assembler gdb-pending-triggers))
+;;   (gdb-display-assembler-buffer))
+;;   ;; (other-window 3)
+;;   ;; (delete-window)
+;;   ;; (split-window)
+;;   ;; (other-window 1)
+;;   ;; (set-window-buffer (selected-window) (get-buffer (gdb-assembler-buffer-name)))
+;;   ;; (other-window -2))
 
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and

@@ -1,5 +1,5 @@
 % <one line to give the program's name and a brief idea of what it does.> <project url>
-% Copyright (C) <year>  xiaogaozi <gaochangjian@gmail.com>
+% Copyright (C) (>>>YEAR<<<)  xiaogaozi <gaochangjian@gmail.com>
 % 
 % This program is free software: you can redistribute it and/or modify
 % it under the terms of the GNU General Public License as published by
@@ -63,7 +63,7 @@
 
 \usepackage[top=1in,bottom=1in,left=1.25in,right=1.25in]{geometry} % 设置页边距
 
-\setlength{\belowcaptionskip}{1em} % 设置caption之后的距离
+% \setlength{\belowcaptionskip}{1em} % 设置caption之后的距离
 
 % XeTeX logo
 \def\XeTeX{\leavevmode

@@ -89,10 +89,34 @@
 
 #inner3
 {
-    margin: 50px 200px 50px 230px;
+    margin: 50px 200px 50px 225px;
 }
 
 #inner3 p
 {
     line-height: 145%;
+}
+
+/* about */
+
+.motto
+{
+    margin-top: -20px;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Cedarville Cursive', arial, serif;
+}
+
+.motto:before
+{
+    content: '\201C';
+    font-size: 150%;
+    font-family: 'Bigshot One', arial, serif;
+}
+
+.motto:after
+{
+    content: '\201D';
+    font-size: 150%;
+    font-family: 'Bigshot One', arial, serif;
 }
