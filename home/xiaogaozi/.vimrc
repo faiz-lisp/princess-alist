@@ -82,7 +82,9 @@ set cinoptions=>4,g0,h4,(0
 set diffopt=vertical
 
 " Change the color cheme.
-colorscheme slate
+if has("gui_running")
+    colorscheme slate
+endif
 
 " Cancel the toolbar.
 set guioptions-=T

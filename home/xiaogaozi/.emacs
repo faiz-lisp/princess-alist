@@ -50,14 +50,14 @@
 
 ;; C
 (defun my-c-mode-hook ()
-    (setq comment-start "// ")
-    (setq comment-end "")
-    (c-set-offset 'substatement-open 0)
-    (c-set-offset 'case-label 4)
-    (c-set-offset 'statement-case-open 4)
-    (c-set-offset 'defun-block-intro 4)
-    (c-set-offset 'brace-list-intro 4)
-    (c-set-offset 'topmost-intro 2))
+  (setq comment-start "// ")
+  (setq comment-end "")
+  (c-set-offset 'substatement-open 0)
+  (c-set-offset 'case-label 4)
+  (c-set-offset 'statement-case-open 4)
+  (c-set-offset 'defun-block-intro 4)
+  (c-set-offset 'brace-list-intro 4)
+  (c-set-offset 'topmost-intro 2))
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 
 ;; C++
@@ -165,14 +165,15 @@
 ;; Go Major Mode
 (require 'go-mode-load)
 
-;; ;; color-theme
-;; (add-to-list 'load-path "/opt/local/share/emacs/site-lisp/color-theme-6.6.0")
-;; (load-file "~/.emacs.d/site-lisp/color-theme-blackboard.el")
-;; (require 'color-theme)
-;; (eval-after-load "color-theme"
-;;   '(progn
-;;      (color-theme-initialize)
-;;      (color-theme-blackboard)))
+;; color-theme
+(add-to-list 'load-path "/opt/local/share/emacs/site-lisp/color-theme-6.6.0")
+(require 'color-theme)
+(eval-after-load "color-theme"
+  '(progn
+     (color-theme-initialize)
+     (color-theme-hober)))
+(require 'color-theme-tomorrow)
+(color-theme-tomorrow-night-bright)
 
 ;; template
 (require 'template)

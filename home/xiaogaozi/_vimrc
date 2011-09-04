@@ -82,7 +82,9 @@ set cinoptions=>4,g0,h4,(0
 set diffopt=vertical
 
 " Change the color cheme.
-colorscheme slate
+if has("gui_running")
+    colorscheme slate
+endif
 
 " Cancel the toolbar.
 set guioptions-=T
@@ -96,6 +98,9 @@ set guifont=Consolas:h11
 " Turn on persistent undo.
 set undofile
 
+" Extended "%" matching
+source $VIMRUNTIME/macros/matchit.vim
+
 " Template for Vim.
 autocmd BufNewFile *.c 0r $HOME/.templates/TEMPLATE.c.tpl
 autocmd BufNewFile *.h 0r $HOME/.templates/TEMPLATE.h.tpl
@@ -104,7 +109,7 @@ autocmd BufNewFile *.py 0r $HOME/.templates/TEMPLATE.py.tpl
 autocmd BufNewFile *.cpp 0r $HOME/.templates/TEMPLATE.cpp.tpl
 autocmd BufNewFile *.html 0r $HOME/.templates/TEMPLATE.html.tpl
 autocmd BufNewFile Makefile 0r $HOME/.templates/Makefile.tpl
-autocmd BufNewFile CMakeLists.txt.tpl 0r $HOME/.templates/CMakeLists.txt.tpl
+autocmd BufNewFile CMakeLists.txt 0r $HOME/.templates/CMakeLists.txt.tpl
 
 " ----------------------------------------------------------------------
 " KEYBINDINGS
@@ -126,26 +131,26 @@ inoremap <C-B> <Esc>A;
 " OMNI COMPLETION
 " ----------------------------------------------------------------------
 
-" Don't show the preview window.
-set completeopt=menu
-
-set tags+=~/.vim/systags,$TEMP/tags
-
-" Map <Tab> to either actually insert a <Tab> if
-" the current line is currently only whitespace, or start a omni
-" completion operation.
-function! CleverTab()
-    if strpart(getline('.'), 0, col('.')-1) =~ '^\s*$'
-        return "\<Tab>"
-    else
-        let current_path = bufname("%")  " get name of current buffer
-        let current_path = system("dirname " . current_path)
-        execute "cd " . current_path
-        execute "silent !ctags -R -f " . $TEMP . "/tags ."
-        return "\<C-X>\<C-O>"
-    endif
-endfunction
-inoremap <Tab> <C-R>=CleverTab()<CR>
+" " Don't show the preview window.
+" set completeopt=menu
+" 
+" set tags+=~/.vim/systags,$TEMP/tags
+" 
+" " Map <Tab> to either actually insert a <Tab> if
+" " the current line is currently only whitespace, or start a omni
+" " completion operation.
+" function! CleverTab()
+"     if strpart(getline('.'), 0, col('.')-1) =~ '^\s*$'
+"         return "\<Tab>"
+"     else
+"         let current_path = bufname("%")  " get name of current buffer
+"         let current_path = system("dirname " . current_path)
+"         execute "cd " . current_path
+"         execute "silent !ctags -R -f " . $TEMP . "/tags ."
+"         return "\<C-X>\<C-O>"
+"     endif
+" endfunction
+" inoremap <Tab> <C-R>=CleverTab()<CR>
 
 " ----------------------------------------------------------------------
 " PLUGINS SETTINGS
