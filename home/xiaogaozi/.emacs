@@ -38,11 +38,11 @@
  )
 
 ;; Font settings.
-(set-face-attribute 'default nil :font "Monaco 12")
+(set-face-attribute 'default nil :font "Monaco 13")
 (dolist (charset '(kana han symbol cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font)
                     charset
-                    (font-spec :family "Hiragino Sans GB" :size 12)))
+                    (font-spec :family "Hiragino Sans GB" :size 13)))
 
 ;; ----------------------------------------------------------------------
 ;; INDENTATION

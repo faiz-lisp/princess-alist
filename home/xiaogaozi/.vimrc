@@ -78,6 +78,8 @@ set softtabstop=4
 set tabstop=4
 set cinoptions=>4,g0,h4,(0
 
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,default,latin1
+
 " Options for using diff mode.
 set diffopt=vertical
 
@@ -93,7 +95,9 @@ set guioptions-=T
 set expandtab
 
 " Set font.
-" set guifont=Monaco\ 11
+if has("gui_running")
+    set guifont=Menlo\ 12
+endif
 
 " Turn on persistent undo.
 set undofile

@@ -20,7 +20,7 @@ for file in $*; do
     rm -f $temperrorfile
   fi
 
-  # Convert encode from GB2312 to UTF8.
+  # Convert encode from GB2312 to UTF-8.
   echo -en "\033[01;33m"$filename"\033[00m: convert encode... "
   iconv -f GB2312 -cs $file > $tempfile 2>> $temperrorfile
   echo -e "\033[01;32mdone"

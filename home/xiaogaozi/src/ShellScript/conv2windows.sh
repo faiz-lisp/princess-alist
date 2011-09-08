@@ -20,7 +20,7 @@ for file in $*; do
     rm -f $temperrorfile
   fi
 
-  # Convert encode from UTF8 to GB2312.
+  # Convert encode from UTF-8 to GB2312.
   echo -en "\033[01;33m"$filename"\033[00m: convert encode... "
   iconv -cs -t GB2312 $file > $tempfile 2>> $temperrorfile
   echo -e "\033[01;32mdone"
@@ -28,7 +28,7 @@ for file in $*; do
 
   # Add the tail of line.
   echo -en "\033[01;33m"$filename"\033[00m: add <CR>... "
-  cat $tempfile | tr "\n" "\r" | sed 's/\r/\r\n/g' > $convfile 2>> $temperrorfile
+  cat $tempfile | sed 's/\n/\r\n/g' > $convfile 2>> $temperrorfile
   echo -e "\033[01;32mdone"
   echo -en "\033[00m"
 
