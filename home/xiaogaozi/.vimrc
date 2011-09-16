@@ -111,6 +111,7 @@ autocmd BufNewFile *.h 0r ~/.templates/TEMPLATE.h.tpl
 autocmd BufNewFile *.sh 0r ~/.templates/TEMPLATE.sh.tpl
 autocmd BufNewFile *.py 0r ~/.templates/TEMPLATE.py.tpl
 autocmd BufNewFile *.cpp 0r ~/.templates/TEMPLATE.cpp.tpl
+autocmd BufNewFile *.gyp 0r ~/.templates/TEMPLATE.gyp.tpl
 autocmd BufNewFile *.html 0r ~/.templates/TEMPLATE.html.tpl
 autocmd BufNewFile Makefile 0r ~/.templates/Makefile.tpl
 autocmd BufNewFile CMakeLists.txt 0r ~/.templates/CMakeLists.txt.tpl
@@ -119,10 +120,10 @@ autocmd BufNewFile CMakeLists.txt 0r ~/.templates/CMakeLists.txt.tpl
 " KEYBINDINGS
 " ----------------------------------------------------------------------
 
-noremap <F12> :make<CR>
-noremap <F11> :cp<CR>  " previous error
-noremap <F10> :cn<CR>  " next error
-noremap <F9> <Esc><C-W>v<C-W><C-L>:copen<CR><C-W><C-K>:q<CR>
+noremap <Leader>Q <Esc><C-W>v<C-W><C-L>:copen<CR><C-W><C-K>:q<CR>
+noremap <Leader>W :make<CR>
+noremap <C-_> :cp<CR>  " previous error
+noremap <C-\> :cn<CR>  " next error
 
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
