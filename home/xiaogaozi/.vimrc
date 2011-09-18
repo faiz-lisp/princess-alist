@@ -100,7 +100,9 @@ if has("gui_running")
 endif
 
 " Turn on persistent undo.
-set undofile
+if v:version >= 703
+    set undofile
+endif
 
 " Extended "%" matching
 source $VIMRUNTIME/macros/matchit.vim
