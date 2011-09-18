@@ -16,7 +16,7 @@ WCPATH = sys.argv[5]
 # Call the merge command (change the following line to make sense for
 # your merge program).
 cmd = [MERGE, BASE, MINE, THEIRS, MERGED]
-os.execv(cmd[0], cmd)
+os.execvp(cmd[0], cmd)
 
 # Return an errorcode of 0 if the conflict was resolved; 1 otherwise.
 # Any other errorcode will be treated as fatal.
