@@ -48,49 +48,49 @@
 ;; INDENTATION
 ;; ----------------------------------------------------------------------
 
-;; C
-(defun my-c-mode-hook ()
-  (setq comment-start "// ")
-  (setq comment-end "")
-  (c-set-offset 'substatement-open 0)
-  (c-set-offset 'case-label 4)
-  (c-set-offset 'statement-case-open 4)
-  (c-set-offset 'defun-block-intro 4)
-  (c-set-offset 'brace-list-intro 4)
-  (c-set-offset 'topmost-intro 2))
-(add-hook 'c-mode-hook 'my-c-mode-hook)
-
-;; C++
-(defconst my-c++-style
-  '((c-hanging-braces-alist . ((substatement-open after)
-                               (brace-list-open)))
-    (c-hanging-colons-alist . ((member-init-intro before)
-                               (inher-intro)
-                               (case-label after)
-                               (label after)
-                               (access-label after)))
-    (c-cleanup-list         . (scope-operator
-                               empty-defun-braces
-                               defun-close-semi))
-    (c-offsets-alist        . ((arglist-close . c-lineup-arglist)
-                               (substatement-open . 0)
-                               (topmost-intro     . 0)
-                               (case-label        . 4)
-                               (access-label      . -2)
-                               (inline-open       . 0)
-                               (member-init-intro . 4)
-                               (defun-block-intro . 4)
-                               (inline-close      . 0)
-                               (substatement      . 4)
-                               (statement-block-intro . 4)
-                               (block-open        . 0)
-                               (knr-argdecl-intro . -)
-                               (brace-list-intro  . 4))))
-  "My C++ Programming Style")
-(c-add-style "PERSONAL" my-c++-style)
-(defun my-c++-mode-hook ()
-  (c-set-style "PERSONAL"))
-(add-hook 'c++-mode-hook 'my-c++-mode-hook)
+;; ;; C
+;; (defun my-c-mode-hook ()
+;;   (setq comment-start "// ")
+;;   (setq comment-end "")
+;;   (c-set-offset 'substatement-open 0)
+;;   (c-set-offset 'case-label 4)
+;;   (c-set-offset 'statement-case-open 4)
+;;   (c-set-offset 'defun-block-intro 4)
+;;   (c-set-offset 'brace-list-intro 4)
+;;   (c-set-offset 'topmost-intro 2))
+;; (add-hook 'c-mode-hook 'my-c-mode-hook)
+;; 
+;; ;; C++
+;; (defconst my-c++-style
+;;   '((c-hanging-braces-alist . ((substatement-open after)
+;;                                (brace-list-open)))
+;;     (c-hanging-colons-alist . ((member-init-intro before)
+;;                                (inher-intro)
+;;                                (case-label after)
+;;                                (label after)
+;;                                (access-label after)))
+;;     (c-cleanup-list         . (scope-operator
+;;                                empty-defun-braces
+;;                                defun-close-semi))
+;;     (c-offsets-alist        . ((arglist-close . c-lineup-arglist)
+;;                                (substatement-open . 0)
+;;                                (topmost-intro     . 0)
+;;                                (case-label        . 4)
+;;                                (access-label      . -2)
+;;                                (inline-open       . 0)
+;;                                (member-init-intro . 4)
+;;                                (defun-block-intro . 4)
+;;                                (inline-close      . 0)
+;;                                (substatement      . 4)
+;;                                (statement-block-intro . 4)
+;;                                (block-open        . 0)
+;;                                (knr-argdecl-intro . -)
+;;                                (brace-list-intro  . 4))))
+;;   "My C++ Programming Style")
+;; (c-add-style "PERSONAL" my-c++-style)
+;; (defun my-c++-mode-hook ()
+;;   (c-set-style "PERSONAL"))
+;; (add-hook 'c++-mode-hook 'my-c++-mode-hook)
 
 ;; Java
 (defun my-java-mode-hook ()
@@ -157,6 +157,11 @@
 ;; ----------------------------------------------------------------------
 
 (add-to-list 'load-path "~/.emacs.d/site-lisp")
+
+;; Google's C/C++ style for c-mode
+(require 'google-c-style)
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
 ;; AsciiDoc Major Mode
 (autoload 'doc-mode "doc-mode")

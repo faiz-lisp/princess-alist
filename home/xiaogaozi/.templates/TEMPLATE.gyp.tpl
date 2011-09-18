@@ -1,4 +1,4 @@
-# -*- Mode: Python; tab-width: 2; indent-tabs-mode: nil -*-
+# -*- mode: Python; tab-width: 2; indent-tabs-mode: nil -*-
 # vim: set filetype=python tabstop=2 shiftwidth=2 softtabstop=2 expandtab:
 
 {
