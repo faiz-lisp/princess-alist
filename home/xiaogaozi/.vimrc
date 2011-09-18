@@ -125,6 +125,8 @@ noremap <Leader>W :make<CR>
 noremap <C-_> :cp<CR>  " previous error
 noremap <C-\> :cn<CR>  " next error
 
+noremap <Leader>T :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
 inoremap " ""<Esc>i
@@ -138,9 +140,10 @@ inoremap <C-B> <Esc>A;
 
 " " Don't show the preview window.
 " set completeopt=menu
-" 
-" set tags+=~/.vim/systags,/tmp/tags
-" 
+
+set tags+=~/.vim/tags/systags  " /usr/include
+set tags+=~/.vim/tags/cpptags  " http://www.vim.org/scripts/script.php?script_id=2358
+
 " " Map <Tab> to either actually insert a <Tab> if
 " " the current line is currently only whitespace, or start a omni
 " " completion operation.
@@ -161,9 +164,14 @@ inoremap <C-B> <Esc>A;
 " PLUGINS SETTINGS
 " ----------------------------------------------------------------------
 
-" MiniBufferExplorer
+" MiniBufferExplorer (http://www.vim.org/scripts/script.php?script_id=159)
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 
-" SuperTab
+" SuperTab (http://www.vim.org/scripts/script.php?script_id=1643)
 let g:SuperTabDefaultCompletionType = "context"
+
+" OmniCppComplete (http://www.vim.org/scripts/script.php?script_id=1520)
+let OmniCpp_SelectFirstItem = 1
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
