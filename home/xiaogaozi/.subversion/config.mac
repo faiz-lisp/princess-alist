@@ -57,7 +57,7 @@ editor-cmd = vim
 ### Set merge-tool-cmd to the command used to invoke your external
 ### merging tool of choice. Subversion will pass 4 arguments to
 ### the specified command: base theirs mine merged
-merge-tool-cmd = ~/Repositories/SVN/princess-alist/home/xiaogaozi/src/Python/mergewrap.py
+merge-tool-cmd = /Users/xiaogaozi/Repositories/SVN/princess-alist/home/xiaogaozi/src/Python/mergewrap.py
 
 ### Section for configuring tunnel agents.
 [tunnels]
