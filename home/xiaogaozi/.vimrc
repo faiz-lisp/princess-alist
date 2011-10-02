@@ -142,7 +142,7 @@ if has("cscope")
     endif
     set csverb
 endif
-noremap <Leader>C :!cscope -Rbq<CR>
+noremap <Leader>C :!cscope -Rbkq<CR>
 noremap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 noremap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
 noremap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
