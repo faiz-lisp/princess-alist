@@ -129,6 +129,28 @@ noremap <C-\> :cn<CR>  " next error
 
 noremap <Leader>T :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
+" cscope
+if has("cscope")
+    set nocsverb
+    " add any database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
+    " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+    set csverb
+endif
+noremap <Leader>C :!cscope -Rbq<CR>
+noremap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+noremap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+noremap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+noremap <C-_>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+noremap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+noremap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+noremap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+noremap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
 inoremap " ""<Esc>i
