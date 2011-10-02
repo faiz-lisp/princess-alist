@@ -131,6 +131,7 @@ noremap <Leader>T :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " cscope
 if has("cscope")
+	set cscopequickfix=s-,c-,d-,i-,t-,e-
     set nocsverb
     " add any database in current directory
     if filereadable("cscope.out")
