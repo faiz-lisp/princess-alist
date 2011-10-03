@@ -78,6 +78,8 @@ set softtabstop=4
 set tabstop=4
 set cinoptions=>4,g0,h4,(0
 
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,default,latin1
+
 " Options for using diff mode.
 set diffopt=vertical
 
@@ -93,32 +95,62 @@ set guioptions-=T
 set expandtab
 
 " Set font.
-set guifont=Consolas:h11
+if has("gui_running")
+    set guifont=Consolas:h11
+endif
 
 " Turn on persistent undo.
-set undofile
+if v:version >= 703
+    set undofile
+endif
 
 " Extended "%" matching
 source $VIMRUNTIME/macros/matchit.vim
 
 " Template for Vim.
-autocmd BufNewFile *.c 0r $HOME/.templates/TEMPLATE.c.tpl
-autocmd BufNewFile *.h 0r $HOME/.templates/TEMPLATE.h.tpl
-autocmd BufNewFile *.sh 0r $HOME/.templates/TEMPLATE.sh.tpl
-autocmd BufNewFile *.py 0r $HOME/.templates/TEMPLATE.py.tpl
-autocmd BufNewFile *.cpp 0r $HOME/.templates/TEMPLATE.cpp.tpl
-autocmd BufNewFile *.html 0r $HOME/.templates/TEMPLATE.html.tpl
-autocmd BufNewFile Makefile 0r $HOME/.templates/Makefile.tpl
-autocmd BufNewFile CMakeLists.txt 0r $HOME/.templates/CMakeLists.txt.tpl
+autocmd BufNewFile *.c 0r $ALIST/.templates/TEMPLATE.c.tpl
+autocmd BufNewFile *.h 0r $ALIST/.templates/TEMPLATE.h.tpl
+autocmd BufNewFile *.sh 0r $ALIST/.templates/TEMPLATE.sh.tpl
+autocmd BufNewFile *.py 0r $ALIST/.templates/TEMPLATE.py.tpl
+autocmd BufNewFile *.cpp 0r $ALIST/.templates/TEMPLATE.cpp.tpl
+autocmd BufNewFile *.gyp 0r $ALIST/.templates/TEMPLATE.gyp.tpl
+autocmd BufNewFile *.html 0r $ALIST/.templates/TEMPLATE.html.tpl
+autocmd BufNewFile Makefile 0r $ALIST/.templates/Makefile.tpl
+autocmd BufNewFile CMakeLists.txt 0r $ALIST/.templates/CMakeLists.txt.tpl
 
 " ----------------------------------------------------------------------
 " KEYBINDINGS
 " ----------------------------------------------------------------------
 
-noremap <F12> :make<CR>
-noremap <F11> :cp<CR>  " previous error
-noremap <F10> :cn<CR>  " next error
-noremap <F9> <Esc><C-W>v<C-W><C-L>:copen<CR><C-W><C-K>:q<CR>
+noremap <Leader>Q <Esc><C-W>v<C-W><C-L>:copen<CR><C-W><C-K>:q<CR>
+noremap <Leader>W :make<CR>
+noremap <C-_> :cp<CR>  " previous error
+noremap <C-\> :cn<CR>  " next error
+
+noremap <Leader>T :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
+" cscope
+if has("cscope")
+	set cscopequickfix=s-,c-,d-,i-,t-,e-
+    set nocsverb
+    " add any database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
+    " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+    set csverb
+endif
+noremap <Leader>C :!cscope -Rbkq<CR>
+noremap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+noremap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+noremap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+noremap <C-_>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+noremap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+noremap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+noremap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+noremap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
@@ -134,7 +166,8 @@ inoremap <C-B> <Esc>A;
 " " Don't show the preview window.
 " set completeopt=menu
 " 
-" set tags+=~/.vim/systags,$TEMP/tags
+" set tags+=~/.vim/tags/systags  " /usr/include
+" set tags+=~/.vim/tags/cpptags  " http://www.vim.org/scripts/script.php?script_id=2358
 " 
 " " Map <Tab> to either actually insert a <Tab> if
 " " the current line is currently only whitespace, or start a omni
@@ -156,6 +189,14 @@ inoremap <C-B> <Esc>A;
 " PLUGINS SETTINGS
 " ----------------------------------------------------------------------
 
-" MiniBufferExplorer
+" MiniBufferExplorer (http://www.vim.org/scripts/script.php?script_id=159)
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
+
+" SuperTab (http://www.vim.org/scripts/script.php?script_id=1643)
+let g:SuperTabDefaultCompletionType = "context"
+
+" OmniCppComplete (http://www.vim.org/scripts/script.php?script_id=1520)
+let OmniCpp_SelectFirstItem = 1
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
