@@ -165,7 +165,7 @@
 
 ;; AsciiDoc Major Mode
 (autoload 'doc-mode "doc-mode")
-(add-to-list 'auto-mode-alist (cons "\\.txt\\'" 'doc-mode))
+(add-to-list 'auto-mode-alist (cons "\\.\\(txt\\|asciidoc\\)\\'" 'doc-mode))
 
 ;; Go Major Mode
 (require 'go-mode-load)
