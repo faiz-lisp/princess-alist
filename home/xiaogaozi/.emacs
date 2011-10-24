@@ -44,6 +44,14 @@
                     charset
                     (font-spec :family "Hiragino Sans GB" :size 13)))
 
+;; Remember last cursor position.
+(setq save-place-file "~/.emacs.d/saveplace")
+(setq-default save-place t)
+(require 'saveplace)
+
+;; Set default spell checker.
+(setq-default ispell-program-name "aspell")
+
 ;; ----------------------------------------------------------------------
 ;; INDENTATION
 ;; ----------------------------------------------------------------------
@@ -169,6 +177,16 @@
 
 ;; Go Major Mode
 (require 'go-mode-load)
+
+;; Markdown Major Mode
+(autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
+(setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
+;; Unset markdown-mode TAB key binding.
+(defun markdown-unset-tab ()
+  "markdown-mode-hook"
+  (define-key markdown-mode-map (kbd "<tab>") nil))
+(add-hook 'markdown-mode-hook '(lambda() (markdown-unset-tab)))
+(add-hook 'markdown-mode-hook 'flyspell-mode)
 
 ;; color-theme
 (add-to-list 'load-path "/opt/local/share/emacs/site-lisp/color-theme-6.6.0")
