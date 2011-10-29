@@ -189,6 +189,9 @@ set tags+=~/.vim/tags/cpptags  " http://www.vim.org/scripts/script.php?script_id
 " PLUGINS SETTINGS
 " ----------------------------------------------------------------------
 
+" pathogen.vim (http://www.vim.org/scripts/script.php?script_id=2332)
+call pathogen#infect()
+
 " MiniBufferExplorer (http://www.vim.org/scripts/script.php?script_id=159)
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapCTabSwitchBufs = 1

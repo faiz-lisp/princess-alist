@@ -4,7 +4,11 @@
 {
   'target_defaults': {
     'conditions': [
-      ['OS=="linux" or OS=="mac"', {
+      ['OS=="linux"', {
+        'defines': [
+          '__unix__',
+          '_LINUX'
+        ],
         'cflags': [
           '-Wall'
         ]
@@ -13,11 +17,24 @@
         'defines': [
           'WIN32'
         ],
+        'msvs_configuration_attributes': {
+          'CharacterSet': '1'
+        },
         'msvs_settings': {
           'VCCLCompilerTool': {
-            'WarningLevel': '4'
+            'WarningLevel': '4',
+            'Detect64BitPortabilityProblems': 'true'
           }
         }
+      }],
+      ['OS=="mac"', {
+        'defines': [
+          '__unix__',
+          '_MACOS'
+        ],
+        'cflags': [
+          '-Wall'
+        ]
       }]
     ],
 
@@ -27,17 +44,18 @@
           '_DEBUG'
         ],
         'conditions': [
-          ['OS!="win"', {
+          ['OS=="linux" or OS=="freebsd" or OS=="openbsd"', {
             'cflags': [
               '-g'
             ]
-          }, {
-            'msvs_configuration_attributes': {
-              'CharacterSet': '1'
-            },
+          }],
+          ['OS=="win"', {
             'msvs_settings': {
               'VCCLCompilerTool': {
                 'Optimization': '0',
+                'MinimalRebuild': 'true',
+                'BasicRuntimeChecks': '3',
+                'DebugInformationFormat': '4',
 
                 'conditions': [
                   ['library=="shared_library"', {
@@ -48,10 +66,16 @@
                 ]
               },
               'VCLinkerTool': {
+                'GenerateDebugInformation': 'true',
                 'LinkIncremental': '2'
               }
             }
           }],
+          ['OS=="mac"', {
+            'xcode_settings': {
+              'GCC_GENERATE_DEBUGGING_SYMBOLS': 'YES'
+            }
+          }]
         ]
       },
 
@@ -63,9 +87,6 @@
             ]
           }],
           ['OS=="win"', {
-            'msvs_configuration_attributes': {
-              'CharacterSet': '1'
-            },
             'msvs_settings': {
               'VCCLCompilerTool': {
                 'Optimization': '2',
@@ -82,6 +103,7 @@
           }],
           ['OS=="mac"', {
             'xcode_settings': {
+              'GCC_GENERATE_DEBUGGING_SYMBOLS': 'NO',
               'GCC_OPTIMIZATION_LEVEL': '3',
 
               # -fstrict-aliasing. Mainline gcc enables
@@ -98,7 +120,7 @@
   'targets': [
     {
       'target_name': '(>>>FILE_SANS<<<)',
-      'type': '',  # executable, <(library)
+      'type': '(>>>POINT<<<)',  # executable, <(library)
       # 'dependencies': [
       # ],
       # 'defines': [
@@ -107,14 +129,32 @@
       # ],
       'sources': [
       ],
-      'conditions': [
-        ['OS!="win"', {
-          'ldflags': [
-            '-'
-          ]
-        }, {
-        }]
-      ]
+      # 'conditions': [
+      #   ['OS=="linux" or OS=="freebsd" or OS=="openbsd"', {
+      #     'ldflags': [
+      #       '-'
+      #     ]
+      #   }],
+      #   ['OS=="win"', {
+      #     'msvs_settings': {
+      #       'VCLinkerTool': {
+      #         'AdditionalDependencies': '',
+      #         'conditions': [
+      #           ['library=="static_library"', {
+      #             'AdditionalLibraryDirectories': '$(OutDir)\\lib'
+      #           }]
+      #         ]
+      #       }
+      #     }
+      #   }],
+      #   ['OS=="mac"', {
+      #     'link_settings': {
+      #       'libraries': [
+      #         ''
+      #       ]
+      #     }
+      #   }]
+      # ]
     }
   ]
 }
