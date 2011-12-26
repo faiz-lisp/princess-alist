@@ -83,7 +83,11 @@ def parse_output(root_dir, entry, output):
     print "[q] leave them alone"
 
     while True:
-        c = raw_input()[0]
+        inputs = raw_input()
+        if inputs == '':
+            continue
+
+        c = inputs[0]
         if c in ['a', 'A']:
             for v in question_items.itervalues():
                 os.system('svn add "%s"' % v)
@@ -92,7 +96,10 @@ def parse_output(root_dir, entry, output):
             for k, v in question_items.iteritems():
                 if sys.platform == 'win32':
                     sys.stdout.write('\b')
-                c = raw_input(k + ": apply [Y/n]? ")[0]
+                inputs = raw_input(k + ": apply [Y/n]? ")
+                if inputs == '':
+                    continue
+                c = inputs[0]
                 if c in ['y', 'Y']:
                     os.system('svn add "%s"' % v)
                 else:
@@ -155,7 +162,11 @@ def main():
                     continue
                 if sys.platform == 'win32':
                     sys.stdout.write('\b')
-                c = raw_input("commit now [Y/n]? ")[0]
+                inputs = raw_input("commit now [Y/n]? ")
+                if inputs == '':
+                    print
+                    continue
+                c = inputs[0]
                 if c in ['Y', 'y']:
                     commit(root_dir, entry)
                 print

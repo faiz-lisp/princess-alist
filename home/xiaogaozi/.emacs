@@ -317,6 +317,10 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/site-lisp/auto-complete/ac-dict")
 (ac-config-default)
 
+;; undo-tree
+(require 'undo-tree)
+(global-undo-tree-mode)
+
 (defadvice gud-display-line (before turn-on-hl-line-mode activate)
   "Turn on highlight line mode."
   (set-buffer (gud-find-file true-file))
