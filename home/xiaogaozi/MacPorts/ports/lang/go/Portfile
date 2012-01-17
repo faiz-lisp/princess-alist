@@ -100,10 +100,6 @@ destroot {
             ${destroot}${prefix}/bin
     } 
         
-    # lib files
-    file delete -force ${destroot}${prefix}/lib
-    file copy ${worksrcpath}/lib ${destroot}${prefix}
-
     # documentation
     xinstall -m 755 -d ${destroot}${prefix}/share/doc/
     file copy ${worksrcpath}/doc ${destroot}${prefix}/share/doc/${name}

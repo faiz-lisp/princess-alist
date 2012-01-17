@@ -199,7 +199,7 @@ let g:miniBufExplMapCTabSwitchBufs = 1
 " SuperTab (http://www.vim.org/scripts/script.php?script_id=1643)
 let g:SuperTabDefaultCompletionType = "context"
 
-" OmniCppComplete (http://www.vim.org/scripts/script.php?script_id=1520)
-let OmniCpp_SelectFirstItem = 1
+" " OmniCppComplete (http://www.vim.org/scripts/script.php?script_id=1520)
+" let OmniCpp_SelectFirstItem = 1
 " autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 " autocmd InsertLeave * if pumvisible() == 0|pclose|endif

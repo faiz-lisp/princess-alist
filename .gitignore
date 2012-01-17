@@ -4,3 +4,5 @@
 .*.un~
 #*#
 .DS_Store
+PortIndex
+PortIndex.quick
