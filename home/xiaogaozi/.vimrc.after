@@ -1,0 +1,84 @@
+" ----------------------------------------------------------------------
+" GENERAL SETTINGS
+" ----------------------------------------------------------------------
+
+set wrap
+set nonumber
+set tabstop=4
+set shiftwidth=4
+set cinoptions=>4,g0,h4,(0
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,default,latin1
+
+if has("vms")
+  set nobackup    " do not keep a backup file, use versions instead
+else
+  set backup      " keep a backup file
+endif
+
+" Turn on persistent undo.
+if v:version >= 703
+  set undofile
+endif
+
+set tags+=~/.tags/systags   " /usr/include
+set tags+=~/.tags/cpptags   " http://www.vim.org/scripts/script.php?script_id=2358
+
+" Templates
+autocmd BufNewFile *.c 0r ~/.templates/TEMPLATE.c.tpl | $d
+autocmd BufNewFile *.h 0r ~/.templates/TEMPLATE.h.tpl | $d
+autocmd BufNewFile *.sh 0r ~/.templates/TEMPLATE.sh.tpl | $d
+autocmd BufNewFile *.py 0r ~/.templates/TEMPLATE.py.tpl | $d
+autocmd BufNewFile *.cpp 0r ~/.templates/TEMPLATE.cpp.tpl | $d
+autocmd BufNewFile *.gyp 0r ~/.templates/TEMPLATE.gyp.tpl | $d
+autocmd BufNewFile *.html 0r ~/.templates/TEMPLATE.html.tpl | $d
+autocmd BufNewFile Makefile 0r ~/.templates/Makefile.tpl | $d
+autocmd BufNewFile CMakeLists.txt 0r ~/.templates/CMakeLists.txt.tpl | $d
+
+" ----------------------------------------------------------------------
+" MAPPINGS
+" ----------------------------------------------------------------------
+
+noremap <C-_> :cp<CR>   " previous error
+noremap <C-\> :cn<CR>   " next error
+
+" ctags
+noremap <Leader>T :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
+" cscope
+if has("cscope")
+  set cscopequickfix=s-,c-,d-,i-,t-,e-
+  set nocsverb
+  " add any database in current directory
+  if filereadable("cscope.out")
+    cs add cscope.out
+  " else add database pointed to by environment
+  elseif $CSCOPE_DB != ""
+    cs add $CSCOPE_DB
+  endif
+  set csverb
+endif
+noremap <Leader>C :!cscope -Rbkq<CR>
+noremap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+noremap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+noremap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+noremap <C-_>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+noremap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+noremap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+noremap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+noremap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+inoremap ( ()<Esc>i
+inoremap [ []<Esc>i
+inoremap " ""<Esc>i
+inoremap ' ''<Esc>i
+inoremap < <><Esc>i
+inoremap <C-B> <Esc>A;
+
+" ----------------------------------------------------------------------
+" PLUGINS SETTINGS
+" ----------------------------------------------------------------------
+
+" NERDCommenter
+let NERDSpaceDelims=1
+let NERDBlockComIgnoreEmpty=1
+let NERDDefaultNesting=0
