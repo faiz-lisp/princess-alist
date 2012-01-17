@@ -72,7 +72,12 @@ inoremap [ []<Esc>i
 inoremap " ""<Esc>i
 inoremap ' ''<Esc>i
 inoremap < <><Esc>i
-inoremap <C-B> <Esc>A;
+inoremap <C-b> <Esc>A;
+
+noremap <C-j> <C-w><C-j>
+noremap <C-k> <C-w><C-k>
+noremap <C-h> <C-w><C-h>
+noremap <C-l> <C-w><C-l>
 
 " ----------------------------------------------------------------------
 " PLUGINS SETTINGS
