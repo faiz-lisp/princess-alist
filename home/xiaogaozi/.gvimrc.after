@@ -1,2 +1,8 @@
 colorscheme molokai
-set guifont=Menlo\ Regular:h13
+if has("win32")
+  set guifont=Consolas:h11
+  set guioptions-=T
+  set enc=cp936
+else
+  set guifont=Menlo\ Regular:h13
+endif

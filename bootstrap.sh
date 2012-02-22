@@ -16,16 +16,57 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+function die()
+{
+    if [ -n "$1" ]; then
+        echo $1
+    fi
+    exit 1
+}
+
+function usage()
+{
+    echo "Usage"
+}
+
+enable_proxy=0
+
+function parse_options()
+{
+    until [ -z "$1" ]; do
+        case "$1" in
+            "-p")
+                if [ -z "$2" ]; then
+                    usage
+                    die
+                fi
+                array=($(echo $2 | tr ":" " "))
+                enable_proxy=1
+                proxy_host=${array[0]}
+                proxy_port=${array[1]}
+                shift
+                ;;
+
+            "-h" | "--help" | "--usage" | *)
+                usage
+                die
+                ;;
+        esac
+        shift
+    done
+}
+
+parse_options $*
+
 os=$(uname -s)
 repo_dir="$HOME/Repositories/Git/princess-alist"
 repo_home="$repo_dir/home/xiaogaozi"
-ln="ln -svih"
 
-function die()
-{
-    echo $1
-    exit 1
-}
+if [ "$os" == "Darwin" ]; then
+    ln="ln -svih"
+else
+    ln="ln -svin"
+fi
 
 if [ ! -d "$repo_dir" ]; then
     die "$repo_dir directory not found"
@@ -41,7 +82,10 @@ $ln "$repo_home/.bash_profile" ~/.bash_profile
 source ~/.bashrc
 
 # Vim
-# curl -Lo- https://raw.github.com/carlhuda/janus/master/bootstrap.sh | bash
+if [ "$enable_proxy" == 1 ]; then
+    curl_options="-x ${proxy_host}:${proxy_port}"
+fi
+curl $curl_options -Lo- https://raw.github.com/carlhuda/janus/master/bootstrap.sh | bash
 $ln "$repo_home/.vimrc.after" ~/.vimrc.after
 $ln "$repo_home/.gvimrc.after" ~/.gvimrc.after
 
