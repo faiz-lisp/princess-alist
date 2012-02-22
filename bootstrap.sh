@@ -86,6 +86,7 @@ if [ "$enable_proxy" == 1 ]; then
     curl_options="-x ${proxy_host}:${proxy_port}"
 fi
 curl $curl_options -Lo- https://raw.github.com/carlhuda/janus/master/bootstrap.sh | bash
+$ln "$repo_home/.vimrc.before" ~/.vimrc.before
 $ln "$repo_home/.vimrc.after" ~/.vimrc.after
 $ln "$repo_home/.gvimrc.after" ~/.gvimrc.after
 

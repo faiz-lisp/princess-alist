@@ -52,6 +52,11 @@
 ;; Set default spell checker.
 (setq-default ispell-program-name "aspell")
 
+;; Ido
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode t)
+
 ;; ----------------------------------------------------------------------
 ;; INDENTATION
 ;; ----------------------------------------------------------------------
