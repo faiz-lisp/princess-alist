@@ -87,4 +87,4 @@ noremap <C-l> <C-w><C-l>
 " NERDCommenter
 let NERDSpaceDelims=1
 let NERDBlockComIgnoreEmpty=1
-let NERDDefaultNesting=0
+let NERDDefaultNesting=1
