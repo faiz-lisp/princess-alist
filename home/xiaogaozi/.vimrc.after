@@ -38,6 +38,7 @@ autocmd BufNewFile CMakeLists.txt 0r ~/.templates/CMakeLists.txt.tpl | $d
 " MAPPINGS
 " ----------------------------------------------------------------------
 
+noremap <C-t> :pop<CR>
 noremap <C-_> :cp<CR>   " previous error
 noremap <C-\> :cn<CR>   " next error
 
