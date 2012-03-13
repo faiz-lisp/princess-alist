@@ -23,6 +23,10 @@ endif
 set tags+=~/.tags/systags   " /usr/include
 set tags+=~/.tags/cpptags   " http://www.vim.org/scripts/script.php?script_id=2358
 
+" " Auto close preview window.
+" autocmd CursorMovedI * if pumvisible() == 0 | pclose | endif
+" autocmd InsertLeave * if pumvisible() == 0 | pclose | endif
+
 " Templates
 autocmd BufNewFile *.c 0r ~/.templates/TEMPLATE.c.tpl | $d
 autocmd BufNewFile *.h 0r ~/.templates/TEMPLATE.h.tpl | $d
