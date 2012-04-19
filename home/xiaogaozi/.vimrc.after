@@ -92,3 +92,6 @@ noremap <C-l> <C-w><C-l>
 let NERDSpaceDelims=1
 let NERDBlockComIgnoreEmpty=1
 let NERDDefaultNesting=1
+
+" CtrlP
+let g:ctrlp_working_path_mode = 0
