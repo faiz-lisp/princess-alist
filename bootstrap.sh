@@ -26,7 +26,11 @@ function die()
 
 function usage()
 {
-    echo "Usage"
+    echo "Usage: ./bootstrap.sh [options]"
+    echo
+    echo "Options:"
+    echo "  -p host:port            Set up proxy"
+    echo "  -h, --help, --usage     This help text"
 }
 
 enable_proxy=0
