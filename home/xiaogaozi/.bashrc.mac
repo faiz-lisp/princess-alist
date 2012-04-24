@@ -82,5 +82,6 @@ export PATH=/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.
 defaults write ~/.MacOSX/environment PATH "$PATH"
 
 export EDITOR='vim -f'
+export LANG='en_US.UTF-8'
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
