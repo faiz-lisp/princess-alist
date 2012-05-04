@@ -19,6 +19,22 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 export LESSOPEN='| /opt/local/bin/lesspipe.sh %s'
 
+# prompt
+source "$HOME/.bash_it/themes/base.theme.bash"
+function modern_scm_prompt()
+{
+	CHAR=$(scm_char)
+	if [ $CHAR = $SCM_NONE_CHAR ]
+	then
+		return
+	else
+		echo "($(scm_prompt_info))"
+	fi
+}
+SCM_THEME_PROMPT_PREFIX=""
+SCM_THEME_PROMPT_SUFFIX=""
+PS1='\w$(modern_scm_prompt)\$ '
+
 # enable color support of ls and also add handy aliases
 alias ls='ls -G'
 alias grep='grep --color=auto'
@@ -33,13 +49,6 @@ alias l='ls -CF'
 alias df='df -h'
 alias du='du -sh'
 alias free='free -m'
-alias go='gnome-open'
-alias ml='telnet localhost 4000'
-alias h3c='sudo linux1x -d'
-alias p='/home/xiaogaozi/Repositories/SVN/gappproxy-read-only/localproxy/proxy.py &'
-alias s='byobu'
-alias minicom='minicom -c on'
-alias sp='la | xargs du -s 2> /dev/null | sort -nr | head -n 20'
 alias tree='tree -C'
 
 # Alias definitions.

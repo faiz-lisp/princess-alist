@@ -83,6 +83,7 @@ else
     $ln "$repo_home/.bashrc" ~/.bashrc
 fi
 $ln "$repo_home/.bash_profile" ~/.bash_profile
+git clone git://github.com/xiaogaozi/bash-it.git ~/.bash_it
 source ~/.bashrc
 
 # Vim
