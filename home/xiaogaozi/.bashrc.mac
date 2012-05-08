@@ -50,6 +50,7 @@ alias df='df -h'
 alias du='du -sh'
 alias free='free -m'
 alias tree='tree -C'
+alias hk='heroku'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
