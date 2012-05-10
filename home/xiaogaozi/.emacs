@@ -57,6 +57,10 @@
 (setq ido-everywhere t)
 (ido-mode t)
 
+;; Auto Fill Mode
+(setq-default fill-column 72)
+(add-hook 'python-mode-hook 'turn-on-auto-fill)
+
 ;; ----------------------------------------------------------------------
 ;; INDENTATION
 ;; ----------------------------------------------------------------------

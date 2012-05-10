@@ -6,6 +6,7 @@ set wrap
 set nonumber
 set tabstop=4
 set shiftwidth=4
+set formatoptions+=mM
 set cinoptions=>4,g0,h4,(0
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,default,latin1
 
