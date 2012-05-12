@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Translate Unicode code to Unicode string. <http://code.google.com/p/princess-alist/>
+# Translate Unicode code to Unicode string. <https://github.com/xiaogaozi/princess-alist>
 # Copyright (C) 2009  xiaogaozi <gaochangjian@gmail.com>
 # 
 # This program is free software: you can redistribute it and/or modify

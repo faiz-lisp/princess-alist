@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: gbk -*-
 
-# A debate timer. <http://code.google.com/p/princess-alist/>
+# A debate timer. <https://github.com/xiaogaozi/princess-alist>
 # Copyright (C) 2010  xiaogaozi <gaochangjian@gmail.com>
 # 
 # This program is free software: you can redistribute it and/or modify

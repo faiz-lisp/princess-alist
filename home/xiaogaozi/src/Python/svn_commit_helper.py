@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Check if any of my SVN working copy need to commit. <http://code.google.com/p/princess-alist/>
+# Check if any of my SVN working copy need to commit. <https://github.com/xiaogaozi/princess-alist>
 # Copyright (C) 2010  xiaogaozi <gaochangjian@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify

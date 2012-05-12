@@ -1,5 +1,5 @@
 /*
- * Genereate one magic matrix cycle. <http://code.google.com/p/princess-alist/>
+ * Genereate one magic matrix cycle. <https://github.com/xiaogaozi/princess-alist>
  * Copyright (C) 2010  xiaogaozi <gaochangjian@gmail.com>
  * 
  * This program is free software: you can redistribute it and/or modify

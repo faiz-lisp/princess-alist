@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Solution for 'Big Brother is Watching You' <http://code.google.com/p/princess-alist/>
+# Solution for 'Big Brother is Watching You' <https://github.com/xiaogaozi/princess-alist>
 # Copyright (C) 2010  xiaogaozi <gaochangjian@gmail.com>
 # 
 # This program is free software: you can redistribute it and/or modify

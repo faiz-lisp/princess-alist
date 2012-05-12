@@ -1,4 +1,4 @@
-# Check if any of my projects need to commit. <http://code.google.com/p/princess-alist/>
+# Check if any of my projects need to commit. <https://github.com/xiaogaozi/princess-alist>
 # Copyright (C) 2009  xiaogaozi <gaochangjian@gmail.com>
 # 
 # This program is free software: you can redistribute it and/or modify
