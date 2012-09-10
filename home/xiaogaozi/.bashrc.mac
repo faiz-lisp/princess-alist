@@ -67,14 +67,14 @@ fi
 if [ -f /opt/local/etc/bash_completion ]; then
     . /opt/local/etc/bash_completion
 fi
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
 
 # Enable Git completion.
 # if [ -f /opt/local/share/doc/git-core/contrib/completion/git-completion.bash ]; then
 #     . /opt/local/share/doc/git-core/contrib/completion/git-completion.bash
 # fi
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-fi
 
 # colorful man page
 export PAGER="/usr/bin/less -s"
