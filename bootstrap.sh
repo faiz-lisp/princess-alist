@@ -103,12 +103,12 @@ $ln "$repo_home/.emacs.d/site-lisp" ~/.emacs.d/site-lisp
 # Templates
 $ln "$repo_home/.templates" ~/.templates
 
-# MacPorts
-if [ "$os" == "Darwin" ]; then
-    mkdir -p ~/.macports
-    $ln "$repo_home/.macports/macports.conf" ~/.macports/macports.conf
-    $ln "$repo_home/MacPorts" ~/MacPorts
-fi
+# # MacPorts
+# if [ "$os" == "Darwin" ]; then
+#     mkdir -p ~/.macports
+#     $ln "$repo_home/.macports/macports.conf" ~/.macports/macports.conf
+#     $ln "$repo_home/MacPorts" ~/MacPorts
+# fi
 
 # Subversion
 mkdir -p ~/.subversion
