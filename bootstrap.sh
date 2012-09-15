@@ -107,6 +107,9 @@ $ln "$repo_home/.templates" ~/.templates
 #     $ln "$repo_home/MacPorts" ~/MacPorts
 # fi
 
+# Homebrew
+ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)
+
 # Subversion
 mkdir -p ~/.subversion
 if [ "$os" == "Darwin" ]; then
