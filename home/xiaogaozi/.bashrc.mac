@@ -27,7 +27,7 @@ SCM_THEME_PROMPT_SUFFIX=")"
 SCM_THEME_PROMPT_DIRTY=" ${bold_red}✗${normal}"
 SCM_THEME_PROMPT_CLEAN=" ${bold_green}✓${normal}"
 function prompt_command() {
-    PS1="${green}\w${normal}$(scm_prompt_info)\$ "
+    PS1="${yellow}\w${normal}$(scm_prompt_info)\$ "
 }
 PROMPT_COMMAND=prompt_command
 
