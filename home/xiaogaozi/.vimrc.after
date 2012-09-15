@@ -2,11 +2,12 @@
 " GENERAL SETTINGS
 " ----------------------------------------------------------------------
 
+colorscheme molokai
 set wrap
 set nonumber
 set tabstop=4
 set shiftwidth=4
-set formatoptions+=mM
+set formatoptions-=tcq
 set cinoptions=>4,g0,h4,(0
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,default,latin1
 
@@ -48,7 +49,7 @@ noremap <C-_> :cp<CR>   " previous error
 noremap <C-\> :cn<CR>   " next error
 
 " ctags
-noremap <Leader>T :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+noremap <Leader>T :!ctags -R --c++-kinds=+p --fields=+aS --extra=+q .<CR>
 
 " cscope
 if has("cscope")
@@ -96,3 +97,6 @@ let NERDDefaultNesting=1
 
 " CtrlP
 let g:ctrlp_working_path_mode = 0
+
+" Powerline
+let g:Powerline_symbols = 'fancy'

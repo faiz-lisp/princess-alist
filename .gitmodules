@@ -1,0 +1,6 @@
+[submodule "home/xiaogaozi/.janus/pyflakes-vim"]
+	path = home/xiaogaozi/.janus/pyflakes-vim
+	url = https://github.com/kevinw/pyflakes-vim.git
+[submodule "home/xiaogaozi/.janus/vim-powerline"]
+	path = home/xiaogaozi/.janus/vim-powerline
+	url = https://github.com/Lokaltog/vim-powerline.git

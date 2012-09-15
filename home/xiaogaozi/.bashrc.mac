@@ -21,19 +21,15 @@ export LESSOPEN='| /opt/local/bin/lesspipe.sh %s'
 
 # prompt
 source "$HOME/.bash_it/themes/base.theme.bash"
-function modern_scm_prompt()
-{
-	CHAR=$(scm_char)
-	if [ $CHAR = $SCM_NONE_CHAR ]
-	then
-		return
-	else
-		echo "($(scm_prompt_info))"
-	fi
+source "$HOME/.bash_it/themes/colors.theme.bash"
+SCM_THEME_PROMPT_PREFIX="(${purple}"
+SCM_THEME_PROMPT_SUFFIX=")"
+SCM_THEME_PROMPT_DIRTY=" ${bold_red}✗${normal}"
+SCM_THEME_PROMPT_CLEAN=" ${bold_green}✓${normal}"
+function prompt_command() {
+    PS1="${green}\w${normal}$(scm_prompt_info)\$ "
 }
-SCM_THEME_PROMPT_PREFIX=""
-SCM_THEME_PROMPT_SUFFIX=""
-PS1='\w$(modern_scm_prompt)\$ '
+PROMPT_COMMAND=prompt_command
 
 # enable color support of ls and also add handy aliases
 alias ls='ls -G'
@@ -89,9 +85,10 @@ export LESS_TERMCAP_us=$'\E[01;33m'
 
 export LESS='-R'
 
-# MacPorts Installer addition on 2010-10-08_at_20:53:32: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/bin:/opt/local/src/go/go-60.3/bin:~/Repositories/SVN/depot_tools:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
+# # MacPorts Installer addition on 2010-10-08_at_20:53:32: adding an appropriate PATH variable for use with MacPorts.
+# export PATH=/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/bin:/opt/local/src/go/go-60.3/bin:~/Repositories/SVN/depot_tools:$PATH
+# # Finished adapting your PATH environment variable for use with MacPorts.
+export PATH=/usr/local/bin:$PATH
 defaults write ~/.MacOSX/environment PATH "$PATH"
 
 export EDITOR='vim -f'

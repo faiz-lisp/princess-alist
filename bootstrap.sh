@@ -119,4 +119,7 @@ else
 fi
 $ln "$repo_home/.subversion/servers" ~/.subversion/servers
 
+git submodule init
+git submodule update
+
 exit 0

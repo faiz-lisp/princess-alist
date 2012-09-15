@@ -2,3 +2,4 @@ if has("win32") || has("win32unix")
   call janus#disable_plugin('gist')
   call janus#disable_plugin('pep8')
 endif
+call janus#disable_plugin('pyflakes-vim')
