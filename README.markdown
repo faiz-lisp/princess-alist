@@ -1,4 +1,4 @@
-Dotfiles collection and more
+Dotfiles collection and more. May the source be with you.
 
 # Bootstrap #
 
@@ -11,5 +11,3 @@ For more information:
 ```bash
 $ ./bootstrap.sh -h
 ```
-
-May the source be with you.

@@ -2,30 +2,28 @@
 
 # Bootstrap <https://github.com/xiaogaozi/princess-alist>
 # Copyright (C) 2012  xiaogaozi <gaochangjian@gmail.com>
-# 
+#
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-function die()
-{
+function die() {
     if [ -n "$1" ]; then
         echo $1
     fi
     exit 1
 }
 
-function usage()
-{
+function usage() {
     echo "Usage: ./bootstrap.sh [options]"
     echo
     echo "Options:"
@@ -35,8 +33,7 @@ function usage()
 
 enable_proxy=0
 
-function parse_options()
-{
+function parse_options() {
     until [ -z "$1" ]; do
         case "$1" in
             "-p")
