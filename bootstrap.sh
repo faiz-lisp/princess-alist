@@ -108,7 +108,14 @@ $ln "$repo_home/.templates" ~/.templates
 # fi
 
 # Homebrew
-ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)
+if [ ! $(which brew) ]; then
+    ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)
+fi
+
+# RVM
+if [ ! $(which rvm) ]; then
+    curl -L https://get.rvm.io | bash -s stable --ruby
+fi
 
 # Subversion
 mkdir -p ~/.subversion
