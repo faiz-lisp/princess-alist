@@ -73,6 +73,10 @@ if [ ! -d "$repo_dir" ]; then
     die "$repo_dir directory not found"
 fi
 
+# Submodule init
+git submodule init
+git submodule update
+
 # Bash
 if [ "$os" == "Darwin" ]; then
     $ln "$repo_home/.bashrc.mac" ~/.bashrc
@@ -93,9 +97,10 @@ $ln "$repo_home/.vimrc.after" ~/.vimrc.after
 $ln "$repo_home/.gvimrc.after" ~/.gvimrc.after
 
 # Emacs
-$ln "$repo_home/.emacs" ~/.emacs
-mkdir -p ~/.emacs.d
-$ln "$repo_home/.emacs.d/site-lisp" ~/.emacs.d/site-lisp
+# $ln "$repo_home/.emacs" ~/.emacs
+# mkdir -p ~/.emacs.d
+# $ln "$repo_home/.emacs.d/site-lisp" ~/.emacs.d/site-lisp
+$ln "$repo_home/.emacs.d" ~/.emacs.d
 
 # Templates
 $ln "$repo_home/.templates" ~/.templates
@@ -125,8 +130,5 @@ else
     $ln "$repo_home/.subversion/config" ~/.subversion/config
 fi
 $ln "$repo_home/.subversion/servers" ~/.subversion/servers
-
-git submodule init
-git submodule update
 
 exit 0
