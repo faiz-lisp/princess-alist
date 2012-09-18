@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# contributor: xiaogaozi <gaochangjian@gmail.com>
+# name: <span style="...">...</span>
+# --
+<span style="$1">$2</span>

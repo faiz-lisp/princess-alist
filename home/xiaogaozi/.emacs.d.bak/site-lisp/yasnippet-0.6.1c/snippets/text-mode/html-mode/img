@@ -1,0 +1,4 @@
+#contributor : Jimmy Wu <frozenthrone88@gmail.com>
+#name : <img src="..." alt="..." />
+# --
+<img src="$1" alt="$2" />
