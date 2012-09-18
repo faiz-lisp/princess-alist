@@ -180,12 +180,12 @@
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
-;; AsciiDoc Major Mode
-(autoload 'doc-mode "doc-mode")
-(add-to-list 'auto-mode-alist (cons "\\.\\(txt\\|asciidoc\\)\\'" 'doc-mode))
+; ;; AsciiDoc Major Mode
+; (autoload 'doc-mode "doc-mode")
+; (add-to-list 'auto-mode-alist (cons "\\.\\(txt\\|asciidoc\\)\\'" 'doc-mode))
 
-;; Go Major Mode
-(require 'go-mode-load)
+; ;; Go Major Mode
+; (require 'go-mode-load)
 
 ;; Markdown Major Mode
 (autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
