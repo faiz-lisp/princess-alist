@@ -1,0 +1,18 @@
+[user]
+	name = xiaogaozi
+	email = gaochangjian@gmail.com
+[color]
+	ui = auto
+[branch]
+	autosetuprebase = always
+[merge]
+	conflictstyle = diff3
+[rerere]
+	enabled = true
+[alias]
+	ci = commit
+	co = checkout
+	st = status
+	lc = log ORIG_HEAD.. --stat --no-merges
+	lg = log --graph --oneline --decorate --abbrev-commit
+	lgg = log --graph --pretty=format:\"%C(yellow)%h%Creset%C(bold red)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\"

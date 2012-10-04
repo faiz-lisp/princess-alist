@@ -77,6 +77,9 @@ fi
 git submodule init
 git submodule update
 
+# Git
+$ln "$repo_home/.gitconfig" ~/.gitconfig
+
 # Bash
 if [ "$os" == "Darwin" ]; then
     $ln "$repo_home/.bashrc.mac" ~/.bashrc
@@ -85,7 +88,6 @@ else
 fi
 $ln "$repo_home/.bash_profile" ~/.bash_profile
 git clone https://github.com/revans/bash-it.git ~/.bash_it
-source ~/.bashrc
 
 # Vim
 if [ "$enable_proxy" == 1 ]; then
