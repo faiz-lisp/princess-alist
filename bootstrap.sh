@@ -133,4 +133,7 @@ else
 fi
 $ln "$repo_home/.subversion/servers" ~/.subversion/servers
 
+# src
+$ln "$repo_home/src" ~/src
+
 exit 0
