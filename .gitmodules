@@ -7,3 +7,6 @@
 [submodule "home/xiaogaozi/src/gist/git-submodule-rm"]
 	path = home/xiaogaozi/src/gist/git-submodule-rm
 	url = git://gist.github.com/2491147.git
+[submodule "home/xiaogaozi/.emacs.d"]
+	path = home/xiaogaozi/.emacs.d
+	url = git@github.com:xiaogaozi/emacs-live.git
