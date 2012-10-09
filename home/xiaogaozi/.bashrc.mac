@@ -23,11 +23,13 @@ export LESSOPEN='| /opt/local/bin/lesspipe.sh %s'
 source "$HOME/.bash_it/themes/base.theme.bash"
 source "$HOME/.bash_it/themes/colors.theme.bash"
 SCM_THEME_PROMPT_PREFIX="(${purple}"
-SCM_THEME_PROMPT_SUFFIX=")"
+SCM_THEME_PROMPT_SUFFIX="${normal})"
 SCM_THEME_PROMPT_DIRTY=" ${bold_red}✗${normal}"
 SCM_THEME_PROMPT_CLEAN=" ${bold_green}✓${normal}"
+VIRTUALENV_THEME_PROMPT_PREFIX="{${green}"
+VIRTUALENV_THEME_PROMPT_SUFFIX="${normal}} "
 function prompt_command() {
-    PS1="${yellow}\w${normal}$(scm_prompt_info)\$ "
+    PS1="$(virtualenv_prompt)${yellow}\w${normal}$(scm_prompt_info)\$ "
 }
 PROMPT_COMMAND=prompt_command
 
@@ -95,3 +97,7 @@ export EDITOR='vim -f'
 export LANG='en_US.UTF-8'
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+
+# virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh

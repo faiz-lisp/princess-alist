@@ -103,6 +103,8 @@ $ln "$repo_home/.gvimrc.after" ~/.gvimrc.after
 # mkdir -p ~/.emacs.d
 # $ln "$repo_home/.emacs.d/site-lisp" ~/.emacs.d/site-lisp
 $ln "$repo_home/.emacs.d" ~/.emacs.d
+$ln "$repo_home/.emacs-live.el" ~/.emacs-live.el
+$ln "$repo_home/.live-packs" ~/.live-packs
 
 # Templates
 $ln "$repo_home/.templates" ~/.templates
@@ -117,6 +119,28 @@ $ln "$repo_home/.templates" ~/.templates
 # Homebrew
 if [ ! $(which brew) ]; then
     ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)
+fi
+
+# pip
+if [ ! $(which pip) ]; then
+    sudo easy_install pip
+fi
+
+# virtualenv and virtualenvwrapper
+if [ ! $(which virtualenv) ]; then
+    sudo pip install virtualenv
+    sudo pip install virtualenvwrapper
+    mkdir -p ~/.virtualenvs
+fi
+
+# IPython
+if [ ! $(which ipython) ]; then
+    sudo pip install ipython
+fi
+
+# Flake8
+if [ ! $(which flake8) ]; then
+    sudo pip install flake8
 fi
 
 # RVM

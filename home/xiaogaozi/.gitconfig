@@ -2,7 +2,7 @@
 	name = xiaogaozi
 	email = gaochangjian@gmail.com
 [color]
-	ui = auto
+	ui = always
 [branch]
 	autosetuprebase = always
 [merge]
