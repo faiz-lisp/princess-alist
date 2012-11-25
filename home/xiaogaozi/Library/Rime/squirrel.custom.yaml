@@ -1,0 +1,7 @@
+# Squirrel custom settings
+# encoding: utf-8
+
+patch:
+  style/horizontal: true
+  style/font_face: "Lucida Grande"
+  style/font_point: 16

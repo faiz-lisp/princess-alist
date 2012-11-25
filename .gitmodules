@@ -7,3 +7,6 @@
 [submodule "home/xiaogaozi/.emacs.d"]
 	path = home/xiaogaozi/.emacs.d
 	url = git://github.com/overtone/emacs-live.git
+[submodule "home/xiaogaozi/.janus/vim-arcanist"]
+	path = home/xiaogaozi/.janus/vim-arcanist
+	url = git://github.com/phleet/vim-arcanist.git

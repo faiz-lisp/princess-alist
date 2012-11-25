@@ -68,6 +68,9 @@ fi
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
+if [ -f ~/Repositories/Git/arcanist/resources/shell/bash-completion ]; then
+    . ~/Repositories/Git/arcanist/resources/shell/bash-completion
+fi
 
 # Enable Git completion.
 # if [ -f /opt/local/share/doc/git-core/contrib/completion/git-completion.bash ]; then
@@ -90,7 +93,7 @@ export LESS='-R'
 # # MacPorts Installer addition on 2010-10-08_at_20:53:32: adding an appropriate PATH variable for use with MacPorts.
 # export PATH=/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/bin:/opt/local/src/go/go-60.3/bin:~/Repositories/SVN/depot_tools:$PATH
 # # Finished adapting your PATH environment variable for use with MacPorts.
-export PATH=/usr/local/bin:$PATH:$HOME/.rvm/bin:/usr/local/share/npm/bin
+export PATH=/usr/local/bin:$PATH:$HOME/.rvm/bin:/usr/local/share/npm/bin:$HOME/bin:$HOME/zhihu/arcanist/bin
 defaults write ~/.MacOSX/environment PATH "$PATH"
 
 export EDITOR='vim -f'
@@ -101,3 +104,5 @@ export LANG='en_US.UTF-8'
 # virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
+
+export PHABRICATOR_ENV=custom/myconfig

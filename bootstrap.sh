@@ -160,4 +160,7 @@ $ln "$repo_home/.subversion/servers" ~/.subversion/servers
 # src
 $ln "$repo_home/src" ~/src
 
+# aria2
+$ln "$repo_home/.aria2" ~/.aria2
+
 exit 0

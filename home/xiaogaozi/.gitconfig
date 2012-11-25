@@ -7,13 +7,16 @@
 	autosetuprebase = always
 [merge]
 	conflictstyle = diff3
+	tool = vimdiff
 [rerere]
 	enabled = true
 [alias]
 	ci = commit
 	co = checkout
-	st = status
 	lc = log ORIG_HEAD.. --stat --no-merges
 	lg = log --graph --oneline --decorate --abbrev-commit
 	lgg = log --graph --pretty=format:\"%C(yellow)%h%Creset%C(bold red)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\"
 	submodule-rm = !sh ~/src/gist/git-submodule-rm/git-submodule-rm.sh
+	st = status -sb
+[push]
+	default = simple
