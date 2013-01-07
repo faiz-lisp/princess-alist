@@ -93,7 +93,7 @@ export LESS='-R'
 # # MacPorts Installer addition on 2010-10-08_at_20:53:32: adding an appropriate PATH variable for use with MacPorts.
 # export PATH=/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.6/bin:/opt/local/src/go/go-60.3/bin:~/Repositories/SVN/depot_tools:$PATH
 # # Finished adapting your PATH environment variable for use with MacPorts.
-export PATH=/usr/local/bin:$PATH:$HOME/.rvm/bin:/usr/local/share/npm/bin:$HOME/bin:$HOME/zhihu/arcanist/bin
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH:$HOME/.rvm/bin:/usr/local/share/npm/bin:$HOME/bin:$HOME/zhihu/arcanist/bin:/usr/local/share/python
 defaults write ~/.MacOSX/environment PATH "$PATH"
 
 export EDITOR='vim -f'

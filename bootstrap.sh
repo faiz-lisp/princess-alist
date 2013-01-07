@@ -81,13 +81,13 @@ git submodule update
 $ln "$repo_home/.gitconfig" ~/.gitconfig
 
 # Bash
+$ln "$repo_home/.bash_it" ~/.bash_it
 if [ "$os" == "Darwin" ]; then
     $ln "$repo_home/.bashrc.mac" ~/.bashrc
 else
     $ln "$repo_home/.bashrc" ~/.bashrc
 fi
 $ln "$repo_home/.bash_profile" ~/.bash_profile
-git clone https://github.com/revans/bash-it.git ~/.bash_it
 
 # Vim
 if [ "$enable_proxy" == 1 ]; then
@@ -148,14 +148,14 @@ if [ ! $(which rvm) ]; then
     curl -L https://get.rvm.io | bash -s stable --ruby
 fi
 
-# Subversion
-mkdir -p ~/.subversion
-if [ "$os" == "Darwin" ]; then
-    $ln "$repo_home/.subversion/config.mac" ~/.subversion/config
-else
-    $ln "$repo_home/.subversion/config" ~/.subversion/config
-fi
-$ln "$repo_home/.subversion/servers" ~/.subversion/servers
+# # Subversion
+# mkdir -p ~/.subversion
+# if [ "$os" == "Darwin" ]; then
+#     $ln "$repo_home/.subversion/config.mac" ~/.subversion/config
+# else
+#     $ln "$repo_home/.subversion/config" ~/.subversion/config
+# fi
+# $ln "$repo_home/.subversion/servers" ~/.subversion/servers
 
 # src
 $ln "$repo_home/src" ~/src
