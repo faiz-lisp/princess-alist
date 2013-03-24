@@ -99,7 +99,7 @@ defaults write ~/.MacOSX/environment PATH "$PATH"
 export EDITOR='vim -f'
 export LANG='en_US.UTF-8'
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 
 # virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs

@@ -1,8 +1,6 @@
 [user]
 	name = xiaogaozi
 	email = gaochangjian@gmail.com
-[color]
-	ui = always
 [branch]
 	autosetuprebase = always
 [merge]
@@ -20,3 +18,11 @@
 	st = status -sb
 [push]
 	default = simple
+
+[hub]
+protocol = https
+
+[core]
+excludesfile = /opt/boxen/config/git/gitignore
+[color]
+	ui = auto

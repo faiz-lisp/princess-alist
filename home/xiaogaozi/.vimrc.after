@@ -33,7 +33,9 @@ set tags+=~/.tags/cpptags   " http://www.vim.org/scripts/script.php?script_id=23
 autocmd BufNewFile *.c 0r ~/.templates/TEMPLATE.c.tpl | $d
 autocmd BufNewFile *.h 0r ~/.templates/TEMPLATE.h.tpl | $d
 autocmd BufNewFile *.sh 0r ~/.templates/TEMPLATE.sh.tpl | $d
+autocmd BufNewFile *.pp 0r ~/.templates/TEMPLATE.pp.tpl | $d
 autocmd BufNewFile *.py 0r ~/.templates/TEMPLATE.py.tpl | $d
+autocmd BufNewFile *.proto 0r ~/.templates/TEMPLATE.proto.tpl | $d
 autocmd BufNewFile *.cpp 0r ~/.templates/TEMPLATE.cpp.tpl | $d
 autocmd BufNewFile *.gyp 0r ~/.templates/TEMPLATE.gyp.tpl | $d
 autocmd BufNewFile *.html 0r ~/.templates/TEMPLATE.html.tpl | $d

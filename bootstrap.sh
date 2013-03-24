@@ -109,6 +109,9 @@ $ln "$repo_home/.live-packs" ~/.live-packs
 # Templates
 $ln "$repo_home/.templates" ~/.templates
 
+# src
+$ln "$repo_home/src" ~/src
+
 # # MacPorts
 # if [ "$os" == "Darwin" ]; then
 #     mkdir -p ~/.macports
@@ -116,10 +119,24 @@ $ln "$repo_home/.templates" ~/.templates
 #     $ln "$repo_home/MacPorts" ~/MacPorts
 # fi
 
+# # Subversion
+# mkdir -p ~/.subversion
+# if [ "$os" == "Darwin" ]; then
+#     $ln "$repo_home/.subversion/config.mac" ~/.subversion/config
+# else
+#     $ln "$repo_home/.subversion/config" ~/.subversion/config
+# fi
+# $ln "$repo_home/.subversion/servers" ~/.subversion/servers
+
+# aria2
+$ln "$repo_home/.aria2" ~/.aria2
+
 # Homebrew
 if [ ! $(which brew) ]; then
     ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)
 fi
+brew install python
+brew install gibo
 
 # pip
 if [ ! $(which pip) ]; then
@@ -147,20 +164,5 @@ fi
 if [ ! $(which rvm) ]; then
     curl -L https://get.rvm.io | bash -s stable --ruby
 fi
-
-# # Subversion
-# mkdir -p ~/.subversion
-# if [ "$os" == "Darwin" ]; then
-#     $ln "$repo_home/.subversion/config.mac" ~/.subversion/config
-# else
-#     $ln "$repo_home/.subversion/config" ~/.subversion/config
-# fi
-# $ln "$repo_home/.subversion/servers" ~/.subversion/servers
-
-# src
-$ln "$repo_home/src" ~/src
-
-# aria2
-$ln "$repo_home/.aria2" ~/.aria2
 
 exit 0
