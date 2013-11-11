@@ -26,3 +26,7 @@ protocol = https
 excludesfile = /opt/boxen/config/git/gitignore
 [color]
 	ui = auto
+
+
+[credential]
+helper = /opt/boxen/bin/boxen-git-credential

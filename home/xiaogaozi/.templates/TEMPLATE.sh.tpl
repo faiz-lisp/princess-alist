@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # <one line to give the program's name and a brief idea of what it does.> <project url>
 # Copyright (C) <year>  xiaogaozi <gaochangjian@gmail.com>
@@ -17,4 +17,3 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-exit 0

@@ -47,8 +47,6 @@ autocmd BufNewFile CMakeLists.txt 0r ~/.templates/CMakeLists.txt.tpl | $d
 " ----------------------------------------------------------------------
 
 noremap <C-t> :pop<CR>
-noremap <C-_> :cp<CR>   " previous error
-noremap <C-\> :cn<CR>   " next error
 
 " ctags
 noremap <Leader>T :!ctags -R --c++-kinds=+p --fields=+aS --extra=+q .<CR>
@@ -93,12 +91,16 @@ noremap <C-l> <C-w><C-l>
 " ----------------------------------------------------------------------
 
 " NERDCommenter
-let NERDSpaceDelims=1
-let NERDBlockComIgnoreEmpty=1
-let NERDDefaultNesting=1
+let NERDSpaceDelims = 1
+let NERDBlockComIgnoreEmpty = 1
+let NERDDefaultNesting = 1
 
 " CtrlP
+let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 0
 
 " Powerline
 let g:Powerline_symbols = 'fancy'
+
+" Syntastic
+let g:syntastic_check_on_open = 1
