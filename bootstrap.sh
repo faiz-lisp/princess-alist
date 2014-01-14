@@ -80,14 +80,20 @@ git submodule update
 # Git
 $ln "$repo_home/.gitconfig" ~/.gitconfig
 
-# Bash
-$ln "$repo_home/.bash_it" ~/.bash_it
-if [ "$os" == "Darwin" ]; then
-    $ln "$repo_home/.bashrc.mac" ~/.bashrc
-else
-    $ln "$repo_home/.bashrc" ~/.bashrc
-fi
-$ln "$repo_home/.bash_profile" ~/.bash_profile
+# # Bash
+# $ln "$repo_home/.bash_it" ~/.bash_it
+# if [ "$os" == "Darwin" ]; then
+#     $ln "$repo_home/.bashrc.mac" ~/.bashrc
+# else
+#     $ln "$repo_home/.bashrc" ~/.bashrc
+# fi
+# $ln "$repo_home/.bash_profile" ~/.bash_profile
+
+# Zsh
+git clone git@github.com:xiaogaozi/oh-my-zsh.git ~/.oh-my-zsh
+cd ~/.oh-my-zsh
+git remote add upstream https://github.com/robbyrussell/oh-my-zsh.git
+$ln "$repo_home/.zshrc" ~/.zshrc
 
 # Vim
 if [ "$enable_proxy" == 1 ]; then
@@ -131,38 +137,38 @@ $ln "$repo_home/src" ~/src
 # aria2
 $ln "$repo_home/.aria2" ~/.aria2
 
-# Homebrew
-if [ ! $(which brew) ]; then
-    ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)
-fi
-brew install python
-brew install gibo
+# # Homebrew
+# if [ ! $(which brew) ]; then
+#     ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)
+# fi
+# brew install python
+# brew install gibo
 
-# pip
-if [ ! $(which pip) ]; then
-    sudo easy_install pip
-fi
+# # pip
+# if [ ! $(which pip) ]; then
+#     sudo easy_install pip
+# fi
 
-# virtualenv and virtualenvwrapper
-if [ ! $(which virtualenv) ]; then
-    sudo pip install virtualenv
-    sudo pip install virtualenvwrapper
-    mkdir -p ~/.virtualenvs
-fi
+# # virtualenv and virtualenvwrapper
+# if [ ! $(which virtualenv) ]; then
+#     sudo pip install virtualenv
+#     sudo pip install virtualenvwrapper
+#     mkdir -p ~/.virtualenvs
+# fi
 
-# IPython
-if [ ! $(which ipython) ]; then
-    sudo pip install ipython
-fi
+# # IPython
+# if [ ! $(which ipython) ]; then
+#     sudo pip install ipython
+# fi
 
-# Flake8
-if [ ! $(which flake8) ]; then
-    sudo pip install flake8
-fi
+# # Flake8
+# if [ ! $(which flake8) ]; then
+#     sudo pip install flake8
+# fi
 
-# RVM
-if [ ! $(which rvm) ]; then
-    curl -L https://get.rvm.io | bash -s stable --ruby
-fi
+# # RVM
+# if [ ! $(which rvm) ]; then
+#     curl -L https://get.rvm.io | bash -s stable --ruby
+# fi
 
 exit 0
