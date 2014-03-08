@@ -10,3 +10,12 @@
 [submodule "home/xiaogaozi/.janus/vim-arcanist"]
 	path = home/xiaogaozi/.janus/vim-arcanist
 	url = git://github.com/phleet/vim-arcanist.git
+[submodule "home/xiaogaozi/.janus/ag"]
+	path = home/xiaogaozi/.janus/ag
+	url = git@github.com:rking/ag.vim.git
+[submodule "home/xiaogaozi/.janus/dash.vim"]
+	path = home/xiaogaozi/.janus/dash.vim
+	url = git@github.com:rizzatti/dash.vim.git
+[submodule "home/xiaogaozi/.janus/funcoo.vim"]
+	path = home/xiaogaozi/.janus/funcoo.vim
+	url = git@github.com:rizzatti/funcoo.vim.git
