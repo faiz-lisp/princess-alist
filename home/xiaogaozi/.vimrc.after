@@ -42,6 +42,12 @@ autocmd BufNewFile *.html 0r ~/.templates/TEMPLATE.html.tpl | $d
 autocmd BufNewFile Makefile 0r ~/.templates/Makefile.tpl | $d
 autocmd BufNewFile CMakeLists.txt 0r ~/.templates/CMakeLists.txt.tpl | $d
 
+" Use htmldjango file type when open HTML files in Zhihu project
+autocmd BufNewFile,BufRead ~/zhihu/zhihu/templates/*.html set filetype=htmldjango
+
+" Set indent space to 2 when open HTML file
+autocmd BufNewFile,BufRead *.html,*.css,*.js,*.sh set tabstop=2 shiftwidth=2
+
 " ----------------------------------------------------------------------
 " MAPPINGS
 " ----------------------------------------------------------------------
@@ -104,9 +110,14 @@ let g:Powerline_symbols = 'fancy'
 
 " Syntastic
 let g:syntastic_check_on_open = 1
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'passive_filetypes': ['html'] }
 
 " ag
 call janus#add_mapping('ack', 'map', '<leader>f', ':Ag!<space>')
 
 " dash.vim
 nmap <silent> <leader>d :Dash<space>
+
+" easy-gitlab.vim
+let g:easy_gitlab_url = 'http://git.in.zhihu.com'

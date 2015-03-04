@@ -19,3 +19,18 @@
 [submodule "home/xiaogaozi/.janus/funcoo.vim"]
 	path = home/xiaogaozi/.janus/funcoo.vim
 	url = git@github.com:rizzatti/funcoo.vim.git
+[submodule "home/xiaogaozi/.janus/github-vim"]
+	path = home/xiaogaozi/.janus/github-vim
+	url = git@github.com:solars/github-vim.git
+[submodule "home/xiaogaozi/.janus/vim-swift"]
+	path = home/xiaogaozi/.janus/vim-swift
+	url = https://github.com/toyamarinyon/vim-swift.git
+[submodule "home/xiaogaozi/.janus/pig.vim"]
+	path = home/xiaogaozi/.janus/pig.vim
+	url = https://github.com/motus/pig.vim.git
+[submodule "home/xiaogaozi/.janus/vim-go"]
+	path = home/xiaogaozi/.janus/vim-go
+	url = https://github.com/fatih/vim-go.git
+[submodule "home/xiaogaozi/.janus/vim-jsx"]
+	path = home/xiaogaozi/.janus/vim-jsx
+	url = https://github.com/mxw/vim-jsx.git

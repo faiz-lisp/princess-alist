@@ -1,0 +1,1 @@
+/Users/xiaogaozi/Repositories/Git/easy-gitlab.vim
