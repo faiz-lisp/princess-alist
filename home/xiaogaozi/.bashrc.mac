@@ -103,6 +103,6 @@ export LANG='en_US.UTF-8'
 
 # virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper.sh
 
 export PHABRICATOR_ENV=custom/myconfig

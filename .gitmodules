@@ -34,3 +34,6 @@
 [submodule "home/xiaogaozi/.janus/vim-jsx"]
 	path = home/xiaogaozi/.janus/vim-jsx
 	url = https://github.com/mxw/vim-jsx.git
+[submodule "home/xiaogaozi/.janus/thrift.vim"]
+	path = home/xiaogaozi/.janus/thrift.vim
+	url = https://github.com/solarnz/thrift.vim.git
