@@ -18,18 +18,3 @@
 	st = status -sb
 [push]
 	default = simple
-
-[hub]
-protocol = https
-
-[core]
-excludesfile = /opt/boxen/config/git/gitignore
-[color]
-	ui = auto
-
-
-[credential]
-helper = /opt/boxen/bin/boxen-git-credential
-[filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
