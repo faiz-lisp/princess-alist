@@ -25,6 +25,7 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      dash
+     dockerfile
      emacs-lisp
      emoji
      git
@@ -47,6 +48,7 @@ values."
      spell-checking
      syntax-checking
      version-control
+     yaml
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -213,6 +215,9 @@ layers configuration. You are free to put any user code."
   (setq powerline-default-separator 'arrow)
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+  ;; Disable Projectile caching
+  (setq projectile-enable-caching nil)
+
   ;; Indentation
   (add-hook 'js2-mode-hook '(lambda ()
                               (setq js2-basic-offset 2)
@@ -223,6 +228,8 @@ layers configuration. You are free to put any user code."
                               (setq web-mode-markup-indent-offset 2)
                               (setq web-mode-code-indent-offset 2)
                               (setq web-mode-css-indent-offset 2)))
+  (add-hook 'scss-mode-hook '(lambda ()
+                               (setq css-indent-offset 2)))
   (add-hook 'sh-mode-hook '(lambda ()
                              (setq sh-indentation 2)
                              (setq sh-indent-after-loop-construct 2)))
