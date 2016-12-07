@@ -35,3 +35,6 @@ ZSH_THEME="alist"
 plugins=(brew gem git npm nvm osx pip python rbenv vagrant virtualenvwrapper z)
 
 source $ZSH/oh-my-zsh.sh
+
+export NVM_DIR="/Users/xiaogaozi/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
