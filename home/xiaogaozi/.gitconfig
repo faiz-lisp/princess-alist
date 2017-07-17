@@ -18,3 +18,5 @@
 	st = status -sb
 [push]
 	default = simple
+[https]
+ 	proxy = socks5://127.0.0.1:1080

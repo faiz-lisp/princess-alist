@@ -32,8 +32,11 @@ ZSH_THEME="alist"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew gem git npm osx pip python rbenv vagrant virtualenvwrapper z)
+plugins=(brew gem git npm nvm osx pip python rbenv vagrant virtualenvwrapper z)
 
 source $ZSH/oh-my-zsh.sh
 
 export PATH="/usr/local/heroku/bin:$PATH"
+
+export NVM_DIR="/Users/xiaogaozi/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
