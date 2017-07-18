@@ -70,7 +70,12 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages
+   '(
+     (groovy-mode)
+     (protobuf-mode)
+     (thrift)
+     )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -352,6 +357,10 @@ you should place your code here."
   (add-hook 'sh-mode-hook '(lambda ()
                              (setq sh-indentation 2)
                              (setq sh-indent-after-loop-construct 2)))
+  (add-hook 'go-mode-hook '(lambda ()
+                             (setq tab-width 4)))
+  (add-hook 'java-mode-hook (lambda ()
+                              (add-hook 'before-save-hook 'meghanada-optimize-import)))
 
   ;; CJK font
   (dolist (charset '(kana han cjk-misc bopomofo))
