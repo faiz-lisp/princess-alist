@@ -360,7 +360,10 @@ you should place your code here."
   (add-hook 'go-mode-hook '(lambda ()
                              (setq tab-width 4)))
   (add-hook 'java-mode-hook (lambda ()
-                              (add-hook 'before-save-hook 'meghanada-optimize-import)))
+                              (add-hook 'before-save-hook
+                                        (lambda ()
+                                          (when (string-suffix-p ".java" (buffer-name))
+                                            (meghanada-optimize-import))))))
 
   ;; CJK font
   (dolist (charset '(kana han cjk-misc bopomofo))
@@ -370,20 +373,6 @@ you should place your code here."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (winum fuzzy package-build org markdown-mode multiple-cursors git-gutter iedit sbt-mode docker tablist docker-tramp dash-functional tern packed anaconda-mode auto-complete company highlight anzu smartparens bind-map evil undo-tree flycheck gh pcache magit go-mode request helm helm-core popup projectile avy hydra yasnippet php-mode f js2-mode powerline s yapfify uuidgen toc-org rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake py-isort pug-mode osx-dictionary org-plus-contrib livid-mode skewer-mode simple-httpd go-guru github-search magit-popup git-commit with-editor dash async marshal ht flyspell-correct-helm flyspell-correct eyebrowse evil-ediff dumb-jump column-enforce-mode bundler inf-ruby yaml-mode xterm-color ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe use-package tagedit spacemacs-theme spaceline smooth-scrolling smeargle slim-mode shell-pop scss-mode scala-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-yapf puppet-mode popwin pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el pbcopy paradox page-break-lines osx-trash orgit org-bullets open-junk-file noflet neotree multi-term move-text mmm-mode minitest markdown-toc magit-gitflow magit-gh-pulls macrostep lorem-ipsum live-py-mode linum-relative link-hint leuven-theme less-css-mode launchctl json-mode js2-refactor js-doc jade-mode info+ indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flyspell helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio go-eldoc github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md ggtags flycheck-pos-tip flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help ensime emoji-cheat-sheet-plus emmet-mode elisp-slime-nav drupal-mode dockerfile-mode diff-hl define-word dash-at-point cython-mode company-web company-tern company-statistics company-quickhelp company-go company-emoji company-anaconda coffee-mode clean-aindent-mode chruby buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
 This is an auto-generated function, do not modify its content directly, use
